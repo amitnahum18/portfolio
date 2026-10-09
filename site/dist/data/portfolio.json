@@ -13,23 +13,16 @@
     "skills": [
       "Python",
       "SQL",
-      "Pandas",
-      "NumPy",
       "Statistics",
+      "Machine Learning",
       "Feature Engineering",
       "Model Evaluation",
-      "scikit-learn",
-      "CatBoost",
-      "Anomaly Detection"
+      "Signal Processing",
+      "scikit-learn"
     ],
     "agentSkills": [
-      "FastAPI",
-      "DuckDB",
-      "n8n",
       "Docker",
-      "vLLM",
-      "Hugging Face",
-      "Semantic Retrieval"
+      "LLM Inference"
     ]
   },
   "projects": [
@@ -142,21 +135,23 @@
         ],
         "en": {
           "title": "BridgePulse",
-          "summary": "Classify experimental bridge damage from acceleration signals, with a packaged prediction pipeline.",
+          "summary": "Distinguish baseline and damage states in bridge vibration recordings using MFCC features and a Random Forest.",
           "data": "25 recordings · 8 states · 58 channels · one bridge",
           "method": "1,392 MFCC features and a regularized Random Forest",
           "result": "81.97% balanced accuracy",
           "context": "Mean across state-grouped allocations; exploratory, no untouched final test.",
-          "evaluation": "State-grouped splits; standard deviation of 8.14 percentage points."
+          "evaluation": "State-grouped splits; standard deviation of 8.14 percentage points.",
+          "cardResult": "81.97% mean balanced accuracy · state-grouped splits"
         },
         "he": {
           "title": "BridgePulse",
-          "summary": "סיווג נזק ניסויי בגשר מתוך אותות תאוצה, עם תהליך חיזוי ארוז לשימוש עצמאי.",
+          "summary": "סיווג מצבי בסיס ונזק בהקלטות רעידות גשר באמצעות מאפייני MFCC ו־Random Forest.",
           "data": "25 הקלטות · 8 מצבים · 58 ערוצים · גשר אחד",
           "method": "1,392 מאפייני MFCC ומסווג Random Forest עם הגבלת מורכבות",
           "result": "81.97% דיוק מאוזן",
           "context": "ממוצע בחלוקות לפי מצב; ניסוי ללא קבוצת מבחן סופית שלא נחשפה.",
-          "evaluation": "חלוקה לפי קבוצות מצב; סטיית תקן של 8.14 נקודות אחוז."
+          "evaluation": "חלוקה לפי קבוצות מצב; סטיית תקן של 8.14 נקודות אחוז.",
+          "cardResult": "81.97% דיוק מאוזן ממוצע · חלוקות לפי קבוצות מצב"
         }
       }
     },
@@ -240,21 +235,23 @@
         ],
         "en": {
           "title": "License Plate Pricing",
-          "summary": "Explore plate patterns and contextual features for price prediction, then interpret their effects with SHAP.",
+          "summary": "Model license plate prices with engineered pattern features and CatBoost, and explore feature effects with SHAP.",
           "data": "Plate patterns, dates, regions and observed prices",
           "method": "Feature engineering, CatBoost regression and SHAP analysis",
           "result": "Kaggle · 2nd / 694 teams",
           "context": "Nahum Team, final private leaderboard. Public notebook not matched to the ranked submission.",
-          "evaluation": "Verified team ranking; public notebook needs train-only aggregate features to avoid leakage."
+          "evaluation": "Verified team ranking; public notebook needs train-only aggregate features to avoid leakage.",
+          "cardResult": "Kaggle · Nahum Team placed 2nd / 694 teams"
         },
         "he": {
           "title": "חיזוי מחירי לוחיות רישוי",
-          "summary": "בחינת דפוסי לוחיות ומשתני הקשר לחיזוי מחיר, ופירוש השפעת המאפיינים בעזרת SHAP.",
+          "summary": "חיזוי מחירי לוחיות רישוי באמצעות מאפיינים הנדסיים ו־CatBoost, וניתוח השפעת המאפיינים עם SHAP.",
           "data": "דפוסי לוחיות, תאריכים, אזורים ומחירים שנמדדו",
           "method": "הנדסת מאפיינים, רגרסיית CatBoost וניתוח SHAP",
           "result": "Kaggle · מקום 2 / 694 קבוצות",
           "context": "Nahum Team, דירוג סופי פרטי. המחברת לא אומתה כקוד ההגשה המדורגת.",
-          "evaluation": "דירוג קבוצתי מאומת; במחברת יש לחשב מאפיינים מצטברים מנתוני האימון בלבד כדי למנוע דליפה."
+          "evaluation": "דירוג קבוצתי מאומת; במחברת יש לחשב מאפיינים מצטברים מנתוני האימון בלבד כדי למנוע דליפה.",
+          "cardResult": "Kaggle · קבוצת Nahum Team במקום 2 מתוך 694"
         }
       }
     },
@@ -346,21 +343,23 @@
         ],
         "en": {
           "title": "UFC Fight Prediction",
-          "summary": "Compare fighters using recent fights and career history to build a tabular classification model.",
+          "summary": "Turn fighter histories into comparative features for a CatBoost fight-outcome classifier.",
           "data": "Historical fighter statistics and fight outcomes",
           "method": "Comparative features from the last fight, last three fights and career history; CatBoost",
           "result": "Three windows of fighter history",
           "context": "Documented feature engineering; chronological evaluation remains open.",
-          "evaluation": "Saved random 80/20 split also used for model selection; future-fight performance is unverified."
+          "evaluation": "Saved random 80/20 split also used for model selection; future-fight performance is unverified.",
+          "cardResult": "Features from the last fight, last 3 fights and full career"
         },
         "he": {
           "title": "חיזוי תוצאות קרבות UFC",
-          "summary": "השוואת לוחמים לפי קרבות אחרונים והיסטוריית קריירה לצורך בניית מודל סיווג טבלאי.",
+          "summary": "הפיכת היסטוריית הלוחמים למאפיינים השוואתיים עבור מודל CatBoost לחיזוי תוצאת קרב.",
           "data": "נתוני לוחמים היסטוריים ותוצאות קרבות",
           "method": "מאפייני השוואה מהקרב האחרון, משלושת הקרבות האחרונים ומהקריירה; CatBoost",
           "result": "שלושה חלונות של היסטוריית קרבות",
           "context": "הנדסת מאפיינים מתועדת; הערכה לפי סדר זמנים עדיין נדרשת.",
-          "evaluation": "חלוקת 80/20 אקראית ששימשה גם לבחירת המודל; ביצועים בקרבות עתידיים לא אומתו."
+          "evaluation": "חלוקת 80/20 אקראית ששימשה גם לבחירת המודל; ביצועים בקרבות עתידיים לא אומתו.",
+          "cardResult": "מאפיינים מהקרב האחרון, 3 הקרבות האחרונים וכל הקריירה"
         }
       }
     },
@@ -412,7 +411,7 @@
         "credits": []
       },
       "area": "data-science",
-      "featured": true,
+      "featured": false,
       "image": {
         "src": "/assets/projects/car-price-prediction.png",
         "kind": "saved-data",
@@ -563,21 +562,23 @@
         ],
         "en": {
           "title": "JEV Decision Experiments",
-          "summary": "Evaluate constrained AI decisions in flight, driving, chess and reasoning using saved traces and replay.",
+          "summary": "Compare structured AI decisions in flight, driving and chess simulations using saved traces and replay.",
           "data": "Simulated telemetry, chess positions and a custom 50-question exam",
           "method": "Structured model choices, prompt comparisons, matched evaluations and flight replay",
           "result": "8 / 8 flight frames completed",
           "context": "v8 on three previously tested seeds; a small simulation sample.",
-          "evaluation": "Saved matched comparisons; reused seeds do not establish performance on unseen courses."
+          "evaluation": "Saved matched comparisons; reused seeds do not establish performance on unseen courses.",
+          "cardResult": "Matched simulation experiments with replayable decisions"
         },
         "he": {
           "title": "ניסויי קבלת החלטות עם JEV",
-          "summary": "הערכת בחירות AI מתוך אפשרויות מוגדרות בטיסה, נהיגה, שחמט וחשיבה, עם תיעוד ושחזור.",
+          "summary": "השוואת החלטות AI מובנות בסימולציות טיסה, נהיגה ושחמט, עם תיעוד והרצה חוזרת.",
           "data": "טלמטריה מדומה, מצבי שחמט ומבחן מותאם של 50 שאלות",
           "method": "בחירות מודל מובנות, השוואת הנחיות, הערכות בתנאים תואמים ושחזור טיסה",
           "result": "השלמת 8 / 8 מסגרות טיסה",
           "context": "v8 בשלושה seeds שכבר נבדקו; מדגם קטן בסימולציה.",
-          "evaluation": "השוואות מתועדות בתנאים תואמים; seeds שנבדקו בעבר אינם מבססים ביצועים במסלולים חדשים."
+          "evaluation": "השוואות מתועדות בתנאים תואמים; seeds שנבדקו בעבר אינם מבססים ביצועים במסלולים חדשים.",
+          "cardResult": "ניסויים השוואתיים בסימולציה ותיעוד החלטות לשחזור"
         }
       }
     },
@@ -670,21 +671,23 @@
         ],
         "en": {
           "title": "Semantic Document Retrieval",
-          "summary": "Extract, chunk and embed PDF/DOCX documents for vector search in PostgreSQL.",
+          "summary": "Make PDF and DOCX content searchable using embeddings and PostgreSQL vector indexing.",
           "data": "PDF and DOCX documents, text passages and query embeddings",
           "method": "Three chunking strategies, Gemini embeddings and pgvector/HNSW indexing",
           "result": "Three chunking strategies",
           "context": "Retrieval infrastructure with test files; no measured retrieval-quality benchmark.",
-          "evaluation": "Unit and integration tests are included but were not run during the content review."
+          "evaluation": "Unit and integration tests are included but were not run during the content review.",
+          "cardResult": "Three chunking strategies · pgvector / HNSW retrieval"
         },
         "he": {
           "title": "חיפוש סמנטי במסמכים",
-          "summary": "חילוץ, חלוקה וייצוג וקטורי של מסמכי PDF ו־DOCX לחיפוש באמצעות PostgreSQL.",
+          "summary": "הפיכת תוכן PDF ו־DOCX לתשתית חיפוש באמצעות embeddings ואינדקס וקטורי ב־PostgreSQL.",
           "data": "מסמכי PDF ו־DOCX, מקטעי טקסט וייצוגי שאילתות",
           "method": "שלוש שיטות חלוקה, Gemini embeddings ואינדוקס pgvector/HNSW",
           "result": "שלוש שיטות חלוקה למקטעים",
           "context": "תשתית אחזור עם קובצי בדיקות; ללא מדד איכות אחזור שנמדד.",
-          "evaluation": "קיימות בדיקות יחידה ואינטגרציה, אך הן לא הורצו במסגרת סקירת התוכן."
+          "evaluation": "קיימות בדיקות יחידה ואינטגרציה, אך הן לא הורצו במסגרת סקירת התוכן.",
+          "cardResult": "שלוש שיטות חלוקה · אחזור עם pgvector ו־HNSW"
         }
       }
     },
@@ -953,7 +956,7 @@
         "credits": []
       },
       "area": "agents",
-      "featured": true,
+      "featured": false,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1063,7 +1066,7 @@
         ]
       },
       "area": "agents",
-      "featured": true,
+      "featured": false,
       "image": {
         "kind": "diagram",
         "width": 1200,

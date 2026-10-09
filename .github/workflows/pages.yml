@@ -32,6 +32,8 @@ jobs:
           node --check site/server.mjs
       - name: Generate static entry pages
         run: python3 scripts/build-pages.py --base-path "${{ steps.pages.outputs.base_path }}"
+      - name: Verify page content and metadata
+        run: python3 scripts/check-pages.py
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:

@@ -5,11 +5,11 @@ project stories, and filters by topic and project type.
 
 The home page pairs a compact professional profile with two project collections.
 Data Science / ML is the primary focus, featuring BridgePulse, license-plate
-pricing, UFC prediction and car-price regression. AI Agents / LLM Systems is
-the complementary collection, featuring JEV, semantic retrieval, RAFI and the
-customer-support agent workflow.
-Each card includes a result or deliverable with its evaluation context, tools,
-and direct links to the case study and code. Project pages summarize the data,
+pricing and UFC prediction. AI Agents / LLM Systems is
+the complementary collection, with compact previews of JEV and semantic retrieval.
+Each card introduces the problem, solution and result or deliverable,
+with direct links to the case study and code. Numeric results include a short
+evaluation or team context. Project pages summarize the data,
 method, result and evaluation before the full write-up. The full catalogue groups
 projects by area and combines area, topic, type and search filters. Supporting
 browser experiments remain accessible in a small additional group.
@@ -34,8 +34,11 @@ Open http://localhost:4173.
 
 The Pages workflow deploys automatically on pushes to `main`.
 The repository's Pages publishing source is **GitHub Actions**.
-It builds `_site` from `site/dist`, with real entry files for the lab and every
-project, allowing direct links and page refreshes on GitHub's static hosting.
+It builds `_site` from `site/dist`, rendering the same application templates into
+full HTML for the home page, catalogue and every project. Direct links and refreshes
+work on GitHub's static hosting, and content can be read without JavaScript.
+Each entry has its own title, description, canonical URL, Open Graph and Twitter
+metadata, and structured data. The build also creates `sitemap.xml`.
 Application URLs and assets respect the deployment base path.
 
 To build locally, from the repository root:
@@ -50,6 +53,7 @@ python scripts/build-pages.py --base-path /portfolio/
 - `site/dist/assets/projects`: existing screenshots, saved plots, and diagrams
   explaining reviewed source code. Card diagrams use fewer labels than detail diagrams.
 - `docs/visual-flow-review.md`: flow verification and image provenance.
+- `docs/recruiter-focus-review.md`: recruiter-focused editing and verification limits.
 
 Projects are identified as experiments, prototypes, assignments or products.
 Source-code review does not imply successful end-to-end execution or deployment.

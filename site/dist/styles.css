@@ -467,6 +467,17 @@ button { user-select: none; -webkit-user-select: none; }
 .profile-skills .tag-list { margin-top: .7rem; }
 .profile-skills .tag { font-size: .75rem; }
 .profile-links a { min-height: 44px; }
+.primary-case-grid > .case-card:first-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.primary-case-grid > .case-card:first-child .case-image { height: 100%; min-height: 230px; border-bottom: 0; border-inline-end: 1px solid var(--line); }
+.primary-case-grid > .case-card:first-child .case-image picture { display: grid; height: 100%; align-items: center; }
+.primary-case-grid > .case-card:first-child .case-image img { width: 100%; height: auto; }
+.agent-card { background: #fafbfd; box-shadow: none; }
+.agent-card .case-meta { font-size: .6875rem; }
+.agent-card .case-result { font-size: .8125rem; font-weight: 500; }
+.agent-card .case-outcome { padding-block: .75rem; }
+.agent-card .case-outcome .eyebrow { display: none; }
+.case-card-body { display: flex; flex-direction: column; }
+.case-actions { margin-top: auto; padding-top: .8rem; }
 .case-image, .lab-card-image { user-select: none; }
 .lab-card { border-color: #172e5814; border-radius: 10px; box-shadow: 0 2px 5px #172e5805; transition: none; }
 .lab-card:focus-visible { outline-offset: 4px; }
@@ -486,6 +497,9 @@ html[data-input='pointer'] :is(.language-button, .menu-button, .profile-contact,
 }
 @media (max-width: 760px) {
  body { padding-inline: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px); }
+ .primary-case-grid > .case-card:first-child { display: block; }
+ .primary-case-grid > .case-card:first-child .case-image { height: 175px; min-height: 0; border-inline-end: 0; border-bottom: 1px solid var(--line); }
+ .primary-case-grid > .case-card:first-child .case-image img { height: 175px; object-fit: contain; }
  .profile-panel { display: grid; grid-template-columns: 88px minmax(0, 1fr); column-gap: 1rem; }
  .profile-panel > * { grid-column: 1 / -1; }
  .profile-photo { grid-column: 1; grid-row: 1 / 4; margin: 0; }
