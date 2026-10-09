@@ -219,7 +219,7 @@ function lab() {
   const x = t();
   const topics = [...new Set(catalogue.projects.flatMap(item => item.topics))];
   const types = [...new Set(catalogue.projects.map(item => item.type))];
-  return `${header()}<main id="main" class="wrap"><section class="page-intro"><p class="eyebrow">${q(x.labEyebrow)}</p><h1 class="display-title">${q(x.labPageTitle)}</h1><p>${q(x.labPageIntro)}</p></section><div class="area-filters" role="group" aria-label="${q(language === 'he' ? '????? ?????????' : 'Project areas')}">${['', ...projectAreas].map(area => `<button type="button" data-area="${q(area)}" aria-pressed="${filter.area === area}">${q(area ? areaName(area) : p().allAreas)}</button>`).join('')}</div><div class="lab-controls"><div class="control"><label class="control-label" for="project-search">${q(x.search)}</label><input id="project-search" type="search" value="${q(filter.search)}" placeholder="${q(x.searchPlaceholder)}" autocomplete="off"></div><div class="control"><label class="control-label" for="topic-select">${q(x.topic)}</label><select id="topic-select"><option value="">${q(x.allTopics)}</option>${topics.map(topic => `<option value="${q(topic)}" ${filter.topic === topic ? 'selected' : ''}>${q(topicName(topic))}</option>`).join('')}</select></div><div class="control"><label class="control-label" for="type-select">${q(x.type)}</label><select id="type-select"><option value="">${q(x.allTypes)}</option>${types.map(type => `<option value="${q(type)}" ${filter.type === type ? 'selected' : ''}>${q(typeName(type))}</option>`).join('')}</select></div></div><div class="results-bar"><span id="results-count" role="status" aria-live="polite">${filteredProjects().length} ${q(x.results)}</span><button data-reset class="reset-button">${q(x.clear)}</button></div><div id="lab-grid" class="lab-groups">${labCards()}</div></main>${footer()}`;
+  return `${header()}<main id="main" class="wrap"><section class="page-intro"><p class="eyebrow">${q(x.labEyebrow)}</p><h1 class="display-title">${q(x.labPageTitle)}</h1><p>${q(x.labPageIntro)}</p></section><div class="area-filters" role="group" aria-label="${q(p().allAreas)}">${['', ...projectAreas].map(area => `<button type="button" data-area="${q(area)}" aria-pressed="${filter.area === area}">${q(area ? areaName(area) : p().allAreas)}</button>`).join('')}</div><div class="lab-controls"><div class="control"><label class="control-label" for="project-search">${q(x.search)}</label><input id="project-search" type="search" enterkeyhint="search" value="${q(filter.search)}" placeholder="${q(x.searchPlaceholder)}" autocomplete="off"></div><div class="control"><label class="control-label" for="topic-select">${q(x.topic)}</label><select id="topic-select"><option value="">${q(x.allTopics)}</option>${topics.map(topic => `<option value="${q(topic)}" ${filter.topic === topic ? 'selected' : ''}>${q(topicName(topic))}</option>`).join('')}</select></div><div class="control"><label class="control-label" for="type-select">${q(x.type)}</label><select id="type-select"><option value="">${q(x.allTypes)}</option>${types.map(type => `<option value="${q(type)}" ${filter.type === type ? 'selected' : ''}>${q(typeName(type))}</option>`).join('')}</select></div></div><div class="results-bar"><span id="results-count" role="status" aria-live="polite">${filteredProjects().length} ${q(x.results)}</span><button data-reset class="reset-button">${q(x.clear)}</button></div><div id="lab-grid" class="lab-groups">${labCards()}</div></main>${footer()}`;
 }
 
 function projectPicture(item, compact = false) {
@@ -275,8 +275,8 @@ document.addEventListener('click', event => {
   const areaButton = event.target.closest('[data-area]');
   if (areaButton) {
     filter.area = areaButton.dataset.area;
-    renderRoute({preserveScroll: true});
-    document.querySelector(`[data-area="${filter.area}"]`)?.focus({preventScroll: true});
+    document.querySelectorAll('[data-area]').forEach(button => button.setAttribute('aria-pressed', button.dataset.area === filter.area));
+    updateLabResults();
     return;
   }
   const toggle = event.target.closest('#language-toggle');
@@ -298,7 +298,9 @@ document.addEventListener('click', event => {
   }
   if (event.target.closest('[data-reset]')) {
     Object.assign(filter, {search: '', topic: '', type: '', area: ''});
-    renderRoute({preserveScroll: true});
+    for (const selector of ['#project-search', '#topic-select', '#type-select']) document.querySelector(selector).value = '';
+    document.querySelectorAll('[data-area]').forEach(button => button.setAttribute('aria-pressed', button.dataset.area === ''));
+    updateLabResults();
     return;
   }
   const link = event.target.closest('a[data-nav]');
@@ -316,6 +318,12 @@ document.addEventListener('change', event => {
   if (event.target.id === 'topic-select') { filter.topic = event.target.value; updateLabResults(); }
   if (event.target.id === 'type-select') { filter.type = event.target.value; updateLabResults(); }
 });
+document.addEventListener('pointerdown', () => {
+  document.documentElement.dataset.input = 'pointer';
+}, {capture: true});
+document.addEventListener('keydown', () => {
+  document.documentElement.dataset.input = 'keyboard';
+}, {capture: true});
 window.addEventListener('popstate', () => {
   language = new URLSearchParams(location.search).get('lang') === 'he' ? 'he' : 'en';
   mobileMenuOpen = false;
