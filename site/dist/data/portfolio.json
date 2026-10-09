@@ -1,7 +1,6 @@
 {
   "profile": {
     "name": {
-      "he": "עמית נחום",
       "en": "Amit Nahum"
     },
     "email": "amitnahum834@gmail.com",
@@ -73,30 +72,6 @@
           "MFCC extraction and classification use established signal-processing and scikit-learn tools."
         ]
       },
-      "he": {
-        "title": "BridgePulse: סיווג נזק בגשר",
-        "summary": "תהליך מחקרי לעיבוד אותות ולמידת מכונה המסווג נזק ניסויי בגשר מתוך הקלטות תאוצה, עם הערכה לפי קבוצות מצב וחבילת חיזוי עצמאית.",
-        "goal": "האם מדידות רעידה יכולות להבחין בין מצב בסיס למצב של נזק ניסויי בגשר, כאשר הקלטות מאותו מצב נשמרות יחד בכל חלוקת הערכה?",
-        "approach": [
-          "קריאת הקלטות תאוצה מקובצי H5 הכוללות 29 חיישנים ו־58 ערוצים בקצב 128 Hz, עם בדיקת ערוצים חסרים, אורך אות וערכים תקינים.",
-          "שימוש ב־89 השניות הראשונות, בחלונות חופפים של ארבע שניות ובשמונה מקדמי MFCC לכל ערוץ, להפקת 1,392 מאפיינים באמצעות חציון, טווח בין־רבעוני ושינוי מוחלט ממוצע.",
-          "הערכת Random Forest עם הגבלת מורכבות, כאשר כל ההקלטות ממצב ניסויי אחד נשארות באותה קבוצה; אריזת חילוץ המאפיינים, המודל המאומן, כלי חיזוי משורת הפקודה ופלט JSON.",
-          "תיעוד באמצעות כרטיס מודל, גרסאות תלויות קבועות, דוחות ביקורת וסקריפטים לרישום מקומי אופציונלי ב־MLflow."
-        ],
-        "observations": [
-          "בדוח הביקורת הסופי נשמר דיוק מאוזן ממוצע של 81.97%, עם סטיית תקן של 8.14 נקודות אחוז בין חלוקות ההערכה לפי מצב ניסויי.",
-          "המאגר כולל חבילת חיזוי עצמאית ומודל מאומן; השימוש בחיזוי אינו דורש אימון מחדש או MLflow."
-        ],
-        "limitations": [
-          "הנתונים כוללים 25 הקלטות משמונה מצבים ניסויים בגשר אחד. המאפיינים והפרמטרים נבחרו במהלך ניסויים, ללא קבוצת מבחן סופית שלא נחשפה בתהליך.",
-          "המודל הארוז אומן על כל 25 ההקלטות; חיזוי עליהן אינו מודד הכללה. ציוני המודל אינם הסתברויות מכוילות.",
-          "המודל מסווג מצב ניסויי ואינו חוזה היווצרות סדקים עתידיים. הוא לא אומת לצורך החלטות בטיחות בגשרים.",
-          "קובץ נתוני המקור בפורמט H5 אינו כלול במאגר. התוצאות מובאות מדוחות שמורים; התהליך לא הורץ מחדש במסגרת סקירת הפורטפוליו."
-        ],
-        "credits": [
-          "חילוץ MFCC והסיווג משתמשים בכלים מוכרים לעיבוד אותות וב־scikit-learn."
-        ]
-      },
       "area": "data-science",
       "featured": true,
       "image": {
@@ -109,21 +84,14 @@
           "caption": "Recording-level pipeline: acceleration signals, MFCC features and experimental damage classification.",
           "alt": "From bridge vibrations to a classification: Sensor recordings → MFCC summaries → Random Forest"
         },
-        "he": {
-          "caption": "תהליך ברמת ההקלטה: אותות תאוצה, מאפייני MFCC וסיווג נזק ניסויי.",
-          "alt": "מרעידות הגשר לסיווג: הקלטות חיישנים → סיכומי MFCC → Random Forest"
-        },
         "sources": {
-          "en": "/assets/projects/bridgepulse-en.svg",
-          "he": "/assets/projects/bridgepulse-he.svg"
+          "en": "/assets/projects/bridgepulse-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/bridgepulse-en-mobile.svg",
-          "he": "/assets/projects/bridgepulse-he-mobile.svg"
+          "en": "/assets/projects/bridgepulse-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/bridgepulse-en-card.svg",
-          "he": "/assets/projects/bridgepulse-he-card.svg"
+          "en": "/assets/projects/bridgepulse-en-card.svg"
         }
       },
       "caseStudy": {
@@ -141,17 +109,9 @@
           "result": "81.97% balanced accuracy",
           "context": "Mean across state-grouped allocations; exploratory, no untouched final test.",
           "evaluation": "State-grouped splits; standard deviation of 8.14 percentage points.",
-          "cardResult": "81.97% mean balanced accuracy · state-grouped splits"
-        },
-        "he": {
-          "title": "BridgePulse",
-          "summary": "סיווג מצבי בסיס ונזק בהקלטות רעידות גשר באמצעות מאפייני MFCC ו־Random Forest.",
-          "data": "25 הקלטות · 8 מצבים · 58 ערוצים · גשר אחד",
-          "method": "1,392 מאפייני MFCC ומסווג Random Forest עם הגבלת מורכבות",
-          "result": "81.97% דיוק מאוזן",
-          "context": "ממוצע בחלוקות לפי מצב; ניסוי ללא קבוצת מבחן סופית שלא נחשפה.",
-          "evaluation": "חלוקה לפי קבוצות מצב; סטיית תקן של 8.14 נקודות אחוז.",
-          "cardResult": "81.97% דיוק מאוזן ממוצע · חלוקות לפי קבוצות מצב"
+          "cardResult": "81.97% mean balanced accuracy · state-grouped splits",
+          "problem": "Distinguish baseline and damage states in bridge vibration recordings.",
+          "solution": "Extract MFCC features and classify states with a regularized Random Forest."
         }
       }
     },
@@ -191,25 +151,6 @@
           "The notebook credits Kaggle contributors Solomon Andryushenko (lumium) and liangkaixin for feature engineering and AutoGluon code."
         ]
       },
-      "he": {
-        "title": "חיזוי מחירי לוחיות רישוי",
-        "summary": "ניסוי רגרסיה הבוחן את הקשר בין דפוסי לוחיות, תאריכים ואזורים למחיר, ומשתמש ב-SHAP לפירוש המודל.",
-        "goal": "להמיר מידע מובנה על לוחיות לפיצ'רים ולבחון אילו דפוסים משפיעים על מודל חיזוי המחיר.",
-        "approach": [
-          "הנדסת פיצ'רים לדפוסי לוחיות ולשדות ההקשר הזמינים.",
-          "רגרסיה באמצעות CatBoost, בחירת פיצ'רים ובחינת התנהגות המודל באמצעות SHAP."
-        ],
-        "observations": [
-          "המחברת מתעדת הנדסת פיצ'רים ורגרסיה, עם ניתוח SHAP לפירוש השפעת הפיצ'רים.",
-          "Nahum Team סיימה במקום השני מתוך 694 קבוצות בדירוג הסופי הפרטי של התחרות הקהילתית Russian Car Plates Prices Prediction ב־Kaggle. הפרופיל הציבורי משייך את עמית לתוצאה הזו. לא אומת שהמחברת הציבורית הנוכחית זהה לקוד ההגשה המדורגת."
-        ],
-        "limitations": [
-          "חלק מהפיצ'רים המבוססים על ממוצעי מחיר נבנים לפני חלוקת ההערכה. נדרש לחשב אותם מתוך נתוני האימון בלבד כדי למנוע דליפת מידע."
-        ],
-        "credits": [
-          "המחברת נותנת קרדיט למשתמשי Kaggle Solomon Andryushenko (lumium) ו-liangkaixin על הנדסת פיצ'רים וקוד AutoGluon."
-        ]
-      },
       "area": "data-science",
       "featured": true,
       "image": {
@@ -220,10 +161,6 @@
         "en": {
           "caption": "Saved SHAP plot from the public notebook; an illustration of the method.",
           "alt": "SHAP plot showing the impact of license-plate features on the model."
-        },
-        "he": {
-          "caption": "גרף SHAP שמור מהמחברת הציבורית, להמחשת השיטה.",
-          "alt": "גרף SHAP המציג את השפעת משתני לוחיות הרישוי על המודל."
         }
       },
       "caseStudy": {
@@ -241,17 +178,9 @@
           "result": "Kaggle · 2nd / 694 teams",
           "context": "Nahum Team, final private leaderboard. Public notebook not matched to the ranked submission.",
           "evaluation": "Verified team ranking; public notebook needs train-only aggregate features to avoid leakage.",
-          "cardResult": "Kaggle · Nahum Team placed 2nd / 694 teams"
-        },
-        "he": {
-          "title": "חיזוי מחירי לוחיות רישוי",
-          "summary": "חיזוי מחירי לוחיות רישוי באמצעות מאפיינים הנדסיים ו־CatBoost, וניתוח השפעת המאפיינים עם SHAP.",
-          "data": "דפוסי לוחיות, תאריכים, אזורים ומחירים שנמדדו",
-          "method": "הנדסת מאפיינים, רגרסיית CatBoost וניתוח SHAP",
-          "result": "Kaggle · מקום 2 / 694 קבוצות",
-          "context": "Nahum Team, דירוג סופי פרטי. המחברת לא אומתה כקוד ההגשה המדורגת.",
-          "evaluation": "דירוג קבוצתי מאומת; במחברת יש לחשב מאפיינים מצטברים מנתוני האימון בלבד כדי למנוע דליפה.",
-          "cardResult": "Kaggle · קבוצת Nahum Team במקום 2 מתוך 694"
+          "cardResult": "Kaggle · Nahum Team placed 2nd / 694 teams",
+          "problem": "Estimate prices from license plate patterns and context.",
+          "solution": "Engineer pattern features, fit CatBoost regression and analyze effects with SHAP."
         }
       }
     },
@@ -287,25 +216,6 @@
           "The README identifies an external Greco1899 scraper as a data source."
         ]
       },
-      "he": {
-        "title": "חיזוי תוצאות קרבות UFC",
-        "summary": "ניסוי בלמידת מכונה על נתונים טבלאיים, המשתמש בנתוני לוחמים היסטוריים ובהנדסת פיצ'רים לחיזוי תוצאות קרבות.",
-        "goal": "לבחון כיצד לייצג הבדלים בין לוחמים והיסטוריית קרבות אחרונה כמשתנים לחיזוי.",
-        "approach": [
-          "בניית פיצ'רים מהשוואות בין לוחמים, הקרב הקודם, שלושת הקרבות האחרונים והיסטוריית הקריירה.",
-          "אימון מסווג CatBoost ובחינת פלטי ההערכה שנשמרו במחברת."
-        ],
-        "observations": [
-          "במחברת נשמר דיוק של 76.41% בחלוקה אקראית ומרובדת של 80/20. זהו פלט פנימי שמור, ולא תוצאת הערכה ששוחזרה כעת."
-        ],
-        "limitations": [
-          "קבוצת ההערכה משמשת גם לבחירת המודל, ולכן אינה קבוצת מבחן סופית שלא נחשפה בתהליך.",
-          "נדרשת הערכה לפי סדר זמנים כדי לבחון חיזוי קרבות עתידיים."
-        ],
-        "credits": [
-          "README מציין scraper חיצוני של Greco1899 כמקור נתונים."
-        ]
-      },
       "area": "data-science",
       "featured": true,
       "image": {
@@ -318,21 +228,14 @@
           "caption": "Process illustration: historical features and CatBoost classification.",
           "alt": "From history to a prediction: Fighter history → Comparison features → CatBoost"
         },
-        "he": {
-          "caption": "המחשת התהליך: פיצ׳רים היסטוריים וסיווג באמצעות CatBoost.",
-          "alt": "מהיסטוריה לחיזוי: היסטוריית לוחמים → משתני השוואה → CatBoost"
-        },
         "sources": {
-          "en": "/assets/projects/ufc-prediction-en.svg",
-          "he": "/assets/projects/ufc-prediction-he.svg"
+          "en": "/assets/projects/ufc-prediction-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/ufc-prediction-en-mobile.svg",
-          "he": "/assets/projects/ufc-prediction-he-mobile.svg"
+          "en": "/assets/projects/ufc-prediction-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/ufc-prediction-en-card.svg",
-          "he": "/assets/projects/ufc-prediction-he-card.svg"
+          "en": "/assets/projects/ufc-prediction-en-card.svg"
         }
       },
       "caseStudy": {
@@ -349,17 +252,9 @@
           "result": "Three windows of fighter history",
           "context": "Documented feature engineering; chronological evaluation remains open.",
           "evaluation": "Saved random 80/20 split also used for model selection; future-fight performance is unverified.",
-          "cardResult": "Features from the last fight, last 3 fights and full career"
-        },
-        "he": {
-          "title": "חיזוי תוצאות קרבות UFC",
-          "summary": "הפיכת היסטוריית הלוחמים למאפיינים השוואתיים עבור מודל CatBoost לחיזוי תוצאת קרב.",
-          "data": "נתוני לוחמים היסטוריים ותוצאות קרבות",
-          "method": "מאפייני השוואה מהקרב האחרון, משלושת הקרבות האחרונים ומהקריירה; CatBoost",
-          "result": "שלושה חלונות של היסטוריית קרבות",
-          "context": "הנדסת מאפיינים מתועדת; הערכה לפי סדר זמנים עדיין נדרשת.",
-          "evaluation": "חלוקת 80/20 אקראית ששימשה גם לבחירת המודל; ביצועים בקרבות עתידיים לא אומתו.",
-          "cardResult": "מאפיינים מהקרב האחרון, 3 הקרבות האחרונים וכל הקריירה"
+          "cardResult": "Features from the last fight, last 3 fights and full career",
+          "problem": "Model fight outcomes from historical fighter statistics.",
+          "solution": "Compare recent fights and career history using engineered features and CatBoost."
         }
       }
     },
@@ -393,23 +288,6 @@
         ],
         "credits": []
       },
-      "he": {
-        "title": "חיזוי מחירי מכוניות",
-        "summary": "ניסוי רגרסיה על נתונים טבלאיים, עם הנדסת פיצ'רים ומודל מחיר המבוסס על CatBoost.",
-        "goal": "לבחון תהליך למידה מונחית לחיזוי מחירי מכוניות מתוך רשומות מובנות.",
-        "approach": [
-          "עבודה עם קובצי CSV של אימון ומבחן והנדסת פיצ'רים.",
-          "אימון רגרסור CatBoost ובחינת הערכה בחלוקה אקראית של 80/20."
-        ],
-        "observations": [
-          "המאגר מכיל מחברת וקובצי נתונים, עם פלט שמור של הערכת רגרסיה."
-        ],
-        "limitations": [
-          "יש להגדיר את יחידות היעד ואת הקשר המדד לפני פירוש שגיאה מספרית.",
-          "תיאורי המודלים ב-README שונים ממסלול האימון המרכזי שנבדק."
-        ],
-        "credits": []
-      },
       "area": "data-science",
       "featured": false,
       "image": {
@@ -420,10 +298,6 @@
         "en": {
           "caption": "Model-year distribution from the repository dataset.",
           "alt": "Histogram of car model years in the repository dataset."
-        },
-        "he": {
-          "caption": "התפלגות שנות הרכב מתוך נתוני המאגר.",
-          "alt": "היסטוגרמה של שנות הרכב בנתוני המאגר."
         }
       },
       "caseStudy": {
@@ -441,15 +315,6 @@
           "result": "EDA → features → regression",
           "context": "Documented modeling experiment with saved regression output.",
           "evaluation": "Saved random 80/20 evaluation; target units and score context need clarification."
-        },
-        "he": {
-          "title": "חיזוי מחירי רכב",
-          "summary": "ניתוח מאפייני רכב והתפלגויות, הנדסת מאפיינים ואימון רגרסור CatBoost לחיזוי מחיר.",
-          "data": "מאפייני רכב ומחירים בטבלאות מתוך נתוני המאגר",
-          "method": "ניתוח נתונים חקרני, הנדסת מאפיינים ורגרסיית CatBoost",
-          "result": "מניתוח נתונים למאפיינים ולרגרסיה",
-          "context": "ניסוי מודלים מתועד עם פלט רגרסיה שמור.",
-          "evaluation": "הערכה שמורה בחלוקה אקראית של 80/20; יש להבהיר את יחידות היעד ואת הקשר המדד."
         }
       }
     },
@@ -500,30 +365,6 @@
           "Uses the existing JEV model and OpenRouter API, PyFlyt for flight simulation, and Maia/Stockfish as chess opponents."
         ]
       },
-      "he": {
-        "title": "JEV: ניסויי קבלת החלטות ב־AI",
-        "summary": "סביבת ניסויים ב־Python להערכת בחירות מודל מתוך אפשרויות מוגדרות בטיסה, נהיגה, שחמט ומבחן חשיבה מותאם, עם תיעוד החלטות, השוואות ושחזור טיסה דטרמיניסטי.",
-        "goal": "כיצד טלמטריה מובנית, אפשרויות פעולה מפורשות ושינויי הנחיה משפיעים על החלטות מודל בסביבות סימולציה ובמשימות חשיבה?",
-        "approach": [
-          "חיבור typesafe/jev-1.13 דרך OpenRouter לקבלת מצב מובנה ולבחירה מתוך פעולות או תשובות מוגדרות מראש.",
-          "בניית ניסוי טיסה ב־PyFlyt המשווה מודל יחיד הבוחר שילובי זוויות אף ובנק לשני מודלים המחלקים ביניהם את הצירים, ושיפור ההנחיה המספרית ומרחב של 45 פעולות.",
-          "השוואת נהיגה בכביש מהיר למדיניות DQN, החלטות שחמט מול Maia ו־Stockfish, ובחירת תשובות במבחן ידע וחשיבה מותאם של 50 שאלות.",
-          "שמירת החלטות, תוצאות ודוחות הערכה, ותמיכה בשחזור טיסות מקומי מתוך הקלטות ללא קריאות מודל נוספות."
-        ],
-        "observations": [
-          "בדוח הטיסה השמור של v8 מתועדת השלמת כל שמונה המסגרות ב־seeds 44, 45 ו־46 לאחר שיפור ההנחיה. שלושת ה־seeds כבר נבדקו קודם.",
-          "המאגר כולל הערכת ניווט של 32 טיסות בתנאים תואמים, השוואות שחמט ונהיגה, פלטי מבחן וסרטוני טיסה מתועדים."
-        ],
-        "limitations": [
-          "הטיסה והנהיגה מתבצעות בסימולציה. מדגמים ניסויים קטנים על seeds שנבדקו בעבר אינם מבססים אמינות במסלולים חדשים או שליטה בעולם האמיתי.",
-          "המבחן המותאם לא כויל מול משתתפים אנושיים; תוצאותיו תלויות במשימות ואינן מדד כללי לאינטליגנציה.",
-          "הרצות מודל חיות דורשות גישה וקרדיטים ב־OpenRouter. סרטונים ומנועים גדולים נשמרים ב־Git LFS, ומנועי השחמט המצורפים מיועדים ל־Windows.",
-          "הפורטפוליו מסתמך על תוצרים שמורים; סימולציות חיות והערכות דרך ה־API לא הורצו מחדש בסקירה זו."
-        ],
-        "credits": [
-          "שימוש במודל JEV וב־API של OpenRouter, ב־PyFlyt לסימולציית טיסה וב־Maia וב־Stockfish כיריבי שחמט."
-        ]
-      },
       "area": "agents",
       "featured": true,
       "image": {
@@ -536,21 +377,14 @@
           "caption": "Decision loop: structured input, a constrained model choice and a recorded outcome in simulation.",
           "alt": "From a simulated state to a decision: Structured state → JEV via OpenRouter → Recorded evaluation"
         },
-        "he": {
-          "caption": "לולאת החלטה: קלט מובנה, בחירת מודל מתוך אפשרויות מוגדרות ותוצאה מתועדת בסימולציה.",
-          "alt": "ממצב בסימולציה להחלטה: מצב מובנה → JEV דרך OpenRouter → הערכה מתועדת"
-        },
         "sources": {
-          "en": "/assets/projects/jev-decision-experiments-en.svg",
-          "he": "/assets/projects/jev-decision-experiments-he.svg"
+          "en": "/assets/projects/jev-decision-experiments-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/jev-decision-experiments-en-mobile.svg",
-          "he": "/assets/projects/jev-decision-experiments-he-mobile.svg"
+          "en": "/assets/projects/jev-decision-experiments-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/jev-decision-experiments-en-card.svg",
-          "he": "/assets/projects/jev-decision-experiments-he-card.svg"
+          "en": "/assets/projects/jev-decision-experiments-en-card.svg"
         }
       },
       "caseStudy": {
@@ -568,17 +402,9 @@
           "result": "8 / 8 flight frames completed",
           "context": "v8 on three previously tested seeds; a small simulation sample.",
           "evaluation": "Saved matched comparisons; reused seeds do not establish performance on unseen courses.",
-          "cardResult": "Matched simulation experiments with replayable decisions"
-        },
-        "he": {
-          "title": "ניסויי קבלת החלטות עם JEV",
-          "summary": "השוואת החלטות AI מובנות בסימולציות טיסה, נהיגה ושחמט, עם תיעוד והרצה חוזרת.",
-          "data": "טלמטריה מדומה, מצבי שחמט ומבחן מותאם של 50 שאלות",
-          "method": "בחירות מודל מובנות, השוואת הנחיות, הערכות בתנאים תואמים ושחזור טיסה",
-          "result": "השלמת 8 / 8 מסגרות טיסה",
-          "context": "v8 בשלושה seeds שכבר נבדקו; מדגם קטן בסימולציה.",
-          "evaluation": "השוואות מתועדות בתנאים תואמים; seeds שנבדקו בעבר אינם מבססים ביצועים במסלולים חדשים.",
-          "cardResult": "ניסויים השוואתיים בסימולציה ותיעוד החלטות לשחזור"
+          "cardResult": "Matched simulation experiments with replayable decisions",
+          "problem": "Assess how AI models choose actions in simulated environments.",
+          "solution": "Compare constrained decisions using matched experiments, saved traces and replay."
         }
       }
     },
@@ -614,25 +440,6 @@
           "The repository identifies the work as a Jeen take-home assignment."
         ]
       },
-      "he": {
-        "title": "אינדוקס מסמכים וחיפוש סמנטי",
-        "summary": "תרגיל בית המממש חילוץ מסמכים, חלוקה למקטעים, יצירת embeddings וחיפוש המבוסס על וקטורים.",
-        "goal": "לבחון כיצד בחירות בעיבוד מסמכים משתלבות באינדקס וקטורי שאפשר לחפש בו.",
-        "approach": [
-          "חילוץ טקסט מקובצי PDF ו-DOCX ותמיכה בשלוש שיטות חלוקה למקטעים.",
-          "יצירת Gemini embeddings ואחסון באמצעות PostgreSQL/pgvector, עם אינדקס HNSW ומרחק cosine."
-        ],
-        "observations": [
-          "המאגר מפריד בין חילוץ, embeddings ומסד נתונים, וכולל קובצי בדיקות unit ו-integration."
-        ],
-        "limitations": [
-          "העבודה מציגה תשתית retrieval; מערכת צ'אט מלאה למענה על שאלות אינה חלק מההיקף שהודגם.",
-          "הבדיקות הכלולות לא הורצו במהלך הסקירה."
-        ],
-        "credits": [
-          "המאגר מזהה את העבודה כתרגיל בית של Jeen."
-        ]
-      },
       "area": "agents",
       "featured": true,
       "image": {
@@ -645,21 +452,14 @@
           "caption": "Documents are indexed first; a separately embedded query retrieves matching passages.",
           "alt": "From documents to relevant passages: PDF / DOCX → Index embeddings → Semantic search"
         },
-        "he": {
-          "caption": "המסמכים מאונדקסים תחילה; ייצוג נפרד של שאילתה משמש לאחזור המקטעים המתאימים.",
-          "alt": "ממסמכים למקטעים רלוונטיים: PDF / DOCX → אינדוקס וקטורים → חיפוש סמנטי"
-        },
         "sources": {
-          "en": "/assets/projects/document-indexing-and-retrieval-en.svg",
-          "he": "/assets/projects/document-indexing-and-retrieval-he.svg"
+          "en": "/assets/projects/document-indexing-and-retrieval-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/document-indexing-and-retrieval-en-mobile.svg",
-          "he": "/assets/projects/document-indexing-and-retrieval-he-mobile.svg"
+          "en": "/assets/projects/document-indexing-and-retrieval-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/document-indexing-and-retrieval-en-card.svg",
-          "he": "/assets/projects/document-indexing-and-retrieval-he-card.svg"
+          "en": "/assets/projects/document-indexing-and-retrieval-en-card.svg"
         }
       },
       "caseStudy": {
@@ -677,17 +477,9 @@
           "result": "Three chunking strategies",
           "context": "Retrieval infrastructure with test files; no measured retrieval-quality benchmark.",
           "evaluation": "Unit and integration tests are included but were not run during the content review.",
-          "cardResult": "Three chunking strategies · pgvector / HNSW retrieval"
-        },
-        "he": {
-          "title": "חיפוש סמנטי במסמכים",
-          "summary": "הפיכת תוכן PDF ו־DOCX לתשתית חיפוש באמצעות embeddings ואינדקס וקטורי ב־PostgreSQL.",
-          "data": "מסמכי PDF ו־DOCX, מקטעי טקסט וייצוגי שאילתות",
-          "method": "שלוש שיטות חלוקה, Gemini embeddings ואינדוקס pgvector/HNSW",
-          "result": "שלוש שיטות חלוקה למקטעים",
-          "context": "תשתית אחזור עם קובצי בדיקות; ללא מדד איכות אחזור שנמדד.",
-          "evaluation": "קיימות בדיקות יחידה ואינטגרציה, אך הן לא הורצו במסגרת סקירת התוכן.",
-          "cardResult": "שלוש שיטות חלוקה · אחזור עם pgvector ו־HNSW"
+          "cardResult": "Three chunking strategies · pgvector / HNSW retrieval",
+          "problem": "Retrieve relevant passages from PDF and DOCX documents.",
+          "solution": "Combine three chunking strategies, embeddings and pgvector/HNSW indexing."
         }
       }
     },
@@ -726,23 +518,6 @@
         ],
         "credits": []
       },
-      "he": {
-        "title": "Lyftcode: מעקב אימונים ומאמן AI",
-        "summary": "אפליקציית מעקב אימונים שנפרסה ומוצגת ב-LinkedIn כמשלבת היסטוריית אימונים עם מאמן AI.",
-        "goal": "לחבר ממשק מעקב שימושי לאימון המבוסס על רשומות האימונים של המשתמש.",
-        "approach": [
-          "תיאור הפרויקט מציין ממשק React/TypeScript, כלי סוכן, OpenRouter ו-Supabase/אחסון מקומי.",
-          "ב-HTML הציבורי נצפו הגדרות PWA ותמיכה בכיוון תצוגה בעברית ובאנגלית."
-        ],
-        "observations": [
-          "כתובת ההתחברות הציבורית הייתה זמינה במהלך הסקירה, עם כותרת העמוד 'Lyftcode — Lift More'."
-        ],
-        "limitations": [
-          "תכונות האימונים והמאמן המחייבות כניסה לא נבדקו במסגרת הסקירה.",
-          "לא נמצא מאגר ציבורי תואם בחשבון GitHub שסופק."
-        ],
-        "credits": []
-      },
       "area": "agents",
       "featured": false,
       "image": {
@@ -753,10 +528,6 @@
         "en": {
           "caption": "The public Lyftcode sign-in screen.",
           "alt": "Lyftcode sign-in page with email, password and Google sign-in options."
-        },
-        "he": {
-          "caption": "מסך הכניסה הציבורי של Lyftcode.",
-          "alt": "מסך הכניסה של Lyftcode עם שדות דואר וסיסמה ואפשרות כניסה באמצעות Google."
         }
       }
     },
@@ -791,23 +562,6 @@
         ],
         "credits": []
       },
-      "he": {
-        "title": "ZAPI: מדריך אלקטרוניקה ל-Wokwi",
-        "summary": "אב-טיפוס של תוסף Chrome המשלב הקשר של מעגל וקוד ב-Wokwi עם בדיקות סטטיות וחיבור ל-OpenRouter לצורך הדרכה באמצעות AI.",
-        "goal": "לבחון סיוע המבוסס על הקשר בתרגילי אלקטרוניקה בתוך עורך Wokwi.",
-        "approach": [
-          "שימוש ב-Manifest V3, ב-service worker ובסקריפטים בסביבות הריצה MAIN ו-ISOLATED.",
-          "חילוץ הקשר קוד מ-Monaco/RSC ובחינת נתוני המעגל באמצעות בדיקות סטטיות לפני בקשת סיוע מ-OpenRouter."
-        ],
-        "observations": [
-          "המאגר מכיל קוד תוסף, סקריפטים לבדיקת תקינות ולתיאור תרשים, והגדרות CI."
-        ],
-        "limitations": [
-          "סקריפטי הבדיקה לא הורצו במהלך סקירת התוכן.",
-          "פרסום ב-Chrome Web Store ופעולת ההדרכה מקצה לקצה לא אומתו."
-        ],
-        "credits": []
-      },
       "area": "agents",
       "featured": false,
       "image": {
@@ -820,21 +574,14 @@
           "caption": "Process illustration of circuit context, validation and AI requests.",
           "alt": "Circuit context for an AI tutor: Circuit and code → Static validation → AI request"
         },
-        "he": {
-          "caption": "המחשת איסוף ההקשר, בדיקת המעגל ובקשת ה־AI.",
-          "alt": "הקשר המעגל למדריך AI: מעגל וקוד → בדיקה סטטית → בקשת AI"
-        },
         "sources": {
-          "en": "/assets/projects/zapi-electronics-tutor-en.svg",
-          "he": "/assets/projects/zapi-electronics-tutor-he.svg"
+          "en": "/assets/projects/zapi-electronics-tutor-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/zapi-electronics-tutor-en-mobile.svg",
-          "he": "/assets/projects/zapi-electronics-tutor-he-mobile.svg"
+          "en": "/assets/projects/zapi-electronics-tutor-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/zapi-electronics-tutor-en-card.svg",
-          "he": "/assets/projects/zapi-electronics-tutor-he-card.svg"
+          "en": "/assets/projects/zapi-electronics-tutor-en-card.svg"
         }
       }
     },
@@ -870,24 +617,6 @@
         ],
         "credits": []
       },
-      "he": {
-        "title": "ניטור השקיה מדומה",
-        "summary": "ניסוי בנתוני IoT המחבר קריאות לחות מדומות עם הודעות MQTT, היסטוריה ב-SQLite וממשקי ניטור.",
-        "goal": "לבחון את המעבר מנתוני טלמטריה המדמים חיישן לשמירת נתונים, התראות סף ושליטה ידנית בממסר.",
-        "approach": [
-          "יצירת קריאות לחות אקראיות ופרסום וקבלה של הודעות באמצעות paho-mqtt.",
-          "שמירת היסטוריית קריאות ב-SQLite והצגת ממשקי PyQt5 ו-Streamlit המשתמשים ב-pandas.",
-          "הכללת התראות סף ובקרות ידניות לממסר."
-        ],
-        "observations": [
-          "המאגר כולל צומת מדומה, מנהל יישום, דשבורד, הגדרות MQTT וקובץ מסד נתונים של SQLite."
-        ],
-        "limitations": [
-          "חיישנים פיזיים וחומרת השקיה לא אומתו.",
-          "חיסכון במים ופעולת השקיה אוטומטית לא הודגמו."
-        ],
-        "credits": []
-      },
       "area": "data-science",
       "featured": false,
       "image": {
@@ -898,10 +627,6 @@
         "en": {
           "caption": "Saved simulated moisture readings from the repository database.",
           "alt": "Simulated soil-moisture chart generated from 1,296 saved database records."
-        },
-        "he": {
-          "caption": "קריאות לחות מדומות שנשמרו במסד הנתונים של המאגר.",
-          "alt": "גרף לחות קרקע מדומה שהופק מתוך 1,296 רשומות שמורות במסד הנתונים."
         }
       }
     },
@@ -937,24 +662,6 @@
         ],
         "credits": []
       },
-      "he": {
-        "title": "RAFI: סוכן לניתוח נתונים",
-        "summary": "אב-טיפוס של סוכן אנליסט המחבר תהליכים בשפה טבעית לכלי שאילתות SQL ולבדיקת סכמת נתונים.",
-        "goal": "לבחון תהליך סוכן שמכיר את מבנה הנתונים ומשתמש בכלי מסד נתונים כדי לענות על שאלות אנליטיות.",
-        "approach": [
-          "חשיפת כלי שאילתות וסכמה באמצעות FastAPI ו-DuckDB.",
-          "ממשק שיחה ב־HTML, פיגום תהליך המיועד ל־n8n והגדרות Docker Compose."
-        ],
-        "observations": [
-          "המאגר מכיל כלי שאילתות וסכמה, ממשק HTML ופיגום תהליך. החיבור שנבדק ל־DuckDB מוגדר לקריאה בלבד."
-        ],
-        "limitations": [
-          "יש ליישר את מודול ההעלאה הציבורי והתיעוד לפני שחזור מלא של התהליך.",
-          "הפעלה מקצה לקצה לא נבדקה במסגרת סקירת התוכן.",
-          "קובצי התהליך אינם יצוא n8n תקני עם nodes/connections, וממשק השיחה משתמש בכתובת webhook לדוגמה."
-        ],
-        "credits": []
-      },
       "area": "agents",
       "featured": false,
       "image": {
@@ -967,21 +674,14 @@
           "caption": "Process illustration of the prototype database tools.",
           "alt": "Inside the data tools: FastAPI tools → DuckDB → Database response"
         },
-        "he": {
-          "caption": "המחשת כלי מסד הנתונים באב־הטיפוס.",
-          "alt": "כלי הנתונים של RAFI: כלי FastAPI → DuckDB → תשובת מסד הנתונים"
-        },
         "sources": {
-          "en": "/assets/projects/rafi-data-analyst-agent-en.svg",
-          "he": "/assets/projects/rafi-data-analyst-agent-he.svg"
+          "en": "/assets/projects/rafi-data-analyst-agent-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/rafi-data-analyst-agent-en-mobile.svg",
-          "he": "/assets/projects/rafi-data-analyst-agent-he-mobile.svg"
+          "en": "/assets/projects/rafi-data-analyst-agent-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/rafi-data-analyst-agent-en-card.svg",
-          "he": "/assets/projects/rafi-data-analyst-agent-he-card.svg"
+          "en": "/assets/projects/rafi-data-analyst-agent-en-card.svg"
         }
       },
       "caseStudy": {
@@ -999,15 +699,6 @@
           "result": "Read-only SQL tool API",
           "context": "Prototype; full chat/upload integration needs alignment.",
           "evaluation": "Reviewed source code; end-to-end workflow was not executed."
-        },
-        "he": {
-          "title": "RAFI: סוכן לניתוח נתונים",
-          "summary": "אב-טיפוס של סוכן אנליסט המחבר תהליכים בשפה טבעית לכלי שאילתות SQL ולבדיקת סכמת נתונים.",
-          "data": "סכמת מסד נתונים ותוצאות שאילתות מ־DuckDB",
-          "method": "כלי FastAPI לשאילתות ולסכמה ופיגום לתהליך שיחה",
-          "result": "API לכלי SQL לקריאה בלבד",
-          "context": "אב־טיפוס; שילוב השיחה וההעלאה המלא דורש התאמה.",
-          "evaluation": "סקירת קוד מקור; התהליך המלא לא הורץ."
         }
       }
     },
@@ -1045,26 +736,6 @@
           "Created as a Jeen take-home assignment."
         ]
       },
-      "he": {
-        "title": "תהליך סוכנים לתמיכת לקוחות",
-        "summary": "תרגיל Langflow המחבר סוכני תיאום, ניתוח ומענה עם כלי SQL ודואר אלקטרוני.",
-        "goal": "לבחון כיצד תהליך תמיכת לקוחות יכול לנתב משימות בין סוכנים לכלי מסד נתונים.",
-        "approach": [
-          "הגדרת תהליך מרובה סוכנים ונתב בוליאני מותאם ב-Langflow.",
-          "מימוש כלי SQL באמצעות Python, SQLAlchemy ו-PostgreSQL, כולל שאילתות עם פרמטרים וטרנזקציות לקריאה בלבד עם rollback.",
-          "הכללת כלי Gmail SMTP המשתמש ב-STARTTLS, הגדרות Docker Compose וסקריפטים לאתחול מסד הנתונים."
-        ],
-        "observations": [
-          "המאגר מכיל JSON של התהליך, רכיבים מותאמים, הגדרות מסד נתונים ותרחישי בדיקה מתועדים."
-        ],
-        "limitations": [
-          "הבדיקות הכלולות לא הורצו במהלך סקירת התוכן.",
-          "סרטון ההדגמה החיצוני ופעולת התהליך מקצה לקצה לא אומתו."
-        ],
-        "credits": [
-          "נוצר כתרגיל בית של Jeen."
-        ]
-      },
       "area": "agents",
       "featured": false,
       "image": {
@@ -1077,21 +748,14 @@
           "caption": "Requests needing data use analysis; other requests go directly to a response agent. Email is optional.",
           "alt": "The support workflow design: True / False router → Optional analysis → Response agent"
         },
-        "he": {
-          "caption": "בקשות הזקוקות לנתונים עוברות בניתוח; אחרות מגיעות ישירות לסוכן מענה. שליחת דואר היא לפי הצורך.",
-          "alt": "תכנון תהליך התמיכה: ניתוב True / False → ניתוח לפי הצורך → סוכן מענה"
-        },
         "sources": {
-          "en": "/assets/projects/customer-support-agent-workflow-en.svg",
-          "he": "/assets/projects/customer-support-agent-workflow-he.svg"
+          "en": "/assets/projects/customer-support-agent-workflow-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/customer-support-agent-workflow-en-mobile.svg",
-          "he": "/assets/projects/customer-support-agent-workflow-he-mobile.svg"
+          "en": "/assets/projects/customer-support-agent-workflow-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/customer-support-agent-workflow-en-card.svg",
-          "he": "/assets/projects/customer-support-agent-workflow-he-card.svg"
+          "en": "/assets/projects/customer-support-agent-workflow-en-card.svg"
         }
       },
       "caseStudy": {
@@ -1109,15 +773,6 @@
           "result": "Multi-agent routing + SQL tools",
           "context": "Take-home assignment with workflow and custom components.",
           "evaluation": "Test scenarios and test files are included; tests and end-to-end behavior were not verified."
-        },
-        "he": {
-          "title": "תהליך סוכנים לתמיכת לקוחות",
-          "summary": "תרגיל Langflow המחבר סוכני תיאום, ניתוח ומענה עם כלי SQL ודואר אלקטרוני.",
-          "data": "בקשות תמיכה ונתונים מובנים הזמינים דרך SQL",
-          "method": "ניתוב בוליאני בין סוכני תזמור, ניתוח ומענה",
-          "result": "ניתוב בין סוכנים וכלי SQL",
-          "context": "תרגיל בית עם תהליך עבודה ורכיבים מותאמים.",
-          "evaluation": "קיימים תרחישי בדיקה וקובצי בדיקות; הבדיקות והתהליך המלא לא אומתו."
         }
       }
     },
@@ -1153,25 +808,6 @@
           "Uses the pretrained Ultralytics YOLOv8n model; the dataset is referenced through a Kaggle path in the notebook."
         ]
       },
-      "he": {
-        "title": "טיוטת זיהוי אובייקטים של כלי רכב צבאיים",
-        "summary": "ניסוי transfer learning המתאים YOLOv8n לארבע קטגוריות כלי רכב, ובהן מסוקים.",
-        "goal": "לבחון fine-tuning של מזהה אובייקטים והשפעה של איכות התיוג על הערכת המודל.",
-        "approach": [
-          "הגדרת ארבע קטגוריות: טנק, רכב משוריין, משאית צבאית ומסוק.",
-          "Fine-tuning של YOLOv8n במשך 50 epochs עם תמונות בגודל 640 ובחינת פלטי אימון והערכה שמורים."
-        ],
-        "observations": [
-          "המחברת מתעדת fine-tuning ו-validation. בלוגים מופיעות גם תמונות הערכה שנדחו מפני שמזהי הקטגוריות אינם תואמים להגדרת ארבע הקטגוריות."
-        ],
-        "limitations": [
-          "קבוצת התמונות שנבדקה הושפעה משגיאות תיוג, ולכן המדדים השמורים אינם מוצגים כתוצאה יציבה.",
-          "זהו זיהוי אובייקטים של קטגוריות כלי רכב, ולא סיווג של מטוסים בלבד."
-        ],
-        "credits": [
-          "שימוש במודל Ultralytics YOLOv8n מאומן מראש; הנתונים מוזכרים באמצעות נתיב Kaggle במחברת."
-        ]
-      },
       "area": "data-science",
       "featured": false,
       "image": {
@@ -1182,10 +818,6 @@
         "en": {
           "caption": "Validation curves from the saved training log; dataset caveats are marked.",
           "alt": "Saved validation mAP curves across 50 training epochs, with dataset limitations noted."
-        },
-        "he": {
-          "caption": "עקומות אימות מהלוג השמור; מגבלות הנתונים מסומנות על הגרף.",
-          "alt": "עקומות mAP שמורות לאורך 50 שלבי אימון, עם הערות על מגבלות הנתונים."
         }
       }
     },
@@ -1220,23 +852,6 @@
         ],
         "credits": []
       },
-      "he": {
-        "title": "דמו לסיווג טקסט שנכתב בידי אדם או AI",
-        "summary": "דמו חיזוי המחבר ייצוג וקטורי של טקסט ומסווג שמור לממשק Flask.",
-        "goal": "לבחון כיצד לחשוף מודל טקסט שמור באמצעות תהליך חיזוי אינטראקטיבי קצר.",
-        "approach": [
-          "טעינת vectorizer ומסווג, המרת טקסט קלט והחזרת תווית חזויה.",
-          "שימוש ב-Flask לממשק וב-pyngrok לגישה זמנית במהלך הניסוי."
-        ],
-        "observations": [
-          "המחברת מציגה vectorizer.transform() ו-model.predict() לצד רכיבי מודל שמורים."
-        ],
-        "limitations": [
-          "החומר הציבורי אינו מתעד תהליך אימון מלא, מקור נתונים או הגדרת הערכה.",
-          "פלטי חיזוי לבדם אינם מבססים זיהוי אמין של טקסט שנכתב באמצעות AI."
-        ],
-        "credits": []
-      },
       "area": "data-science",
       "featured": false,
       "image": {
@@ -1249,21 +864,14 @@
           "caption": "Process illustration of text vectorization and a saved classifier.",
           "alt": "The text classification pipeline: Input text → Vectorizer → Classifier"
         },
-        "he": {
-          "caption": "המחשת המרת הטקסט וחיזוי באמצעות מסווג שמור.",
-          "alt": "תהליך סיווג הטקסט: טקסט הקלט → Vectorizer → מסווג"
-        },
         "sources": {
-          "en": "/assets/projects/ai-human-text-classification-en.svg",
-          "he": "/assets/projects/ai-human-text-classification-he.svg"
+          "en": "/assets/projects/ai-human-text-classification-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/ai-human-text-classification-en-mobile.svg",
-          "he": "/assets/projects/ai-human-text-classification-he-mobile.svg"
+          "en": "/assets/projects/ai-human-text-classification-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/ai-human-text-classification-en-card.svg",
-          "he": "/assets/projects/ai-human-text-classification-he-card.svg"
+          "en": "/assets/projects/ai-human-text-classification-en-card.svg"
         }
       }
     },
@@ -1299,25 +907,6 @@
           "Uses the pretrained SentenceTransformers model paraphrase-multilingual-MiniLM-L12-v2."
         ]
       },
-      "he": {
-        "title": "התאמה סמנטית רב-לשונית של ז׳אנרים",
-        "summary": "ניסוי NLP קצר המתאים תקצירי ספרים לתוויות ז׳אנר באמצעות embeddings רב-לשוניים של משפטים.",
-        "goal": "לבחון אם דמיון סמנטי יכול להציע ז׳אנרים שימושיים ללא אימון מסווג חדש.",
-        "approach": [
-          "קידוד תקצירים ותוויות ז׳אנר באמצעות SentenceTransformers והמודל paraphrase-multilingual-MiniLM-L12-v2.",
-          "השוואת embeddings באמצעות cosine similarity והחזרת מועמדי top-k, עם דוגמאות בעברית ובאנגלית."
-        ],
-        "observations": [
-          "המחברת מדגימה התאמת תוויות באמצעות embeddings ומודל רב-לשוני מאומן מראש."
-        ],
-        "limitations": [
-          "לא נמצאו קבוצת מבחן מתויגת או הערכה כמותית.",
-          "הדמיון תלוי בניסוח התוויות וברשימת המועמדים שנבחרה."
-        ],
-        "credits": [
-          "שימוש במודל מאומן מראש של SentenceTransformers: paraphrase-multilingual-MiniLM-L12-v2."
-        ]
-      },
       "area": "data-science",
       "featured": false,
       "image": {
@@ -1330,21 +919,14 @@
           "caption": "Process illustration of multilingual semantic genre matching.",
           "alt": "Matching meaning across languages: Text and genres → Multilingual encoder → Cosine similarity"
         },
-        "he": {
-          "caption": "המחשת התאמת ז׳אנרים לפי משמעות בין שפות.",
-          "alt": "התאמת משמעות בין שפות: טקסט וז׳אנרים → מקודד רב־לשוני → דמיון קוסינוס"
-        },
         "sources": {
-          "en": "/assets/projects/semantic-genre-matching-en.svg",
-          "he": "/assets/projects/semantic-genre-matching-he.svg"
+          "en": "/assets/projects/semantic-genre-matching-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/semantic-genre-matching-en-mobile.svg",
-          "he": "/assets/projects/semantic-genre-matching-he-mobile.svg"
+          "en": "/assets/projects/semantic-genre-matching-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/semantic-genre-matching-en-card.svg",
-          "he": "/assets/projects/semantic-genre-matching-he-card.svg"
+          "en": "/assets/projects/semantic-genre-matching-en-card.svg"
         }
       }
     },
@@ -1381,26 +963,6 @@
           "The audio data is identified as the Toronto Emotional Speech Set (TESS)."
         ]
       },
-      "he": {
-        "title": "זיהוי רגשות בדיבור באמצעות MFCC",
-        "summary": "ניסוי סיווג אודיו הממיר הקלטות דיבור לפיצ'רים מסוג MFCC לצורך סיווג רגשות באמצעות Random Forest.",
-        "goal": "לבחון תהליך עיבוד וסיווג אודיו, מהקלטת גל קול ועד תווית רגש.",
-        "approach": [
-          "הסרת שקט, נרמול הקלטות וחישוב ממוצע של 30 מקדמי MFCC לכל דגימה.",
-          "קידוד תוויות ואימון Random Forest על הקלטות TESS, לצד שמירת רכיבי העיבוד והמודל."
-        ],
-        "observations": [
-          "במחברת מתועדות 2,800 דגימות אודיו, ונמצאים פלטי סיווג שמורים וקוד להקלטה ולחיזוי."
-        ],
-        "limitations": [
-          "ההערכה משתמשת בחלוקה אקראית של קבצים ואינה מבססת ביצועים על דוברים חדשים.",
-          "בשמות הרגשות קיימות אי-התאמות בכתיב ובניסוח. יש לאחד תוויות לפני התייחסות להערכה כתוצאה יציבה.",
-          "תא החיזוי מהמיקרופון משמיט את המרת StandardScaler ששימשה באימון; יש לתקן את המסלול לפני שימוש חי אמין."
-        ],
-        "credits": [
-          "נתוני האודיו מזוהים כ-Toronto Emotional Speech Set (TESS)."
-        ]
-      },
       "area": "data-science",
       "featured": false,
       "image": {
@@ -1413,21 +975,14 @@
           "caption": "Training pipeline: audio preprocessing, MFCC means, feature scaling and Random Forest.",
           "alt": "The emotion-model training pipeline: Speech recordings → 30 MFCC means → Random Forest"
         },
-        "he": {
-          "caption": "תהליך האימון: עיבוד אודיו, ממוצעי MFCC, נרמול מאפיינים ו־Random Forest.",
-          "alt": "תהליך אימון מודל הרגשות: הקלטות דיבור → 30 ממוצעי MFCC → Random Forest"
-        },
         "sources": {
-          "en": "/assets/projects/speech-emotion-recognition-en.svg",
-          "he": "/assets/projects/speech-emotion-recognition-he.svg"
+          "en": "/assets/projects/speech-emotion-recognition-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/speech-emotion-recognition-en-mobile.svg",
-          "he": "/assets/projects/speech-emotion-recognition-he-mobile.svg"
+          "en": "/assets/projects/speech-emotion-recognition-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/speech-emotion-recognition-en-card.svg",
-          "he": "/assets/projects/speech-emotion-recognition-he-card.svg"
+          "en": "/assets/projects/speech-emotion-recognition-en-card.svg"
         }
       }
     },
@@ -1463,25 +1018,6 @@
           "Uses Ultralytics YOLO for inference."
         ]
       },
-      "he": {
-        "title": "חיזוי זיהוי אובייקטים בתמונות רנטגן",
-        "summary": "ניסוי חיזוי בראייה ממוחשבת, הטוען משקולות YOLO שמורות ומציג זיהויים בתמונות רנטגן.",
-        "goal": "לבחון את שלבי טעינת המודל והצגת התוצאות בתהליך זיהוי אובייקטים.",
-        "approach": [
-          "טעינת best.pt באמצעות Ultralytics YOLO והרצת חיזוי על תמונות.",
-          "שימוש ב-OpenCV וב-matplotlib לבחינת התמונות ותיבות הזיהוי."
-        ],
-        "observations": [
-          "המאגר מכיל משקולות מודל ופלטי חיזוי במחברת."
-        ],
-        "limitations": [
-          "המחברת שנבדקה אינה מתעדת אימון או validation, למרות שם הקובץ המתייחס לאימון.",
-          "נדרש תיעוד נוסף למקור המשקולות והנתונים לפני טענות על ביצועים."
-        ],
-        "credits": [
-          "שימוש ב-Ultralytics YOLO לצורך חיזוי."
-        ]
-      },
       "area": "data-science",
       "featured": false,
       "image": {
@@ -1492,10 +1028,6 @@
         "en": {
           "caption": "Saved YOLO detection on a baggage X-ray.",
           "alt": "Baggage X-ray with one saved object-detection bounding box."
-        },
-        "he": {
-          "caption": "פלט זיהוי YOLO שמור על צילום שיקוף כבודה.",
-          "alt": "צילום שיקוף כבודה עם תיבת זיהוי עצם אחת שנשמרה במחברת."
         }
       }
     },
@@ -1531,24 +1063,6 @@
         ],
         "credits": []
       },
-      "he": {
-        "title": "WALL_E: ניסוי בקול ובהקשר מסך",
-        "summary": "סימולטור ממשק טלפון בדפדפן עם רכיבי בסיס לזיהוי מילת הפעלה, לתמלול דיבור וללכידת הקשר מהמסך.",
-        "goal": "לבחון כיצד קלט קולי והקשר מסך יכולים להשתלב בממשק טלפון מדומה.",
-        "approach": [
-          "בניית מסכים המדמים טלפון באמצעות HTML, CSS ו-JavaScript, תוך שימוש ב-localStorage.",
-          "הכללת תמלול באמצעות Web Speech API ורכיבי זיהוי מילת הפעלה של Picovoice Porcupine המשתמשים ב-WebAssembly וב-AudioWorklet.",
-          "לכידת פריימים מהמסך וחישוב חתימות לשינוי בין פריימים בגווני אפור."
-        ],
-        "observations": [
-          "המאגר מפריד בין מסכי הממשק לרכיבי הקול, וכולל סקריפט בנייה וקובץ HTML מאוגד של הסימולטור."
-        ],
-        "limitations": [
-          "לא נצפו סוכן LLM מלא או מדדי ביצועים.",
-          "רכיבי הקול והלכידה תלויים ביכולות הדפדפן; זיהוי מילת ההפעלה ב-Porcupine דורש מודל ומפתח מתאימים."
-        ],
-        "credits": []
-      },
       "area": "other",
       "featured": false,
       "image": {
@@ -1561,21 +1075,14 @@
           "caption": "Process illustration of wake detection and speech transcription.",
           "alt": "From a wake word to a transcript: Wake detection → Speech to text → Transcript"
         },
-        "he": {
-          "caption": "המחשת זיהוי ההפעלה ותמלול הדיבור.",
-          "alt": "ממילת הפעלה לתמלול: זיהוי הפעלה → דיבור לטקסט → תמלול"
-        },
         "sources": {
-          "en": "/assets/projects/wall-e-voice-ui-experiment-en.svg",
-          "he": "/assets/projects/wall-e-voice-ui-experiment-he.svg"
+          "en": "/assets/projects/wall-e-voice-ui-experiment-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/wall-e-voice-ui-experiment-en-mobile.svg",
-          "he": "/assets/projects/wall-e-voice-ui-experiment-he-mobile.svg"
+          "en": "/assets/projects/wall-e-voice-ui-experiment-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/wall-e-voice-ui-experiment-en-card.svg",
-          "he": "/assets/projects/wall-e-voice-ui-experiment-he-card.svg"
+          "en": "/assets/projects/wall-e-voice-ui-experiment-en-card.svg"
         }
       }
     },
@@ -1611,25 +1118,6 @@
           "Created as a Jeen take-home assignment. ISSTA is the exercise scenario, not a client engagement."
         ]
       },
-      "he": {
-        "title": "תכנון פרומפטים לשירותי תיירות",
-        "summary": "תרגיל בתכנון פרומפטים הבוחן שלושה תרחישים בשירותי תיירות: ניתוח שיחות ב-CRM, תוכן לקמפיינים ושיחות על חבילות נופש.",
-        "goal": "לבחון כיצד הוראות מותאמות למשימה יכולות להבנות סיוע של מודל שפה בתהליכי תיירות שונים.",
-        "approach": [
-          "הגדרת פרומפטים לניתוח שיחות, לקמפיינים בתחום התיירות ולצ'אט על חבילות נופש.",
-          "תיעוד התרחישים באמצעות פרומפטים בקובצי טקסט, מצגת, תמונות וקובצי וידאו."
-        ],
-        "observations": [
-          "המאגר מכיל פרומפטים וחומרי מצגת נלווים, לצד README המתאר את התרגיל."
-        ],
-        "limitations": [
-          "החומרים מדגימים תכנון פרומפטים; לא נצפה שרת יישום מסחרי.",
-          "הטענות ב-README על חיסכון בזמן ועל ביצועי מודלים לא אומתו."
-        ],
-        "credits": [
-          "נוצר כתרגיל בית של Jeen. ISSTA משמשת כתרחיש לתרגיל, ולא כלקוח בפרויקט."
-        ]
-      },
       "area": "agents",
       "featured": false,
       "image": {
@@ -1640,10 +1128,6 @@
         "en": {
           "caption": "Existing campaign demo screenshot from the take-home exercise.",
           "alt": "Take-home campaign demo showing a travel brief, follow-up questions and an example ad."
-        },
-        "he": {
-          "caption": "צילום דמו קמפיין קיים מתוך תרגיל הבית.",
-          "alt": "דמו קמפיין מתרגיל הבית המציג בריף תיירות, שאלות המשך ודוגמת מודעה."
         }
       }
     },
@@ -1679,25 +1163,6 @@
           "Uses the pretrained Ultralytics YOLOv8n model."
         ]
       },
-      "he": {
-        "title": "זיהוי כלי רכב ואומדן מרחק מקורב",
-        "summary": "ניסוי במסגרת קורס המשלב מזהה כלי רכב מאומן מראש עם אומדן מרחק גאומטרי בסיסי.",
-        "goal": "לבחון שימוש בגודל תיבת הזיהוי לחישוב מקורב של המרחק מהמצלמה.",
-        "approach": [
-          "הרצת YOLOv8n על וידאו באמצעות OpenCV.",
-          "אומדן מרחק מתוך הנחות על גובה האובייקט, אורך המוקד וגובה תיבת הזיהוי, והוספת אזהרה לפי סף."
-        ],
-        "observations": [
-          "המחברת מכילה לוגי חיזוי ונוסחת אומדן מרחק המבוססת על הנחות גאומטריות קבועות."
-        ],
-        "limitations": [
-          "לא נמצאו כיול מצלמה או הערכה מול מדידות מרחק אמת.",
-          "ההיקף שהודגם הוא זיהוי ואומדן; תכנון מסלול ובקרת רכב אינם חלק מהתרגיל."
-        ],
-        "credits": [
-          "שימוש במודל Ultralytics YOLOv8n מאומן מראש."
-        ]
-      },
       "area": "data-science",
       "featured": false,
       "image": {
@@ -1710,21 +1175,14 @@
           "caption": "Process illustration: vehicle detection and approximate distance estimation.",
           "alt": "Detection and approximate distance: Video frames → Vehicle boxes → Distance estimate"
         },
-        "he": {
-          "caption": "המחשת זיהוי כלי רכב ואומדן מרחק מקורב.",
-          "alt": "זיהוי ואומדן מרחק מקורב: פריימים מהווידאו → תיבות כלי רכב → אומדן מרחק"
-        },
         "sources": {
-          "en": "/assets/projects/vehicle-detection-distance-estimation-en.svg",
-          "he": "/assets/projects/vehicle-detection-distance-estimation-he.svg"
+          "en": "/assets/projects/vehicle-detection-distance-estimation-en.svg"
         },
         "mobileSources": {
-          "en": "/assets/projects/vehicle-detection-distance-estimation-en-mobile.svg",
-          "he": "/assets/projects/vehicle-detection-distance-estimation-he-mobile.svg"
+          "en": "/assets/projects/vehicle-detection-distance-estimation-en-mobile.svg"
         },
         "cardSources": {
-          "en": "/assets/projects/vehicle-detection-distance-estimation-en-card.svg",
-          "he": "/assets/projects/vehicle-detection-distance-estimation-he-card.svg"
+          "en": "/assets/projects/vehicle-detection-distance-estimation-en-card.svg"
         }
       }
     }

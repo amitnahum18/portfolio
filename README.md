@@ -1,6 +1,6 @@
 # Amit Nahum — Data Science & Analysis
 
-Personal portfolio with English and Hebrew content, 19 projects, visual previews,
+Personal portfolio in English, with 19 projects, visual previews,
 project stories, and filters by topic and project type.
 
 The home page pairs a compact professional profile with two project collections.
@@ -49,11 +49,17 @@ python scripts/build-pages.py --base-path /portfolio/
 
 ## Content and visuals
 
-- `site/dist/data/portfolio.json`: public bilingual project content.
+- `site/dist/data/portfolio.json`: public English project content.
 - `site/dist/assets/projects`: existing screenshots, saved plots, and diagrams
   explaining reviewed source code. Card diagrams use fewer labels than detail diagrams.
 - `docs/visual-flow-review.md`: flow verification and image provenance.
 - `docs/recruiter-focus-review.md`: recruiter-focused editing and verification limits.
+- `docs/english-version-review.md`: acceptance criteria and audit scope for the English version.
+
+The home page includes View Projects and Download CV actions. The public CV is
+aligned with the reviewed project evidence. Lighthouse desktop and mobile reports
+are generated during deployment and published at `/portfolio/audits/`; these measure
+the built page on a local CI server, not real-user INP or field performance.
 
 Projects are identified as experiments, prototypes, assignments or products.
 Source-code review does not imply successful end-to-end execution or deployment.

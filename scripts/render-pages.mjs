@@ -16,7 +16,6 @@ const context = vm.createContext({
 });
 const pages = new vm.Script(source + `
   catalogue = data;
-  language = 'en';
   [{path: '/', html: home()}, {path: '/lab', html: lab()},
     ...catalogue.projects.map(item => ({path: '/work/' + item.slug, html: detail(item)}))]
     .map(page => ({...page, ...pageMetadata(page.path)}));

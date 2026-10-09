@@ -33,7 +33,24 @@ jobs:
       - name: Generate static entry pages
         run: python3 scripts/build-pages.py --base-path "${{ steps.pages.outputs.base_path }}"
       - name: Verify page content and metadata
-        run: python3 scripts/check-pages.py
+        run: |
+          python3 scripts/check-pages.py
+          node scripts/check-interactions.mjs
+      - name: Set up Node for Lighthouse
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Measure desktop and mobile with Lighthouse
+        continue-on-error: true
+        run: |
+          mkdir -p "$RUNNER_TEMP/portfolio-preview/portfolio" _site/audits
+          cp -R _site/. "$RUNNER_TEMP/portfolio-preview/portfolio/"
+          python3 -m http.server 8787 --bind 127.0.0.1 --directory "$RUNNER_TEMP/portfolio-preview" > "$RUNNER_TEMP/portfolio-preview.log" 2>&1 &
+          sleep 2
+          npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/mobile
+          npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/ --quiet --preset=desktop --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/desktop
+      - name: Summarize audit measurements
+        run: python3 scripts/summarize-audits.py
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:

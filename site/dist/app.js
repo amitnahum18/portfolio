@@ -7,10 +7,12 @@ const currentPath = () => {
   const path = location.pathname.startsWith(basePath) ? '/' + location.pathname.slice(basePath.length) : location.pathname;
   return path.replace(/\/(?:index\.html)?$/, '') || '/';
 };
-const params = new URLSearchParams(location.search);
-let language = params.get('lang') === 'he' ? 'he' : 'en';
-if (!params.has('lang')) {
-  try { if (localStorage.getItem('amit-portfolio-language') === 'he') language = 'he'; } catch {}
+const language = 'en';
+// Preserve old shared project links, while consistently presenting English.
+if (new URLSearchParams(location.search).has('lang')) {
+  const cleanURL = new URL(location.href);
+  cleanURL.searchParams.delete('lang');
+  history.replaceState({}, '', cleanURL);
 }
 let catalogue;
 const filter = { search: '', topic: '', type: '', area: '' };
@@ -38,43 +40,18 @@ const text = {
     home: 'Home', goal: 'Question / goal', approach: 'Data & approach', observations: 'Evidence & observations', limitations: 'Scope & limitations', credits: 'Credits',
     sourceEyebrow: 'EXPLORE THE WORK', sources: 'Code & links', next: 'Next in the collection', back: 'Back to the lab',
     notFound: 'This page isn’t in the collection.', error: 'The portfolio could not load. Please refresh the page.', skip: 'Skip to content'
-  },
-  he: {
-    work: 'פרויקטים', lab: 'כל הפרויקטים', about: 'ניסיון', contact: 'יצירת קשר', menu: 'תפריט',
-    eyebrow: 'עמית נחום / מדע הנתונים וניתוח נתונים', heroTitle: 'הופך שאלות<br><em>לניסויים.</em>',
-    intro: 'אני עמית נחום. התחלתי בניתוח נתוני בטיחות תעופה באמצעות SQL. היום אני עוסק במודלים לחיזוי ובמערכות AI שפועלות ללא חיבור לרשת. עכשיו אני מתחיל תואר שני ב־HIT ומחפש את התפקיד הבא שלי במדע הנתונים ובניתוח נתונים.',
-    explore: 'לסיפורים שמאחורי העבודות', portraitAlt: 'דיוקן של עמית נחום בחליפה בהירה', open: 'מחפש הזדמנויות חדשות', role: 'עמית נחום',
-    degree: 'מתחיל תואר שני · מדעי המחשב · HIT', tools: 'Python ו־SQL', thinking: 'ניתוח, מודלים ו־AI יישומי',
-    selected: '01 / עבודות נבחרות', selectedTitle: 'הכול מתחיל<br><em>ב״מה אם?״</em>', selectedIntro: 'רעידות גשר לסווג. אתגר Kaggle לפתור. החלטות AI להעריך. שלושה פרויקטים שמציגים איך אני בונה ובוחן מודלים.', all: 'לכל העבודות', nextQuestion: 'השאלה הבאה',
-    journey: 'הדרך שלי', journeyAnalysis: 'SQL וניתוח נתונים', journeyAI: 'מערכות AI מקומיות', journeyMSc: 'תואר שני ב־HIT', journeyNow: 'מתחיל ב־2026',
-    labEyebrow: '02 / ממשיכים לחקור', labTitle: 'לסקרנות יש<br>הרבה כיוונים.', labIntro: 'האם קול יכול להעיד על רגש? האם משמעות יכולה לחבר סיפור לז׳אנר? במעבדה מחכים עוד ניסויים, פרויקטי למידה ואבות־טיפוס.',
-    labLink: 'למעבדה', aboutEyebrow: '03 / אודות', aboutTitle: 'חשיבה אנליטית.<br>גישה מעשית.',
-    aboutText: 'העבודה שלי כוללת ניתוח נתונים ב־SQL וב־Python, תהליכי למידת מכונה, הערכת מודלים ופריסה של מערכות AI. חשוב לי להבין את הנתונים ואת השאלה, לצד בניית המודל.',
-    aboutText2: 'תחומי העניין שלי כוללים למידה עמוקה, אופטימיזציה של מודלים והסקה יעילה. אני מתחיל תואר שני במדעי המחשב במכון הטכנולוגי חולון.',
-    masters: 'תואר שני במדעי המחשב', mastersSub: 'HIT · תחילת לימודים ב־2026 · סיום צפוי ב־2028',
-    engineer: 'AI Engineer · שירות מילואים בצה״ל', engineerSub: 'הסקה מקומית באמצעות vLLM, הערכת מודלי שפה ותהליכי זיהוי חריגות.',
-    analyst: 'Junior Data Analyst · צה״ל', analystSub: 'ניתוח ב־SQL ודגימה סטטיסטית של נתוני בטיחות תעופה.',
-    contactEyebrow: 'בואו נדבר', contactTitle: 'בואו נדבר על<br>אתגר הדאטה הבא.', footer: 'עמית נחום · 2026', footerNote: 'מדע הנתונים · ניתוח · AI',
-    labPageTitle: 'כל הפרויקטים.', labPageIntro: 'דאטה סיינס ולמידת מכונה הם התחום המרכזי שלי. סוכני AI ומערכות LLM מוצגים בקבוצה נפרדת. אפשר לבחור נושא ולהמשיך לסנן לפי תחום או סוג עבודה.',
-    search: 'חיפוש', searchPlaceholder: 'למשל NLP, CatBoost, SQL…', topic: 'תחום', type: 'סוג עבודה', allTopics: 'כל התחומים', allTypes: 'כל הסוגים',
-    results: 'עבודות', clear: 'ניקוי סינון', noResults: 'לא נמצאו עבודות מתאימות', noResultsText: 'אפשר לנסות תחום אחר או חיפוש קצר יותר.',
-    home: 'ראשי', goal: 'מטרת הניסוי או הפרויקט', approach: 'נתונים ושיטה', observations: 'ממצאים מתועדים', limitations: 'היקף ומגבלות', credits: 'קרדיט',
-    sourceEyebrow: 'להמשך עיון', sources: 'קוד וקישורים', next: 'העבודה הבאה באוסף', back: 'חזרה למעבדה',
-    notFound: 'הדף הזה אינו נמצא באוסף.', error: 'לא ניתן לטעון את הפורטפוליו. אפשר לרענן את הדף.', skip: 'דילוג לתוכן'
   }
 };
 const typeLabels = {
-  experiment: ['Experiment', 'ניסוי'], prototype: ['Prototype', 'אב־טיפוס'],
-  'take-home-assignment': ['Take-home assignment', 'תרגיל בית'], 'course-exercise': ['Course exercise', 'תרגיל קורס'], product: ['Product', 'פרויקט מוצר']
+  experiment: 'Experiment', prototype: 'Prototype',
+  'take-home-assignment': 'Take-home assignment', 'course-exercise': 'Course exercise', product: 'Product'
 };
-const topicLabels = { 'Tabular ML': 'למידה על נתונים טבלאיים', 'Data & SQL': 'נתונים ו־SQL', 'LLM Systems': 'מערכות מודלי שפה', 'Audio ML': 'למידת מכונה באודיו', NLP: 'עיבוד שפה', 'Computer Vision': 'ראייה ממוחשבת', Web: 'פיתוח Web', IoT: 'IoT', 'Data systems': 'מערכות נתונים', Audio: 'אודיו', 'Signal Processing': 'עיבוד אותות', 'ML Engineering': 'הנדסת למידת מכונה', Simulation: 'סימולציה', 'Model Evaluation': 'הערכת מודלים' };
-const t = () => text[language];
-const typeName = value => typeLabels[value]?.[language === 'he' ? 1 : 0] || value;
-const topicName = value => language === 'he' ? (topicLabels[value] || value) : value;
-const langQuery = () => language === 'he' ? '?lang=he' : '';
+const t = () => text.en;
+const typeName = value => typeLabels[value] || value;
+const topicName = value => value;
 const routeURL = (path) => {
   const [pathname, hash] = path.split('#');
-  return `${siteURL(pathname)}${langQuery()}${hash ? '#' + hash : ''}`;
+  return `${siteURL(pathname)}${hash ? '#' + hash : ''}`;
 };
 const projectURL = item => routeURL(`/work/${item.slug}`);
 const navLink = (path, label, className = '') => `<a data-nav href="${q(routeURL(path))}" class="${q(className)}">${label}</a>`;
@@ -85,10 +62,10 @@ function header() {
   const x = t();
   return `<header class="site-header"><div class="wrap header-inner">
     ${navLink('/', '<span class="monogram" aria-hidden="true">a.</span><span class="wordmark-name">AMIT NAHUM</span>', 'wordmark')}
-    <nav class="nav ${mobileMenuOpen ? 'open' : ''}" id="site-nav" aria-label="${language === 'he' ? 'ניווט ראשי' : 'Main navigation'}">
+    <nav class="nav ${mobileMenuOpen ? 'open' : ''}" id="site-nav" aria-label="${'Main navigation'}">
       ${navLink('/#work', q(x.work))}${navLink('/lab', q(x.lab), currentPath() === '/lab' ? 'active' : '')}${navLink('/#about', q(x.about))}
     </nav>
-    <div class="header-actions"><button id="language-toggle" class="language-button" aria-label="${language === 'he' ? 'Switch to English' : 'מעבר לעברית'}">${language === 'he' ? 'EN' : 'עברית'}</button><button id="menu-toggle" class="menu-button" aria-controls="site-nav" aria-expanded="${mobileMenuOpen}">${q(x.menu)}</button></div>
+    <div class="header-actions"><button id="menu-toggle" class="menu-button" aria-controls="site-nav" aria-expanded="${mobileMenuOpen}">${q(x.menu)}</button></div>
   </div></header>`;
 }
 
@@ -100,7 +77,8 @@ function footer() {
 const presentation = {
   en: {
     role: 'Data Scientist | Machine Learning & Applied AI',
-    bio: 'I build and evaluate machine learning models, drawing on hands-on experience in aviation data analysis, predictive modeling, signal processing and offline AI systems.',
+    bio: 'I build and evaluate machine learning models, combining hands-on experience in aviation data analysis with predictive modeling, signal processing and offline AI systems.',
+    process: 'From data exploration and feature engineering to validation, model evaluation and deployment.',
     availability: 'Open to Data Scientist / ML roles',
     education: 'Beginning an M.Sc. in Computer Science at HIT',
     skills: 'Core Data Science / ML skills', agentSkills: 'Applied AI', connect: 'Get in touch',
@@ -114,39 +92,22 @@ const presentation = {
     experience: 'Experience & education', atGlance: 'At a glance',
     data: 'Data', method: 'Method', evaluation: 'Evaluation',
     featured: 'ML & DATA', code: 'Code', projects: 'Projects',
-  },
-  he: {
-    role: 'Data Scientist | Machine Learning & Applied AI',
-    bio: 'אני בונה ובוחן מודלים של למידת מכונה, ומשלב ניסיון מעשי בניתוח נתוני תעופה עם מודלים לחיזוי, עיבוד אותות ומערכות AI מקומיות.',
-    availability: 'מחפש תפקידי Data Scientist / ML',
-    education: 'מתחיל תואר שני במדעי המחשב ב־HIT',
-    skills: 'כישורי ליבה בדאטה ו־ML', agentSkills: 'AI יישומי', connect: 'יצירת קשר',
-    selected: 'התחום המרכזי', title: 'Data Science ולמידת מכונה',
-    intro: 'עיבוד אותות, מודלים לחיזוי והנדסת מאפיינים, עם שיטות הערכה מפורשות ותוצאות מתועדות.',
-    agentsEyebrow: 'תחום נוסף', agentsTitle: 'סוכני AI ומערכות LLM',
-    agentsIntro: 'סוכנים לקבלת החלטות, כלי SQL, תזמור תהליכים ותשתיות אחזור ליישומי AI.',
-    otherTitle: 'ניסויים נוספים', otherIntro: 'ניסויים בממשקים וביכולות דפדפן.', allAreas: 'כל הנושאים',
-    read: 'לדף הפרויקט', result: 'תוצאה / תוצר',
-    all: 'לכל הפרויקטים', allIntro: 'עוד פרויקטי AI יישומיים, אבות־טיפוס וניסויים, עם סינון לפי תחום וסוג עבודה.',
-    experience: 'ניסיון והשכלה', atGlance: 'הפרויקט במבט אחד',
-    data: 'נתונים', method: 'שיטה', evaluation: 'הערכה',
-    featured: 'דאטה ו־ML', code: 'קוד', projects: 'פרויקטים',
   }
 };
-const p = () => presentation[language];
+const p = () => presentation.en;
 const projectAreas = ['data-science', 'agents', 'other'];
 const areaName = area => area === 'data-science' ? p().title : area === 'agents' ? p().agentsTitle : p().otherTitle;
 const areaIntro = area => area === 'data-science' ? p().intro : area === 'agents' ? p().agentsIntro : p().otherIntro;
 
 function profilePanel() {
   const x = p();
-  return `<aside class="profile-panel" aria-label="${q(language === 'he' ? 'על עמית נחום' : 'About Amit Nahum')}">
-    <div class="profile-photo"><img src="${q(siteURL('/assets/amit-portrait.jpeg'))}" alt="${q(t().portraitAlt)}" width="3413" height="5120" fetchpriority="high"></div>
+  return `<aside class="profile-panel" aria-label="${q('About Amit Nahum')}">
+    <div class="profile-photo"><img src="${q(siteURL('/assets/amit-portrait-web.jpeg'))}" alt="${q(t().portraitAlt)}" width="480" height="720" decoding="async" fetchpriority="high"></div>
     <p class="availability"><span aria-hidden="true"></span>${q(x.availability)}</p>
     <h1>${q(catalogue.profile.name[language])}</h1><p class="profile-role">${q(x.role)}</p>
-    <p class="profile-bio">${q(x.bio)}</p><p class="profile-education">${q(x.education)}</p>
-    <a class="profile-contact" href="mailto:${q(catalogue.profile.email)}">${q(x.connect)} <span aria-hidden="true">↗</span></a>
-    <div class="profile-links">${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}</div>
+    <div class="profile-bio"><p>${q(x.bio)}</p><p>${q(x.process)}</p></div><p class="profile-education">${q(x.education)}</p>
+    <div class="profile-actions">${navLink('/#work', 'View Projects', 'profile-contact')}<a class="profile-cv" href="${q(siteURL('/assets/Amit-Nahum-CV.pdf'))}" download="Amit-Nahum-CV.pdf">Download CV <span aria-hidden="true">↓</span></a></div>
+    <div class="profile-links"><a href="mailto:${q(catalogue.profile.email)}">Email</a>${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}</div>
     <div class="profile-skills"><h2>${q(x.skills)}</h2><div class="tag-list">${catalogue.profile.skills.map(skill => `<span class="tag" dir="auto">${q(skill)}</span>`).join('')}</div></div>
     <div class="profile-skills"><h2>${q(x.agentSkills)}</h2><div class="tag-list">${catalogue.profile.agentSkills.map(skill => `<span class="tag" dir="auto">${q(skill)}</span>`).join('')}</div></div>
   </aside>`;
@@ -159,8 +120,8 @@ function caseCard(item, index, compact = false) {
   return `<article class="case-card${compact ? ' agent-card' : ''}">
     ${compact ? '' : `<a data-nav href="${q(projectURL(item))}" class="case-image image-${q(item.image.kind)}" aria-label="${q(copy.title)}">${projectPicture(item, 'card')}</a>`}
     <div class="case-card-body"><div class="case-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div>
-    <h3>${navLink(`/work/${item.slug}`, q(copy.title))}</h3><p class="case-summary">${q(copy.summary)}</p>
-    <div class="case-outcome"><p class="eyebrow">${q(x.result)}</p><p class="case-result" dir="auto">${q(copy.cardResult || copy.result)}</p></div>
+    <h3>${navLink(`/work/${item.slug}`, q(copy.title))}</h3><dl class="case-story"><div><dt>Problem</dt><dd>${q(copy.problem)}</dd></div><div><dt>Solution</dt><dd>${q(copy.solution)}</dd></div></dl>
+    <div class="case-outcome"><p class="eyebrow">Result / deliverable</p><p class="case-result" dir="auto">${q(copy.cardResult || copy.result)}</p></div>
     <div class="case-actions">${navLink(`/work/${item.slug}`, `${q(x.read)} <span aria-hidden="true">↗</span>`)}${code ? externalLink(code.url, 'GitHub ↗') : ''}</div></div>
   </article>`;
 }
@@ -168,7 +129,7 @@ function caseCard(item, index, compact = false) {
 function experienceSection() {
   const x = t();
   return `<section id="about" class="profile-experience"><h2>${q(p().experience)}</h2><div class="experience-list">
-    <article><p class="experience-date" dir="ltr">2025–${language === 'he' ? 'היום' : 'Present'}</p><div><h3>${q(x.engineer)}</h3><p>${q(x.engineerSub)}</p></div></article>
+    <article><p class="experience-date" dir="ltr">2025–${'Present'}</p><div><h3>${q(x.engineer)}</h3><p>${q(x.engineerSub)}</p></div></article>
     <article><p class="experience-date" dir="ltr">2020–2022</p><div><h3>${q(x.analyst)}</h3><p>${q(x.analystSub)}</p></div></article>
     <article><p class="experience-date" dir="ltr">2026–2028</p><div><h3>${q(x.masters)}</h3><p>${q(x.mastersSub)}</p></div></article>
   </div></section>`;
@@ -178,7 +139,7 @@ function home() {
   const x = p();
   const featured = area => catalogue.projects.filter(item => item.area === area && item.featured);
   return `${header()}<main id="main" class="wrap profile-layout">${profilePanel()}<div class="portfolio-main">
-    <nav class="area-jump" aria-label="${q(language === 'he' ? 'נושאי הפרויקטים' : 'Project areas')}">${navLink('/#work', q(x.title))}${navLink('/#agents', q(x.agentsTitle))}</nav>
+    <nav class="area-jump" aria-label="${q('Project areas')}">${navLink('/#work', q(x.title))}${navLink('/#agents', q(x.agentsTitle))}</nav>
     <section id="work" class="selected-projects"><div class="collection-heading"><p class="eyebrow">${q(x.selected)}</p><h2>${q(x.title)}</h2><p>${q(x.intro)}</p></div>
     <div class="case-grid primary-case-grid">${featured('data-science').map((item, index) => caseCard(item, index)).join('')}</div></section>
     <section id="agents" class="selected-projects agents-projects"><div class="collection-heading"><p class="eyebrow">${q(x.agentsEyebrow)}</p><h2>${q(x.agentsTitle)}</h2><p>${q(x.agentsIntro)}</p></div>
@@ -191,7 +152,7 @@ function caseSnapshot(item) {
   if (!item.caseStudy) return '';
   const copy = item.caseStudy[language];
   const x = p();
-  return `<section class="case-snapshot"><h2>${q(x.atGlance)}</h2><dl>${['data', 'method', 'result', 'evaluation'].map(field => `<div><dt>${q(x[field])}</dt><dd>${q(field === 'result' ? copy.result + '. ' + copy.context : copy[field])}</dd></div>`).join('')}</dl></section>`;
+  return `<section class="case-snapshot"><h2>${q(x.atGlance)}</h2><dl>${['data', 'method', 'result', 'evaluation'].map(field => `<div><dt>${q(x[field])}</dt><dd>${q(field === 'result' ? copy.result + '. ' + copy.context : copy[field])}</dd></div>`).join('')}</dl><div class="tag-list project-tools" aria-label="Project tools">${item.caseStudy.tools.map(tool => `<span class="tag">${q(tool)}</span>`).join('')}</div></section>`;
 }
 
 function filteredProjects() {
@@ -200,7 +161,7 @@ function filteredProjects() {
     if (filter.area && item.area !== filter.area) return false;
     if (filter.topic && !item.topics.includes(filter.topic)) return false;
     if (filter.type && item.type !== filter.type) return false;
-    return !search || `${item.en.title} ${item.he.title} ${item.en.summary} ${item.he.summary} ${item.topics.join(' ')} ${item.en.approach.join(' ')} ${item.he.approach.join(' ')} ${item.repositoryName || ''}`.toLocaleLowerCase().includes(search);
+    return !search || `${item.en.title} ${item.en.summary} ${item.topics.join(' ')} ${item.en.approach.join(' ')} ${item.repositoryName || ''}`.toLocaleLowerCase().includes(search);
   });
 }
 
@@ -243,7 +204,7 @@ function detail(item) {
   const x = t();
   const section = (field, items, paragraphs = false) => !items.length ? '' : `<section class="detail-section"><h2>${q(x[field])}</h2>${paragraphs ? items.map(value => `<p>${q(value)}</p>`).join('') : `<ul>${items.map(value => `<li>${q(value)}</li>`).join('')}</ul>`}</section>`;
   const next = catalogue.projects[(catalogue.projects.indexOf(item) + 1) % catalogue.projects.length];
-  return `${header()}<main id="main"><section class="detail-header"><div class="wrap"><nav class="breadcrumb" aria-label="${language === 'he' ? 'מיקום באתר' : 'Breadcrumb'}">${navLink('/', q(x.home))}<span>/</span>${navLink('/lab', q(x.lab))}<span>/</span><span>${q(typeName(item.type))}</span></nav><p class="eyebrow">${q(typeName(item.type))} / ${q(item.topics.map(topicName).join(' · '))}</p><h1>${q(copy.title)}</h1><p class="detail-summary">${q(copy.summary)}</p></div></section><div class="wrap detail-layout"><article>${caseSnapshot(item)}${projectImage(item)}${section('goal', [copy.goal], true)}${section('approach', copy.approach)}${section('observations', copy.observations, true)}${section('limitations', copy.limitations)}${section('credits', copy.credits)}</article><aside><div class="source-panel"><p class="eyebrow">${q(x.sourceEyebrow)}</p><h2>${q(x.sources)}</h2>${item.sources.map(source => externalLink(source.url, source.label === 'Public app' ? (language === 'he' ? 'פתיחת האפליקציה' : 'Open the app') : source.label, 'source-link')).join('')}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></div></aside></div><div class="wrap detail-next"><div><p>${q(x.next)}</p>${navLink(`/work/${next.slug}`, q(next[language].title))}</div>${navLink('/lab', q(x.back), 'quiet-link')}</div></main>${footer()}`;
+  return `${header()}<main id="main"><section class="detail-header"><div class="wrap"><nav class="breadcrumb" aria-label="${'Breadcrumb'}">${navLink('/', q(x.home))}<span>/</span>${navLink('/lab', q(x.lab))}<span>/</span><span>${q(typeName(item.type))}</span></nav><p class="eyebrow">${q(typeName(item.type))} / ${q(item.topics.map(topicName).join(' · '))}</p><h1>${q(copy.title)}</h1><p class="detail-summary">${q(copy.summary)}</p></div></section><div class="wrap detail-layout"><article>${caseSnapshot(item)}${projectImage(item)}${section('goal', [copy.goal], true)}${section('approach', copy.approach)}${section('observations', copy.observations, true)}${section('limitations', copy.limitations)}${section('credits', copy.credits)}</article><aside><div class="source-panel"><p class="eyebrow">${q(x.sourceEyebrow)}</p><h2>${q(x.sources)}</h2>${item.sources.map(source => externalLink(source.url, source.label === 'Public app' ? ('Open the app') : source.label, 'source-link')).join('')}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></div></aside></div><div class="wrap detail-next"><div><p>${q(x.next)}</p>${navLink(`/work/${next.slug}`, q(next[language].title))}</div>${navLink('/lab', q(x.back), 'quiet-link')}</div></main>${footer()}`;
 }
 
 function pageMetadata(path = currentPath()) {
@@ -251,7 +212,7 @@ function pageMetadata(path = currentPath()) {
   const title = item ? `${item[language].title} — Amit Nahum` : path === '/lab' ? `${t().lab} — Amit Nahum` : `${catalogue.profile.name[language]} — Data Scientist | ML & Applied AI`;
   const description = item ? item[language].summary : path === '/lab' ? t().labPageIntro : `${p().bio} ${p().availability}.`;
   const url = new URL(siteURL(path === '/' ? '/' : path + '/'), 'https://amitnahum18.github.io').href;
-  const image = new URL(siteURL('/assets/amit-portrait.jpeg'), 'https://amitnahum18.github.io').href;
+  const image = new URL(siteURL('/assets/amit-portrait-web.jpeg'), 'https://amitnahum18.github.io').href;
   const person = {'@type': 'Person', name: 'Amit Nahum', url: new URL(siteURL('/'), 'https://amitnahum18.github.io').href, jobTitle: 'Data Scientist', sameAs: Object.values(catalogue.profile.links)};
   const schema = item ? {'@context': 'https://schema.org', '@type': 'CreativeWork', name: item[language].title, description, url, author: person, keywords: item.topics.join(', '), isBasedOn: item.sources.map(source => source.url)} : path === '/lab' ? {'@context': 'https://schema.org', '@type': 'ItemList', name: title, url, itemListElement: catalogue.projects.map((entry, index) => ({'@type': 'ListItem', position: index + 1, name: entry[language].title, url: new URL(siteURL(`/work/${entry.slug}/`), 'https://amitnahum18.github.io').href}))} : {'@context': 'https://schema.org', ...person, description};
   return {title, description, url, image, schema};
@@ -262,7 +223,7 @@ function updateMetadata() {
   document.title = meta.title;
   document.querySelector('meta[name="description"]').content = meta.description;
   document.querySelector('link[rel="canonical"]').href = meta.url;
-  for (const [name, value] of Object.entries({'og:title': meta.title, 'og:description': meta.description, 'og:url': meta.url, 'og:image': meta.image, 'og:locale': language === 'he' ? 'he_IL' : 'en_US'})) document.querySelector(`meta[property="${name}"]`).content = value;
+  for (const [name, value] of Object.entries({'og:title': meta.title, 'og:description': meta.description, 'og:url': meta.url, 'og:image': meta.image, 'og:locale': 'en_US'})) document.querySelector(`meta[property="${name}"]`).content = value;
   for (const [name, value] of Object.entries({'twitter:title': meta.title, 'twitter:description': meta.description, 'twitter:image': meta.image})) document.querySelector(`meta[name="${name}"]`).content = value;
   document.querySelector('#structured-data').textContent = JSON.stringify(meta.schema).replace(/</g, '\\u003c');
 }
@@ -270,10 +231,10 @@ function updateMetadata() {
 function renderRoute({ preserveScroll = false } = {}) {
   const scroll = window.scrollY;
   document.documentElement.lang = language;
-  document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
+  document.documentElement.dir = 'ltr';
   document.querySelector('.skip-link').textContent = t().skip;
   const path = currentPath();
-  if (path === '/') { app.innerHTML = home(); document.title = `${language === 'he' ? 'עמית נחום' : 'Amit Nahum'} — Data Science & ML`; }
+  if (path === '/') { app.innerHTML = home(); document.title = `${'Amit Nahum'} — Data Science & ML`; }
   else if (path === '/lab') { app.innerHTML = lab(); document.title = `${t().lab} — Amit Nahum`; }
   else if (path.startsWith('/work/')) {
     const item = project(decodeURIComponent(path.slice(6)));
@@ -282,7 +243,10 @@ function renderRoute({ preserveScroll = false } = {}) {
   } else app.innerHTML = `${header()}<main id="main" class="wrap error-surface"><h1>${q(t().notFound)}</h1>${navLink('/', q(t().home), 'quiet-link')}</main>${footer()}`;
   updateMetadata();
   if (preserveScroll) window.scrollTo({ top: scroll, behavior: 'instant' });
-  else if (location.hash) requestAnimationFrame(() => document.getElementById(location.hash.slice(1))?.scrollIntoView());
+  else if (location.hash) requestAnimationFrame(() => {
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) { target.setAttribute('tabindex', '-1'); target.focus({preventScroll: true}); target.scrollIntoView(); }
+  });
   else window.scrollTo({top: 0, behavior: 'instant'});
 }
 
@@ -297,17 +261,6 @@ document.addEventListener('click', event => {
     filter.area = areaButton.dataset.area;
     document.querySelectorAll('[data-area]').forEach(button => button.setAttribute('aria-pressed', button.dataset.area === filter.area));
     updateLabResults();
-    return;
-  }
-  const toggle = event.target.closest('#language-toggle');
-  if (toggle) {
-    language = language === 'en' ? 'he' : 'en';
-    try { localStorage.setItem('amit-portfolio-language', language); } catch {}
-    const url = new URL(location.href);
-    if (language === 'he') url.searchParams.set('lang', 'he'); else url.searchParams.delete('lang');
-    history.replaceState({}, '', url);
-    renderRoute({preserveScroll: true});
-    document.querySelector('#language-toggle').focus({preventScroll: true});
     return;
   }
   if (event.target.closest('#menu-toggle')) {
@@ -341,11 +294,16 @@ document.addEventListener('change', event => {
 document.addEventListener('pointerdown', () => {
   document.documentElement.dataset.input = 'pointer';
 }, {capture: true});
-document.addEventListener('keydown', () => {
+document.addEventListener('keydown', event => {
   document.documentElement.dataset.input = 'keyboard';
+  if (event.key === 'Escape' && mobileMenuOpen) {
+    mobileMenuOpen = false;
+    document.querySelector('#site-nav').classList.remove('open');
+    document.querySelector('#menu-toggle').setAttribute('aria-expanded', 'false');
+    document.querySelector('#menu-toggle').focus({preventScroll: true});
+  }
 }, {capture: true});
 window.addEventListener('popstate', () => {
-  language = new URLSearchParams(location.search).get('lang') === 'he' ? 'he' : 'en';
   mobileMenuOpen = false;
   renderRoute();
 });

@@ -37,6 +37,9 @@ class Page(HTMLParser):
 canonicals = set()
 for path in pages:
     document = path.read_text(encoding='utf-8')
+    assert '<html lang="en" dir="ltr">' in document, path
+    assert not re.search('[\u0590-\u05ff]', document), f'Non-English UI: {path}'
+    assert 'language-toggle' not in document, path
     base = re.search(r'<base href="([^"]+)"', document).group(1)
     page = Page(); page.feed(document)
     assert page.h1 == 1 and page.main == 1, path
@@ -75,6 +78,9 @@ assert '81.97%' in homepage and 'state-grouped splits' in homepage
 assert 'Nahum Team placed 2nd / 694' in homepage
 assert 'case-context' not in homepage and 'MFCC' in homepage
 assert len(data['profile']['skills']) + len(data['profile']['agentSkills']) == 10
+assert 'Download CV' in homepage and 'View Projects' in homepage
+assert homepage.count('<dt>Problem</dt>') == homepage.count('<dt>Solution</dt>') == 5
+assert not re.search('[\u0590-\u05ff]', json.dumps(data, ensure_ascii=False))
 assert len(re.findall(r'class="lab-card"', pages[1].read_text(encoding='utf-8'))) == 19
 sitemap = ET.parse(root / 'sitemap.xml')
 assert {node.text for node in sitemap.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')} == canonicals
