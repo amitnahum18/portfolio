@@ -22,7 +22,7 @@ const text = {
     intro: "I'm Amit Nahum. I started with SQL and aviation safety data. Today, my work spans predictive models and offline AI systems. Now I'm beginning an M.Sc. at HIT and looking for my next role in data science and analysis.",
     explore: 'Explore the stories', portraitAlt: 'Portrait of Amit Nahum wearing a light suit', open: 'OPEN TO OPPORTUNITIES', role: 'Amit Nahum',
     degree: 'Beginning M.Sc. · Computer Science · HIT', tools: 'Python & SQL', thinking: 'Analysis, models & applied AI',
-    selected: '01 / THREE QUESTIONS, THREE STORIES', selectedTitle: 'It starts with<br><em>what if?</em>', selectedIntro: 'A fight to predict. A database to question. A passage to find. Here is how I approached each one.', all: 'View all work', nextQuestion: 'THE NEXT QUESTION',
+    selected: '01 / SELECTED WORK', selectedTitle: 'It starts with<br><em>what if?</em>', selectedIntro: 'Bridge vibrations to classify. A Kaggle challenge to solve. AI decisions to evaluate. Three projects that show how I build and assess models.', all: 'View all work', nextQuestion: 'THE NEXT QUESTION',
     journey: 'My path', journeyAnalysis: 'SQL & data analysis', journeyAI: 'Offline AI systems', journeyMSc: 'M.Sc. at HIT', journeyNow: 'Beginning in 2026',
     labEyebrow: '02 / KEEP EXPLORING', labTitle: 'Curiosity takes<br>different forms.', labIntro: 'Can a voice reveal emotion? Can meaning connect a story to a genre? The lab brings together more experiments, learning projects and prototypes.',
     labLink: 'Explore the lab', aboutEyebrow: '03 / ABOUT', aboutTitle: 'An analytical mind.<br>A practical approach.',
@@ -32,7 +32,7 @@ const text = {
     engineer: 'AI Engineer · IDF Reserve Duty', engineerSub: 'Offline inference with vLLM, LLM evaluation and anomaly-detection workflows.',
     analyst: 'Junior Data Analyst · IDF', analystSub: 'SQL analysis and statistical sampling of aviation safety data.',
     contactEyebrow: 'LET’S CONNECT', contactTitle: "Good questions<br>start a conversation.", footer: 'Amit Nahum · 2026', footerNote: 'Data Science · Analysis · AI',
-    labPageTitle: 'The lab & the work.', labPageIntro: 'Explore projects by topic or type. Each page shares the goal, approach, documented observations and what remains open.',
+    labPageTitle: 'The lab & the work.', labPageIntro: 'Start with ML pipelines, documented results and applied AI, then explore prototypes and learning projects. Filter by topic or type to find the work that interests you.',
     search: 'Search', searchPlaceholder: 'Try NLP, CatBoost, SQL…', topic: 'Topic', type: 'Type', allTopics: 'All topics', allTypes: 'All types',
     results: 'works', clear: 'Clear filters', noResults: 'No matching work', noResultsText: 'Try a different topic or a shorter search.',
     home: 'Home', goal: 'Question / goal', approach: 'Data & approach', observations: 'Evidence & observations', limitations: 'Scope & limitations', credits: 'Credits',
@@ -45,7 +45,7 @@ const text = {
     intro: 'אני עמית נחום. התחלתי בניתוח נתוני בטיחות תעופה באמצעות SQL. היום אני עוסק במודלים לחיזוי ובמערכות AI שפועלות ללא חיבור לרשת. עכשיו אני מתחיל תואר שני ב־HIT ומחפש את התפקיד הבא שלי במדע הנתונים ובניתוח נתונים.',
     explore: 'לסיפורים שמאחורי העבודות', portraitAlt: 'דיוקן של עמית נחום בחליפה בהירה', open: 'מחפש הזדמנויות חדשות', role: 'עמית נחום',
     degree: 'מתחיל תואר שני · מדעי המחשב · HIT', tools: 'Python ו־SQL', thinking: 'ניתוח, מודלים ו־AI יישומי',
-    selected: '01 / שלוש שאלות, שלושה סיפורים', selectedTitle: 'הכול מתחיל<br><em>ב״מה אם?״</em>', selectedIntro: 'קרב לחזות. מאגר נתונים לשאול. קטע במסמך למצוא. כך ניגשתי לכל אחד מהם.', all: 'לכל העבודות', nextQuestion: 'השאלה הבאה',
+    selected: '01 / עבודות נבחרות', selectedTitle: 'הכול מתחיל<br><em>ב״מה אם?״</em>', selectedIntro: 'רעידות גשר לסווג. אתגר Kaggle לפתור. החלטות AI להעריך. שלושה פרויקטים שמציגים איך אני בונה ובוחן מודלים.', all: 'לכל העבודות', nextQuestion: 'השאלה הבאה',
     journey: 'הדרך שלי', journeyAnalysis: 'SQL וניתוח נתונים', journeyAI: 'מערכות AI מקומיות', journeyMSc: 'תואר שני ב־HIT', journeyNow: 'מתחיל ב־2026',
     labEyebrow: '02 / ממשיכים לחקור', labTitle: 'לסקרנות יש<br>הרבה כיוונים.', labIntro: 'האם קול יכול להעיד על רגש? האם משמעות יכולה לחבר סיפור לז׳אנר? במעבדה מחכים עוד ניסויים, פרויקטי למידה ואבות־טיפוס.',
     labLink: 'למעבדה', aboutEyebrow: '03 / אודות', aboutTitle: 'חשיבה אנליטית.<br>גישה מעשית.',
@@ -55,7 +55,7 @@ const text = {
     engineer: 'AI Engineer · שירות מילואים בצה״ל', engineerSub: 'הסקה מקומית באמצעות vLLM, הערכת מודלי שפה ותהליכי זיהוי חריגות.',
     analyst: 'Junior Data Analyst · צה״ל', analystSub: 'ניתוח ב־SQL ודגימה סטטיסטית של נתוני בטיחות תעופה.',
     contactEyebrow: 'בואו נדבר', contactTitle: 'שאלות טובות<br>מתחילות בשיחה.', footer: 'עמית נחום · 2026', footerNote: 'מדע הנתונים · ניתוח · AI',
-    labPageTitle: 'המעבדה והעבודות.', labPageIntro: 'אפשר לחפש לפי תחום או סוג עבודה. בכל דף מוצגים המטרה, השיטה, הממצאים המתועדים והשאלות שנותרו פתוחות.',
+    labPageTitle: 'המעבדה והעבודות.', labPageIntro: 'מתחילים בתהליכי ML, בתוצאות מתועדות וב־AI יישומי, וממשיכים לאבות־טיפוס ולפרויקטי למידה. אפשר לסנן לפי תחום או סוג עבודה.',
     search: 'חיפוש', searchPlaceholder: 'למשל NLP, CatBoost, SQL…', topic: 'תחום', type: 'סוג עבודה', allTopics: 'כל התחומים', allTypes: 'כל הסוגים',
     results: 'עבודות', clear: 'ניקוי סינון', noResults: 'לא נמצאו עבודות מתאימות', noResultsText: 'אפשר לנסות תחום אחר או חיפוש קצר יותר.',
     home: 'ראשי', goal: 'מטרת הניסוי או הפרויקט', approach: 'נתונים ושיטה', observations: 'ממצאים מתועדים', limitations: 'היקף ומגבלות', credits: 'קרדיט',
@@ -67,7 +67,7 @@ const typeLabels = {
   experiment: ['Experiment', 'ניסוי'], prototype: ['Prototype', 'אב־טיפוס'],
   'take-home-assignment': ['Take-home assignment', 'תרגיל בית'], 'course-exercise': ['Course exercise', 'תרגיל קורס'], product: ['Product', 'פרויקט מוצר']
 };
-const topicLabels = { 'Tabular ML': 'למידה על נתונים טבלאיים', 'Data & SQL': 'נתונים ו־SQL', 'LLM Systems': 'מערכות מודלי שפה', 'Audio ML': 'למידת מכונה באודיו', NLP: 'עיבוד שפה', 'Computer Vision': 'ראייה ממוחשבת', Web: 'פיתוח Web', IoT: 'IoT', 'Data systems': 'מערכות נתונים', Audio: 'אודיו' };
+const topicLabels = { 'Tabular ML': 'למידה על נתונים טבלאיים', 'Data & SQL': 'נתונים ו־SQL', 'LLM Systems': 'מערכות מודלי שפה', 'Audio ML': 'למידת מכונה באודיו', NLP: 'עיבוד שפה', 'Computer Vision': 'ראייה ממוחשבת', Web: 'פיתוח Web', IoT: 'IoT', 'Data systems': 'מערכות נתונים', Audio: 'אודיו', 'Signal Processing': 'עיבוד אותות', 'ML Engineering': 'הנדסת למידת מכונה', Simulation: 'סימולציה', 'Model Evaluation': 'הערכת מודלים' };
 const t = () => text[language];
 const typeName = value => typeLabels[value]?.[language === 'he' ? 1 : 0] || value;
 const topicName = value => language === 'he' ? (topicLabels[value] || value) : value;
@@ -99,19 +99,19 @@ function footer() {
 
 const stories = [
   {
-    slug: 'ufc-prediction', visual: 'ufc', tags: ['Python', 'CatBoost', 'Feature engineering'],
-    en: {name: 'UFC Fight Prediction', title: 'The last fight.<br>Or the whole career?', lead: 'A fight ends in a moment. The data tells a much longer story.', body: 'I built features from the previous fight, the last three fights and career history to compare two fighters, then trained a CatBoost classifier. The experiment starts before the bell: how do you turn a history into a useful prediction?', next: 'Will the model hold up on fights that happen after its training period?', link: 'Read the experiment'},
-    he: {name: 'חיזוי קרבות UFC', title: 'הקרב האחרון.<br>או הקריירה כולה?', lead: 'קרב מסתיים ברגע. הנתונים מספרים סיפור ארוך בהרבה.', body: 'בניתי משתנים מהקרב הקודם, משלושת הקרבות האחרונים ומהיסטוריית הקריירה כדי להשוות בין שני לוחמים, ואימנתי מסווג CatBoost. הניסוי מתחיל עוד לפני הצלצול: איך הופכים היסטוריה לחיזוי שימושי?', next: 'האם המודל יתפקד היטב גם על קרבות שיתקיימו אחרי תקופת האימון שלו?', link: 'לסיפור המלא של הניסוי'}
+    slug: 'bridgepulse', visual: 'bridge', tags: ['Python', 'MFCC', 'Random Forest', 'Model evaluation'],
+    en: {name: 'BridgePulse', title: 'A bridge vibrates.<br>What does it reveal?', lead: 'Acceleration recordings carry clues about a bridge’s experimental condition.', body: 'I built a pipeline from 58 sensor channels to MFCC features and a Random Forest classifier, then packaged it for standalone prediction. State-grouped evaluation reports 81.97% mean balanced accuracy on a small, single-bridge dataset. The key question is how to evaluate beyond recordings the model has already seen.', next: 'Will these signal features generalize to new bridges and measurement conditions?', link: 'Explore the ML pipeline'},
+    he: {name: 'BridgePulse', title: 'הגשר רועד.<br>מה זה מגלה?', lead: 'הקלטות תאוצה נושאות רמזים על מצבו הניסויי של הגשר.', body: 'בניתי תהליך מ־58 ערוצי חיישנים למאפייני MFCC ולמסווג Random Forest, וארזתי אותו לחיזוי עצמאי. הערכה לפי קבוצות מצב מציגה דיוק מאוזן ממוצע של 81.97% בנתונים מצומצמים מגשר אחד. השאלה המרכזית היא כיצד להעריך מעבר להקלטות שהמודל כבר ראה.', next: 'האם מאפייני האות יכלילו לגשרים חדשים ולתנאי מדידה אחרים?', link: 'לתהליך למידת המכונה'}
   },
   {
-    slug: 'rafi-data-analyst-agent', visual: 'rafi', tags: ['FastAPI', 'DuckDB', 'n8n'],
-    en: {name: 'RAFI · Data Analyst Agent', title: 'Start with a question.<br>Find a way to the data.', lead: 'There is a gap between knowing what to ask and knowing which query to write.', body: 'RAFI explores that gap. I built tools for inspecting a database schema and running read-only SQL queries. The prototype sketches how a conversational AI workflow could use them to give a question a structured path to the data behind it.', next: 'How reliably can the full workflow answer unfamiliar questions across different datasets?', link: 'Explore the prototype'},
-    he: {name: 'RAFI · סוכן לניתוח נתונים', title: 'מתחילים בשאלה.<br>מוצאים דרך לנתונים.', lead: 'יש פער בין לדעת מה לשאול לבין לדעת איזו שאילתה לכתוב.', body: 'RAFI בוחן את הפער הזה. בניתי כלים לבדיקת מבנה מסד הנתונים ולהרצת שאילתות SQL לקריאה בלבד. אב־הטיפוס מתווה כיצד תהליך AI שיחתי יוכל להשתמש בהם ולתת לשאלה דרך מסודרת להגיע לנתונים שמאחוריה.', next: 'עד כמה התהליך כולו יוכל לענות באופן אמין על שאלות חדשות במאגרי נתונים שונים?', link: 'להעמקה באב־הטיפוס'}
+    slug: 'license-plate-pricing', visual: 'plates', tags: ['CatBoost', 'Feature engineering', 'SHAP', 'Kaggle · 2 / 694'],
+    en: {name: 'License Plate Pricing', title: 'Patterns in a plate.<br>Signals in a price.', lead: 'Nahum Team placed 2nd of 694 teams on the final private leaderboard.', body: 'The Kaggle community competition provides a concrete team achievement. My public notebook explores plate patterns, contextual features, CatBoost regression and SHAP interpretation. The notebook explains the method; it has not been matched to the exact ranked submission.', next: 'Which feature effects remain stable under leakage-safe validation?', link: 'See the project and result'},
+    he: {name: 'חיזוי מחירי לוחיות רישוי', title: 'דפוסים בלוחית.<br>סימנים במחיר.', lead: 'Nahum Team סיימה במקום השני מתוך 694 קבוצות בדירוג הסופי הפרטי.', body: 'התחרות הקהילתית ב־Kaggle מספקת הישג קבוצתי מתועד. המחברת הציבורית שלי בוחנת דפוסי לוחיות, משתני הקשר, רגרסיית CatBoost ופירוש באמצעות SHAP. המחברת ממחישה את השיטה; לא אומת שהיא זהה לקוד ההגשה המדורגת.', next: 'אילו השפעות של מאפיינים נשארות יציבות בהערכה שמונעת דליפת מידע?', link: 'לפרויקט ולתוצאה המתועדת'}
   },
   {
-    slug: 'document-indexing-and-retrieval', visual: 'retrieval', tags: ['Embeddings', 'PostgreSQL', 'pgvector'],
-    en: {name: 'Document Indexing & Retrieval', title: 'The right passage.<br>Different words.', lead: 'A relevant passage may never use the exact words in your search.', body: 'In this take-home assignment, I built a pipeline that extracts PDF and DOCX text, splits it into passages and searches by semantic similarity. Three chunking strategies make the way we divide a document part of the question.', next: 'Which chunking strategy retrieves the most useful passage for each kind of question?', link: 'Inside the retrieval workflow'},
-    he: {name: 'אינדוקס וחיפוש במסמכים', title: 'הקטע הנכון.<br>במילים אחרות.', lead: 'הקטע הרלוונטי עשוי לא להכיל אף אחת ממילות החיפוש המדויקות.', body: 'בתרגיל הבית הזה בניתי תהליך שמחלץ טקסט מ־PDF ומ־DOCX, מחלק אותו למקטעים ומחפש לפי דמיון במשמעות. שלוש שיטות חלוקה הופכות גם את הדרך שבה מחלקים את המסמך לחלק מהשאלה.', next: 'איזו שיטת חלוקה מחזירה את הקטע השימושי ביותר לכל סוג של שאלה?', link: 'לתהליך החיפוש המלא'}
+    slug: 'jev-decision-experiments', visual: 'jev', tags: ['Python', 'OpenRouter', 'PyFlyt', 'Evaluation & replay'],
+    en: {name: 'JEV · Decision Experiments', title: 'Give AI a choice.<br>Measure what follows.', lead: 'A model chooses an action. A simulation makes the consequences visible.', body: 'I built experiments around structured JEV decisions in flight, driving, chess and reasoning. Matched comparisons, saved traces and flight replay make prompt changes inspectable. The v8 flight policy passed all eight frames on three previously tested seeds: a useful exploratory result with a clear scope.', next: 'How will the policy perform on unseen courses under the same evaluation protocol?', link: 'Inside the decision experiments'},
+    he: {name: 'JEV · ניסויי החלטות', title: 'נותנים ל־AI לבחור.<br>מודדים מה קורה.', lead: 'המודל בוחר פעולה. הסימולציה מראה את ההשלכות.', body: 'בניתי ניסויים סביב החלטות JEV מובנות בטיסה, נהיגה, שחמט וחשיבה. השוואות בתנאים תואמים, תיעוד החלטות ושחזור טיסות מאפשרים לבחון שינויי הנחיה. מדיניות הטיסה v8 עברה את כל שמונה המסגרות בשלושה seeds שכבר נבדקו — תוצאה ניסויית עם היקף מוגדר.', next: 'איך תפעל המדיניות במסלולים שלא נבדקו, תחת אותו פרוטוקול הערכה?', link: 'לניסויי קבלת ההחלטות'}
   }
 ];
 
@@ -128,7 +128,7 @@ function journey() {
 
 function home() {
   const x = t();
-  const teaser = ['semantic-genre-matching', 'speech-emotion-recognition', 'lyftcode'];
+  const teaser = catalogue.projects.slice(stories.length, stories.length + 3).map(item => item.slug);
   return `${header()}<main id="main"><section class="hero"><div class="wrap hero-inner"><div class="hero-copy"><p class="eyebrow">${q(x.eyebrow)}</p><h1 class="hero-title">${x.heroTitle}</h1><p class="hero-description">${q(x.intro)}</p><div class="hero-buttons">${navLink('/#work', q(x.explore), 'button button-primary')}<a href="mailto:${q(catalogue.profile.email)}" class="button button-outline">${q(x.contact)}</a></div></div><div class="portrait-block"><div class="portrait"><img src="${q(siteURL('/assets/amit-portrait.jpeg'))}" alt="${q(x.portraitAlt)}" width="3413" height="5120" fetchpriority="high"></div><div class="portrait-caption"><span>${q(x.role)}</span><span>${q(x.open)}</span></div></div></div>${journey()}</section>
     <section id="work" class="section stories-section wrap"><div class="section-heading"><div><p class="eyebrow">${q(x.selected)}</p><h2 class="display-title">${x.selectedTitle}</h2></div><p class="section-intro">${q(x.selectedIntro)}</p></div><div class="stories">${stories.map(storyChapter).join('')}</div><div class="all-work-link">${navLink('/lab', q(x.all), 'quiet-link')}<span>${catalogue.projects.length} ${q(x.results)}</span></div></section>
     <section class="lab-teaser"><div class="wrap lab-teaser-inner"><div><p class="eyebrow">${q(x.labEyebrow)}</p><h2 class="display-title">${x.labTitle}</h2><p>${q(x.labIntro)}</p></div><div class="lab-preview">${teaser.map(slug => {const item = project(slug); return navLink(`/work/${slug}`, `<span>${q(item[language].title)}</span><span>${q(typeName(item.type))}</span>`);}).join('')}${navLink('/lab', q(x.labLink), 'quiet-link')}</div></div></section>

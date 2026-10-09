@@ -1,7 +1,11 @@
 # Amit Nahum — Data Science & Analysis
 
-Personal portfolio with English and Hebrew content, 17 projects, visual previews,
+Personal portfolio with English and Hebrew content, 19 projects, visual previews,
 project stories, and filters by topic and project type.
+
+Selected work highlights BridgePulse, the license-plate pricing Kaggle result,
+and JEV decision experiments. The collection starts with ML pipelines, documented
+achievements and applied AI, followed by prototypes and learning projects.
 
 Website: https://amitnahum18.github.io/portfolio/
 

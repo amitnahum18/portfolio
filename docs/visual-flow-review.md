@@ -1,11 +1,13 @@
 # Project visual review
 
 Reviewed against public source and existing saved artifacts on 2026-10-09.
-The 10 flow diagrams explain source code. They are not screenshots or execution results.
+The 12 flow diagrams explain source code. They are not screenshots or execution results.
 The other seven previews use source images or plots of saved source data.
 
 | Project | Verified preview / flow | Review outcome |
 | --- | --- | --- |
+| [BridgePulse](https://github.com/amitnahum18/BridgePulse) | 29 sensors / 58 acceleration channels → 1,392 MFCC summaries → Random Forest baseline/damage classification | Matches the packaged model card and final pipeline audit. Saved 81.97% balanced accuracy uses state-grouped evaluation; one bridge, no untouched final test. |
+| [JEV decisions](https://github.com/amitnahum18/JEV_try) | Structured state → explicit JEV action choice via OpenRouter → recorded outcome / replay / comparison | Matches the typed-choice client and flight runner. Saved v8 8/8 results cover three reused seeds; simulation and small-sample scope remain explicit. |
 | [UFC prediction](https://github.com/amitnahum18/UFC_predict) | Previous fight, last three fights and career history → comparative features → CatBoost | Matches training and inference code; no Kaggle ranking claimed. |
 | [RAFI](https://github.com/amitnahum18/Data_Analyst_Agent) | FastAPI query/schema endpoints → read-only DuckDB → results | Depicts implemented tools; does not claim that the planned conversational workflow is connected. |
 | [License plate pricing](https://github.com/amitnahum18/car-plate-prediction) | Existing saved SHAP beeswarm | Explains notebook features. Separate team leaderboard result does not establish that this notebook was the winning submission. |
