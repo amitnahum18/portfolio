@@ -328,7 +328,7 @@ window.addEventListener('popstate', () => {
 });
 
 try {
-  const response = await fetch(siteURL('/data/portfolio.json'));
+  const response = await fetch(siteURL('/data/portfolio.json') + new URL(import.meta.url).search);
   if (!response.ok) throw new Error(`Data response ${response.status}`);
   catalogue = await response.json();
   renderRoute();

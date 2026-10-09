@@ -8,3 +8,4 @@ The portfolio remains English-only, following the user's explicit language prefe
 - Draft and Demo move out of two project titles into separate maturity badges. The voice/screen experiment also receives a Prototype badge. Existing Prototype project types remain visible. Routes are unchanged.
 - The static-page and interaction checks cover English-only output, 19 collection cards, hidden advanced controls, combined topic/type filters, active-filter counts, restoring all projects, menu keyboard behavior, outcome labels, maturity badges, internal assets/links, metadata and original project limitations.
 - GitHub Actions measures the homepage and Lab separately on simulated mobile and desktop using Lighthouse, including accessibility and SEO. These are lab measurements rather than real-user field data.
+- The public catalogue request uses the application's version query so returning visitors receive the matching project names and outcome fields after deployment.
