@@ -478,6 +478,9 @@ button { user-select: none; -webkit-user-select: none; }
 .agent-card .case-result { font-size: .8125rem; font-weight: 500; }
 .agent-card .case-outcome { padding-block: .75rem; }
 .agent-card .case-outcome .eyebrow { display: none; }
+.case-image.image-illustration img, .lab-card-image.image-illustration img { object-fit: cover; padding: 0; }
+.primary-case-grid > .case-card:first-child .case-image.image-illustration img { height: 100%; object-fit: cover; }
+.project-figure.figure-illustration img { display: block; height: auto; padding: 0; }
 .case-card-body { display: flex; flex-direction: column; }
 .case-actions { margin-top: auto; padding-top: .8rem; }
 .case-image, .lab-card-image { user-select: none; }

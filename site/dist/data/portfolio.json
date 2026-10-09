@@ -94,6 +94,20 @@
           "en": "/assets/projects/bridgepulse-en-card.svg"
         }
       },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/bridgepulse-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardSources": {
+          "en": "/assets/projects/bridgepulse-cover-v1-card.jpg"
+        },
+        "cardHeight": 427,
+        "en": {
+          "alt": "AI-generated concept illustration of an instrumented truss bridge with blue vibration signals.",
+          "caption": "AI-generated concept illustration of BridgePulse: bridge vibrations and signal features."
+        }
+      },
       "caseStudy": {
         "tools": [
           "Python",
@@ -385,6 +399,20 @@
         },
         "cardSources": {
           "en": "/assets/projects/jev-decision-experiments-en-card.svg"
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/jev-decision-experiments-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardSources": {
+          "en": "/assets/projects/jev-decision-experiments-cover-v1-card.jpg"
+        },
+        "cardHeight": 427,
+        "en": {
+          "alt": "AI-generated concept illustration of a simulated aircraft following a decision path through flight gates.",
+          "caption": "AI-generated concept illustration of JEV: constrained decisions in a flight simulation."
         }
       },
       "caseStudy": {

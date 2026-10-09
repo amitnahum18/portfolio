@@ -50,12 +50,14 @@ for project in data['projects']:
     slug = project['slug']
     if not re.fullmatch(r'[a-z0-9-]+', slug):
         raise SystemExit('Unsafe project slug.')
-    image = project['image']
-    paths = [image['src']] if 'src' in image else []
-    for group in ['sources', 'mobileSources', 'cardSources']:
-        paths += list(image.get(group, {}).values())
-    for path in paths:
-        if not (output / path.lstrip('/')).is_file():
-            raise SystemExit('Missing project image: ' + path)
+    for image in [project['image'], project.get('coverImage')]:
+        if not image:
+            continue
+        paths = [image['src']] if 'src' in image else []
+        for group in ['sources', 'mobileSources', 'cardSources']:
+            paths += list(image.get(group, {}).values())
+        for path in paths:
+            if not (output / path.lstrip('/')).is_file():
+                raise SystemExit('Missing project image: ' + path)
 (output / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + '\n'.join('<url><loc>' + html.escape(url) + '</loc></url>' for url in urls) + '\n</urlset>\n', encoding='utf-8')
 print(f'Prerendered home, lab and {len(data["projects"])} project pages with metadata and sitemap at {base}')

@@ -120,7 +120,7 @@ function caseCard(item, index, compact = false) {
   const x = p();
   const code = item.sources.find(link => link.label === 'GitHub');
   return `<article class="case-card${compact ? ' agent-card' : ''}">
-    ${compact ? '' : `<a data-nav href="${q(projectURL(item))}" class="case-image image-${q(item.image.kind)}" aria-label="${q(copy.title)}">${projectPicture(item, 'card')}</a>`}
+    ${compact && !item.coverImage ? '' : `<a data-nav href="${q(projectURL(item))}" class="case-image image-${q(item.coverImage?.kind || item.image.kind)}" aria-label="${q(copy.title)}">${projectPicture(item, 'card')}</a>`}
     <div class="case-card-body"><div class="case-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div>
     <h3>${navLink(`/work/${item.slug}`, q(copy.title))}</h3><dl class="case-story"><div><dt>Problem</dt><dd>${q(copy.problem)}</dd></div><div><dt>Solution</dt><dd>${q(copy.solution)}</dd></div></dl>
     <div class="case-outcome"><p class="eyebrow">Result / deliverable</p><p class="case-result" dir="auto">${q(copy.cardResult || copy.result)}</p></div>
@@ -174,7 +174,7 @@ function labCards() {
   return projectAreas.map(area => {
     const group = items.filter(item => item.area === area);
     if (!group.length) return '';
-    return `<section class="lab-group" aria-labelledby="group-${q(area)}"><div class="lab-group-heading"><h2 id="group-${q(area)}">${q(areaName(area))} <span>${group.length}</span></h2><p>${q(areaIntro(area))}</p></div><div class="lab-grid">${group.map((item, index) => `<a data-nav href="${q(projectURL(item))}" class="lab-card"><div class="lab-card-image image-${q(item.image.kind)}">${projectPicture(item, 'card')}</div><div class="lab-card-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div><h3>${q(item[language].title)}</h3><p>${q(item[language].summary)}</p><div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></a>`).join('')}</div></section>`;
+    return `<section class="lab-group" aria-labelledby="group-${q(area)}"><div class="lab-group-heading"><h2 id="group-${q(area)}">${q(areaName(area))} <span>${group.length}</span></h2><p>${q(areaIntro(area))}</p></div><div class="lab-grid">${group.map((item, index) => `<a data-nav href="${q(projectURL(item))}" class="lab-card"><div class="lab-card-image image-${q(item.coverImage?.kind || item.image.kind)}">${projectPicture(item, 'card')}</div><div class="lab-card-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div><h3>${q(item[language].title)}</h3><p>${q(item[language].summary)}</p><div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></a>`).join('')}</div></section>`;
   }).join('');
 }
 
@@ -187,19 +187,21 @@ function lab() {
 
 function projectPicture(item, compact = false) {
   if (!item.image) return '';
-  const visual = item.image;
+  const visual = compact === 'card' && item.coverImage ? item.coverImage : item.image;
   const copy = visual[language];
   const isCard = compact === 'card' && visual.cardSources;
   const src = siteURL((isCard ? visual.cardSources[language] : visual.sources?.[language]) || visual.src);
   const width = isCard ? 640 : visual.width;
-  const height = isCard ? 280 : visual.height;
+  const height = isCard ? (visual.cardHeight || 280) : visual.height;
   const mobile = !compact && visual.mobileSources?.[language] ? siteURL(visual.mobileSources[language]) : null;
   return `<picture>${mobile ? `<source media="(max-width: 760px)" srcset="${q(mobile)}" width="${visual.mobileWidth}" height="${visual.mobileHeight}">` : ''}<img src="${q(src)}" alt="${q(copy.alt)}" width="${width}" height="${height}" decoding="async" loading="lazy"></picture>`;
 }
 
 function projectImage(item) {
   if (!item.image) return '';
-  return `<figure class="project-figure figure-${q(item.image.kind)}">${projectPicture(item)}<figcaption>${q(item.image[language].caption)}</figcaption></figure>`;
+  const cover = item.coverImage;
+  const illustration = cover ? `<figure class="project-figure figure-illustration"><img src="${q(siteURL(cover.src))}" alt="${q(cover[language].alt)}" width="${cover.width}" height="${cover.height}" decoding="async" loading="lazy"><figcaption>${q(cover[language].caption)}</figcaption></figure>` : '';
+  return illustration + `<figure class="project-figure figure-${q(item.image.kind)}">${projectPicture(item)}<figcaption>${q(item.image[language].caption)}</figcaption></figure>`;
 }
 
 function detail(item) {
@@ -215,7 +217,7 @@ function pageMetadata(path = currentPath()) {
   const title = item ? `${item[language].title} — Amit Nahum` : path === '/lab' ? `${t().lab} — Amit Nahum` : `${catalogue.profile.name[language]} — Data Scientist | ML & Applied AI`;
   const description = item ? item[language].summary : path === '/lab' ? t().labPageIntro : `${p().bio} ${p().availability}.`;
   const url = new URL(siteURL(path === '/' ? '/' : path + '/'), 'https://amitnahum18.github.io').href;
-  const image = new URL(siteURL('/assets/amit-portrait-web.jpeg'), 'https://amitnahum18.github.io').href;
+  const image = new URL(siteURL(item?.coverImage?.src || '/assets/amit-portrait-web.jpeg'), 'https://amitnahum18.github.io').href;
   const person = {'@type': 'Person', name: 'Amit Nahum', url: new URL(siteURL('/'), 'https://amitnahum18.github.io').href, jobTitle: 'Data Scientist', sameAs: Object.values(catalogue.profile.links)};
   const schema = item ? {'@context': 'https://schema.org', '@type': 'CreativeWork', name: item[language].title, description, url, author: person, keywords: item.topics.join(', '), isBasedOn: item.sources.map(source => source.url)} : path === '/lab' ? {'@context': 'https://schema.org', '@type': 'ItemList', name: title, url, itemListElement: catalogue.projects.map((entry, index) => ({'@type': 'ListItem', position: index + 1, name: entry[language].title, url: new URL(siteURL(`/work/${entry.slug}/`), 'https://amitnahum18.github.io').href}))} : {'@context': 'https://schema.org', ...person, description};
   return {title, description, url, image, schema};
