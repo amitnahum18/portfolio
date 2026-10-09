@@ -177,6 +177,20 @@
           "alt": "SHAP plot showing the impact of license-plate features on the model."
         }
       },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/license-plate-pricing-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/license-plate-pricing-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of a license plate and geometric features used in price modeling.",
+          "caption": "AI-generated concept illustration: license-plate patterns, engineered features and price modeling."
+        }
+      },
       "caseStudy": {
         "tools": [
           "Python",
@@ -252,6 +266,20 @@
           "en": "/assets/projects/ufc-prediction-en-card.svg"
         }
       },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/ufc-prediction-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/ufc-prediction-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of two MMA gloves with historical feature blocks.",
+          "caption": "AI-generated concept illustration: fighter comparisons and historical features for fight-outcome modeling."
+        }
+      },
       "caseStudy": {
         "tools": [
           "Python",
@@ -312,6 +340,20 @@
         "en": {
           "caption": "Model-year distribution from the repository dataset.",
           "alt": "Histogram of car model years in the repository dataset."
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/car-price-prediction-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/car-price-prediction-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of a car connected to structured feature tiles.",
+          "caption": "AI-generated concept illustration: structured car features and regression-based price estimation."
         }
       },
       "caseStudy": {
@@ -490,6 +532,20 @@
           "en": "/assets/projects/document-indexing-and-retrieval-en-card.svg"
         }
       },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/document-indexing-and-retrieval-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/document-indexing-and-retrieval-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of document fragments linked to a searchable vector cluster.",
+          "caption": "AI-generated concept illustration: document chunking, embeddings and semantic retrieval."
+        }
+      },
       "caseStudy": {
         "tools": [
           "Python",
@@ -611,6 +667,20 @@
         "cardSources": {
           "en": "/assets/projects/zapi-electronics-tutor-en-card.svg"
         }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/zapi-electronics-tutor-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/zapi-electronics-tutor-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of a breadboard and linked circuit and code context.",
+          "caption": "AI-generated concept illustration: circuit and code context for an electronics-tutoring prototype."
+        }
       }
     },
     {
@@ -655,6 +725,20 @@
         "en": {
           "caption": "Saved simulated moisture readings from the repository database.",
           "alt": "Simulated soil-moisture chart generated from 1,296 saved database records."
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/simulated-irrigation-monitoring-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/simulated-irrigation-monitoring-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of simulated soil moisture readings flowing into stored data.",
+          "caption": "AI-generated concept illustration: simulated moisture telemetry, stored readings and monitoring."
         }
       }
     },
@@ -710,6 +794,20 @@
         },
         "cardSources": {
           "en": "/assets/projects/rafi-data-analyst-agent-en-card.svg"
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/rafi-data-analyst-agent-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/rafi-data-analyst-agent-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of a query card connected to database tools and an analytical result.",
+          "caption": "AI-generated concept illustration: natural-language queries, database tools and an analyst-agent prototype."
         }
       },
       "caseStudy": {
@@ -784,6 +882,20 @@
         },
         "cardSources": {
           "en": "/assets/projects/customer-support-agent-workflow-en-card.svg"
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/customer-support-agent-workflow-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/customer-support-agent-workflow-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of a support message routed through workflow nodes and database and email tools.",
+          "caption": "AI-generated concept illustration: support-task routing, database access and response tools."
         }
       },
       "caseStudy": {
@@ -901,6 +1013,20 @@
         "cardSources": {
           "en": "/assets/projects/ai-human-text-classification-en-card.svg"
         }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/ai-human-text-classification-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/ai-human-text-classification-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of documents passing through a text classification prism.",
+          "caption": "AI-generated concept illustration: text vectorization and candidate AI-versus-human classifications."
+        }
       }
     },
     {
@@ -955,6 +1081,20 @@
         },
         "cardSources": {
           "en": "/assets/projects/semantic-genre-matching-en-card.svg"
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/semantic-genre-matching-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/semantic-genre-matching-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of books and a summary linked to semantic genre candidates.",
+          "caption": "AI-generated concept illustration: summary embeddings and semantic similarity to candidate book genres."
         }
       }
     },
@@ -1011,6 +1151,20 @@
         },
         "cardSources": {
           "en": "/assets/projects/speech-emotion-recognition-en-card.svg"
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/speech-emotion-recognition-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/speech-emotion-recognition-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of a microphone, speech waveform and spectral features.",
+          "caption": "AI-generated concept illustration: speech signals, MFCC-style features and emotion-classification candidates."
         }
       }
     },
@@ -1211,6 +1365,20 @@
         },
         "cardSources": {
           "en": "/assets/projects/vehicle-detection-distance-estimation-en-card.svg"
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/vehicle-detection-distance-estimation-cover-v1.jpg",
+        "width": 1200,
+        "height": 800,
+        "cardHeight": 427,
+        "cardSources": {
+          "en": "/assets/projects/vehicle-detection-distance-estimation-cover-v1-card.webp"
+        },
+        "en": {
+          "alt": "AI-generated concept illustration of a camera, a vehicle bounding frame and perspective distance rays.",
+          "caption": "AI-generated concept illustration: vehicle detection and approximate camera-distance geometry."
         }
       }
     }
