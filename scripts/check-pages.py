@@ -60,7 +60,7 @@ for path in pages:
         assert parsed.path.startswith(base), (path, link)
         target = root / unquote(parsed.path.removeprefix(base))
         assert target.is_file() or (target / 'index.html').is_file(), (path, link)
-    if '/work/' in path.as_posix():
+    if path.relative_to(root).parts[0] == 'work':
         project = next(p for p in data['projects'] if p['slug'] == path.parent.name)
         decoded = html.unescape(document)
         assert project['en']['goal'] in decoded, path
