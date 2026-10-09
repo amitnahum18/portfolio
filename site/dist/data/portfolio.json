@@ -21,6 +21,15 @@
       "scikit-learn",
       "CatBoost",
       "Anomaly Detection"
+    ],
+    "agentSkills": [
+      "FastAPI",
+      "DuckDB",
+      "n8n",
+      "Docker",
+      "vLLM",
+      "Hugging Face",
+      "Semantic Retrieval"
     ]
   },
   "projects": [
@@ -95,6 +104,8 @@
           "חילוץ MFCC והסיווג משתמשים בכלים מוכרים לעיבוד אותות וב־scikit-learn."
         ]
       },
+      "area": "data-science",
+      "featured": true,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -204,6 +215,8 @@
           "המחברת נותנת קרדיט למשתמשי Kaggle Solomon Andryushenko (lumium) ו-liangkaixin על הנדסת פיצ'רים וקוד AutoGluon."
         ]
       },
+      "area": "data-science",
+      "featured": true,
       "image": {
         "src": "/assets/projects/license-plate-pricing.png",
         "kind": "saved-plot",
@@ -296,6 +309,8 @@
           "README מציין scraper חיצוני של Greco1899 כמקור נתונים."
         ]
       },
+      "area": "data-science",
+      "featured": true,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -396,6 +411,8 @@
         ],
         "credits": []
       },
+      "area": "data-science",
+      "featured": true,
       "image": {
         "src": "/assets/projects/car-price-prediction.png",
         "kind": "saved-data",
@@ -508,6 +525,8 @@
           "שימוש במודל JEV וב־API של OpenRouter, ב־PyFlyt לסימולציית טיסה וב־Maia וב־Stockfish כיריבי שחמט."
         ]
       },
+      "area": "agents",
+      "featured": true,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -613,6 +632,8 @@
           "המאגר מזהה את העבודה כתרגיל בית של Jeen."
         ]
       },
+      "area": "agents",
+      "featured": true,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -719,6 +740,8 @@
         ],
         "credits": []
       },
+      "area": "agents",
+      "featured": false,
       "image": {
         "src": "/assets/projects/lyftcode.png",
         "kind": "screenshot",
@@ -782,6 +805,8 @@
         ],
         "credits": []
       },
+      "area": "agents",
+      "featured": false,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -860,6 +885,8 @@
         ],
         "credits": []
       },
+      "area": "data-science",
+      "featured": false,
       "image": {
         "src": "/assets/projects/simulated-irrigation-monitoring.png",
         "kind": "saved-data",
@@ -925,6 +952,8 @@
         ],
         "credits": []
       },
+      "area": "agents",
+      "featured": true,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -950,6 +979,32 @@
         "cardSources": {
           "en": "/assets/projects/rafi-data-analyst-agent-en-card.svg",
           "he": "/assets/projects/rafi-data-analyst-agent-he-card.svg"
+        }
+      },
+      "caseStudy": {
+        "tools": [
+          "FastAPI",
+          "DuckDB",
+          "SQL",
+          "n8n"
+        ],
+        "en": {
+          "title": "RAFI: Data Analyst Agent",
+          "summary": "An analyst-agent prototype connecting natural-language workflows with SQL query and schema tools.",
+          "data": "Database schema and query results from DuckDB",
+          "method": "FastAPI query/schema tools and conversational workflow scaffolding",
+          "result": "Read-only SQL tool API",
+          "context": "Prototype; full chat/upload integration needs alignment.",
+          "evaluation": "Reviewed source code; end-to-end workflow was not executed."
+        },
+        "he": {
+          "title": "RAFI: סוכן לניתוח נתונים",
+          "summary": "אב-טיפוס של סוכן אנליסט המחבר תהליכים בשפה טבעית לכלי שאילתות SQL ולבדיקת סכמת נתונים.",
+          "data": "???? ??? ?????? ??????? ??????? ??DuckDB",
+          "method": "??? FastAPI ???????? ?????? ?????? ?????? ????",
+          "result": "API ???? SQL ?????? ????",
+          "context": "????????; ????? ????? ??????? ???? ???? ?????.",
+          "evaluation": "????? ??? ????; ?????? ???? ?? ????."
         }
       }
     },
@@ -1007,6 +1062,8 @@
           "נוצר כתרגיל בית של Jeen."
         ]
       },
+      "area": "agents",
+      "featured": true,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1032,6 +1089,32 @@
         "cardSources": {
           "en": "/assets/projects/customer-support-agent-workflow-en-card.svg",
           "he": "/assets/projects/customer-support-agent-workflow-he-card.svg"
+        }
+      },
+      "caseStudy": {
+        "tools": [
+          "Langflow",
+          "Python",
+          "PostgreSQL",
+          "SQLAlchemy"
+        ],
+        "en": {
+          "title": "Customer Support Agent Workflow",
+          "summary": "A Langflow assignment connecting orchestration, analysis and response agents with SQL and email tools.",
+          "data": "Support requests and SQL-accessible structured data",
+          "method": "Boolean routing between orchestration, analysis and response agents",
+          "result": "Multi-agent routing + SQL tools",
+          "context": "Take-home assignment with workflow and custom components.",
+          "evaluation": "Test scenarios and test files are included; tests and end-to-end behavior were not verified."
+        },
+        "he": {
+          "title": "תהליך סוכנים לתמיכת לקוחות",
+          "summary": "תרגיל Langflow המחבר סוכני תיאום, ניתוח ומענה עם כלי SQL ודואר אלקטרוני.",
+          "data": "????? ????? ??????? ?????? ??????? ??? SQL",
+          "method": "????? ??????? ??? ????? ?????, ????? ?????",
+          "result": "????? ??? ?????? ???? SQL",
+          "context": "????? ??? ?? ????? ????? ??????? ???????.",
+          "evaluation": "?????? ?????? ????? ?????? ??????; ??????? ??????? ???? ?? ?????."
         }
       }
     },
@@ -1086,6 +1169,8 @@
           "שימוש במודל Ultralytics YOLOv8n מאומן מראש; הנתונים מוזכרים באמצעות נתיב Kaggle במחברת."
         ]
       },
+      "area": "data-science",
+      "featured": false,
       "image": {
         "src": "/assets/projects/military-vehicle-object-detection.png",
         "kind": "saved-plot",
@@ -1149,6 +1234,8 @@
         ],
         "credits": []
       },
+      "area": "data-science",
+      "featured": false,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1228,6 +1315,8 @@
           "שימוש במודל מאומן מראש של SentenceTransformers: paraphrase-multilingual-MiniLM-L12-v2."
         ]
       },
+      "area": "data-science",
+      "featured": false,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1309,6 +1398,8 @@
           "נתוני האודיו מזוהים כ-Toronto Emotional Speech Set (TESS)."
         ]
       },
+      "area": "data-science",
+      "featured": false,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1388,6 +1479,8 @@
           "שימוש ב-Ultralytics YOLO לצורך חיזוי."
         ]
       },
+      "area": "data-science",
+      "featured": false,
       "image": {
         "src": "/assets/projects/xray-object-detection.png",
         "kind": "prediction",
@@ -1453,6 +1546,8 @@
         ],
         "credits": []
       },
+      "area": "other",
+      "featured": false,
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1532,6 +1627,8 @@
           "נוצר כתרגיל בית של Jeen. ISSTA משמשת כתרחיש לתרגיל, ולא כלקוח בפרויקט."
         ]
       },
+      "area": "agents",
+      "featured": false,
       "image": {
         "src": "/assets/projects/travel-services-prompt-design.png",
         "kind": "screenshot",
@@ -1598,6 +1695,8 @@
           "שימוש במודל Ultralytics YOLOv8n מאומן מראש."
         ]
       },
+      "area": "data-science",
+      "featured": false,
       "image": {
         "kind": "diagram",
         "width": 1200,

@@ -3,12 +3,16 @@
 Personal portfolio with English and Hebrew content, 19 projects, visual previews,
 project stories, and filters by topic and project type.
 
-The home page pairs a compact professional profile with six project case studies,
-prioritizing Data Scientist / ML roles: BridgePulse, license-plate pricing, UFC
-prediction, car-price regression, JEV evaluation and semantic retrieval.
+The home page pairs a compact professional profile with two project collections.
+Data Science / ML is the primary focus, featuring BridgePulse, license-plate
+pricing, UFC prediction and car-price regression. AI Agents / LLM Systems is
+the complementary collection, featuring JEV, semantic retrieval, RAFI and the
+customer-support agent workflow.
 Each card includes a result or deliverable with its evaluation context, tools,
 and direct links to the case study and code. Project pages summarize the data,
-method, result and evaluation before the full write-up.
+method, result and evaluation before the full write-up. The full catalogue groups
+projects by area and combines area, topic, type and search filters. Supporting
+browser experiments remain accessible in a small additional group.
 
 The profile-and-project-gallery structure takes inspiration from
 https://www.datascienceportfol.io/juliejlai and its project collection.

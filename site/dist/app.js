@@ -13,7 +13,7 @@ if (!params.has('lang')) {
   try { if (localStorage.getItem('amit-portfolio-language') === 'he') language = 'he'; } catch {}
 }
 let catalogue;
-const filter = { search: '', topic: '', type: '' };
+const filter = { search: '', topic: '', type: '', area: '' };
 let mobileMenuOpen = false;
 const text = {
   en: {
@@ -32,7 +32,7 @@ const text = {
     engineer: 'AI Engineer · IDF Reserve Duty', engineerSub: 'Offline inference with vLLM, LLM evaluation and anomaly-detection workflows.',
     analyst: 'Junior Data Analyst · IDF', analystSub: 'SQL analysis and statistical sampling of aviation safety data.',
     contactEyebrow: 'LET’S CONNECT', contactTitle: "Let’s talk about<br>your next data challenge.", footer: 'Amit Nahum · 2026', footerNote: 'Data Science · Analysis · AI',
-    labPageTitle: 'All projects.', labPageIntro: 'Start with ML pipelines, documented results and applied AI, then explore prototypes and learning projects. Filter by topic or type to find the work that interests you.',
+    labPageTitle: 'All projects.', labPageIntro: 'Data Science and ML are my primary focus. AI agents and LLM systems form a separate collection. Explore either area, then narrow by topic or project type.',
     search: 'Search', searchPlaceholder: 'Try NLP, CatBoost, SQL…', topic: 'Topic', type: 'Type', allTopics: 'All topics', allTypes: 'All types',
     results: 'works', clear: 'Clear filters', noResults: 'No matching work', noResultsText: 'Try a different topic or a shorter search.',
     home: 'Home', goal: 'Question / goal', approach: 'Data & approach', observations: 'Evidence & observations', limitations: 'Scope & limitations', credits: 'Credits',
@@ -55,7 +55,7 @@ const text = {
     engineer: 'AI Engineer · שירות מילואים בצה״ל', engineerSub: 'הסקה מקומית באמצעות vLLM, הערכת מודלי שפה ותהליכי זיהוי חריגות.',
     analyst: 'Junior Data Analyst · צה״ל', analystSub: 'ניתוח ב־SQL ודגימה סטטיסטית של נתוני בטיחות תעופה.',
     contactEyebrow: 'בואו נדבר', contactTitle: 'בואו נדבר על<br>אתגר הדאטה הבא.', footer: 'עמית נחום · 2026', footerNote: 'מדע הנתונים · ניתוח · AI',
-    labPageTitle: 'כל הפרויקטים.', labPageIntro: 'מתחילים בתהליכי ML, בתוצאות מתועדות וב־AI יישומי, וממשיכים לאבות־טיפוס ולפרויקטי למידה. אפשר לסנן לפי תחום או סוג עבודה.',
+    labPageTitle: 'כל הפרויקטים.', labPageIntro: 'דאטה סיינס ולמידת מכונה הם התחום המרכזי שלי. סוכני AI ומערכות LLM מוצגים בקבוצה נפרדת. אפשר לבחור נושא ולהמשיך לסנן לפי תחום או סוג עבודה.',
     search: 'חיפוש', searchPlaceholder: 'למשל NLP, CatBoost, SQL…', topic: 'תחום', type: 'סוג עבודה', allTopics: 'כל התחומים', allTypes: 'כל הסוגים',
     results: 'עבודות', clear: 'ניקוי סינון', noResults: 'לא נמצאו עבודות מתאימות', noResultsText: 'אפשר לנסות תחום אחר או חיפוש קצר יותר.',
     home: 'ראשי', goal: 'מטרת הניסוי או הפרויקט', approach: 'נתונים ושיטה', observations: 'ממצאים מתועדים', limitations: 'היקף ומגבלות', credits: 'קרדיט',
@@ -100,12 +100,15 @@ function footer() {
 const presentation = {
   en: {
     role: 'Data Science & Machine Learning',
-    bio: 'I build predictive models and evaluate how well they generalize. My background combines SQL analysis of aviation safety data with Python, machine learning and applied AI.',
+    bio: 'My main focus is predictive modeling, data analysis and model evaluation. Alongside machine learning, I build AI agent workflows and tools for working with structured data and documents.',
     availability: 'Open to Data Scientist / ML roles',
     education: 'Beginning an M.Sc. in Computer Science at HIT',
-    skills: 'Core skills', connect: 'Get in touch',
-    selected: 'SELECTED PROJECTS', title: 'Machine learning.<br>From data to evaluation.',
-    intro: 'Six projects covering signal processing, tabular prediction, model evaluation and semantic retrieval. Each case study explains the question, the data, the method and the evidence.',
+    skills: 'Data Science / ML skills', agentSkills: 'Agents & AI systems', connect: 'Get in touch',
+    selected: 'PRIMARY FOCUS', title: 'Data Science & ML',
+    intro: 'Signal processing, predictive modeling and feature engineering, with explicit evaluation methods and documented results.',
+    agentsEyebrow: 'ALSO WORKING ON', agentsTitle: 'AI Agents & LLM Systems',
+    agentsIntro: 'Decision-making agents, SQL tools, workflow orchestration and retrieval infrastructure for AI applications.',
+    otherTitle: 'Other experiments', otherIntro: 'Supporting interface and browser experiments.', allAreas: 'All areas',
     read: 'View case study', result: 'RESULT / DELIVERABLE',
     all: 'Explore all projects', allIntro: 'More applied AI, prototypes and learning experiments, with topic and type filters.',
     experience: 'Experience & education', atGlance: 'At a glance',
@@ -114,12 +117,15 @@ const presentation = {
   },
   he: {
     role: 'מדע הנתונים ולמידת מכונה',
-    bio: 'אני בונה מודלים לחיזוי ובוחן את יכולת ההכללה שלהם. הרקע שלי משלב ניתוח נתוני בטיחות תעופה ב־SQL עם Python, למידת מכונה ו־AI יישומי.',
+    bio: 'המיקוד המרכזי שלי הוא מודלים לחיזוי, ניתוח נתונים והערכת מודלים. לצד למידת מכונה, אני בונה תהליכים וכלים לסוכני AI לעבודה עם נתונים מובנים ומסמכים.',
     availability: 'מחפש תפקידי Data Scientist / ML',
     education: 'מתחיל תואר שני במדעי המחשב ב־HIT',
-    skills: 'כישורים מרכזיים', connect: 'יצירת קשר',
-    selected: 'פרויקטים נבחרים', title: 'למידת מכונה.<br>מנתונים להערכה.',
-    intro: 'שישה פרויקטים בעיבוד אותות, חיזוי על נתונים טבלאיים, הערכת מודלים וחיפוש סמנטי. בכל דף מוצגים השאלה, הנתונים, השיטה והראיות.',
+    skills: 'כישורי Data Science / ML', agentSkills: 'סוכנים ומערכות AI', connect: 'יצירת קשר',
+    selected: 'התחום המרכזי', title: 'Data Science ולמידת מכונה',
+    intro: 'עיבוד אותות, מודלים לחיזוי והנדסת מאפיינים, עם שיטות הערכה מפורשות ותוצאות מתועדות.',
+    agentsEyebrow: 'תחום נוסף', agentsTitle: 'סוכני AI ומערכות LLM',
+    agentsIntro: 'סוכנים לקבלת החלטות, כלי SQL, תזמור תהליכים ותשתיות אחזור ליישומי AI.',
+    otherTitle: 'ניסויים נוספים', otherIntro: 'ניסויים בממשקים וביכולות דפדפן.', allAreas: 'כל הנושאים',
     read: 'לדף הפרויקט', result: 'תוצאה / תוצר',
     all: 'לכל הפרויקטים', allIntro: 'עוד פרויקטי AI יישומיים, אבות־טיפוס וניסויים, עם סינון לפי תחום וסוג עבודה.',
     experience: 'ניסיון והשכלה', atGlance: 'הפרויקט במבט אחד',
@@ -128,6 +134,9 @@ const presentation = {
   }
 };
 const p = () => presentation[language];
+const projectAreas = ['data-science', 'agents', 'other'];
+const areaName = area => area === 'data-science' ? p().title : area === 'agents' ? p().agentsTitle : p().otherTitle;
+const areaIntro = area => area === 'data-science' ? p().intro : area === 'agents' ? p().agentsIntro : p().otherIntro;
 
 function profilePanel() {
   const x = p();
@@ -139,6 +148,7 @@ function profilePanel() {
     <a class="profile-contact" href="mailto:${q(catalogue.profile.email)}">${q(x.connect)} <span aria-hidden="true">↗</span></a>
     <div class="profile-links">${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}</div>
     <div class="profile-skills"><h2>${q(x.skills)}</h2><div class="tag-list">${catalogue.profile.skills.map(skill => `<span class="tag" dir="auto">${q(skill)}</span>`).join('')}</div></div>
+    <div class="profile-skills"><h2>${q(x.agentSkills)}</h2><div class="tag-list">${catalogue.profile.agentSkills.map(skill => `<span class="tag" dir="auto">${q(skill)}</span>`).join('')}</div></div>
   </aside>`;
 }
 
@@ -167,11 +177,14 @@ function experienceSection() {
 
 function home() {
   const x = p();
-  const featured = catalogue.projects.filter(item => item.caseStudy).slice(0, 6);
+  const featured = area => catalogue.projects.filter(item => item.area === area && item.featured);
   return `${header()}<main id="main" class="wrap profile-layout">${profilePanel()}<div class="portfolio-main">
-    <section id="work" class="selected-projects"><div class="collection-heading"><p class="eyebrow">${q(x.selected)}</p><h2>${x.title}</h2><p>${q(x.intro)}</p></div>
-    <div class="case-grid">${featured.map(caseCard).join('')}</div>
-    <div class="collection-more"><div><h3>${q(x.all)}</h3><p>${q(x.allIntro)}</p></div>${navLink('/lab', `${catalogue.projects.length} ${q(x.projects)} <span aria-hidden="true">↗</span>`, 'collection-button')}</div></section>
+    <nav class="area-jump" aria-label="${q(language === 'he' ? 'נושאי הפרויקטים' : 'Project areas')}">${navLink('/#work', q(x.title))}${navLink('/#agents', q(x.agentsTitle))}</nav>
+    <section id="work" class="selected-projects"><div class="collection-heading"><p class="eyebrow">${q(x.selected)}</p><h2>${q(x.title)}</h2><p>${q(x.intro)}</p></div>
+    <div class="case-grid">${featured('data-science').map(caseCard).join('')}</div></section>
+    <section id="agents" class="selected-projects agents-projects"><div class="collection-heading"><p class="eyebrow">${q(x.agentsEyebrow)}</p><h2>${q(x.agentsTitle)}</h2><p>${q(x.agentsIntro)}</p></div>
+    <div class="case-grid">${featured('agents').map(caseCard).join('')}</div></section>
+    <div class="collection-more"><div><h3>${q(x.all)}</h3><p>${q(x.allIntro)}</p></div>${navLink('/lab', `${catalogue.projects.length} ${q(x.projects)} <span aria-hidden="true">↗</span>`, 'collection-button')}</div>
     ${experienceSection()}</div></main>${footer()}`;
 }
 
@@ -185,6 +198,7 @@ function caseSnapshot(item) {
 function filteredProjects() {
   const search = filter.search.trim().toLocaleLowerCase();
   return catalogue.projects.filter(item => {
+    if (filter.area && item.area !== filter.area) return false;
     if (filter.topic && !item.topics.includes(filter.topic)) return false;
     if (filter.type && item.type !== filter.type) return false;
     return !search || `${item.en.title} ${item.he.title} ${item.en.summary} ${item.he.summary} ${item.topics.join(' ')} ${item.en.approach.join(' ')} ${item.he.approach.join(' ')} ${item.repositoryName || ''}`.toLocaleLowerCase().includes(search);
@@ -194,14 +208,18 @@ function filteredProjects() {
 function labCards() {
   const items = filteredProjects();
   if (!items.length) return `<div class="empty-state"><h2>${q(t().noResults)}</h2><p>${q(t().noResultsText)}</p><button data-reset class="reset-button">${q(t().clear)}</button></div>`;
-  return items.map((item, index) => `<a data-nav href="${q(projectURL(item))}" class="lab-card"><div class="lab-card-image image-${q(item.image.kind)}">${projectPicture(item, 'card')}</div><div class="lab-card-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div><h2>${q(item[language].title)}</h2><p>${q(item[language].summary)}</p><div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></a>`).join('');
+  return projectAreas.map(area => {
+    const group = items.filter(item => item.area === area);
+    if (!group.length) return '';
+    return `<section class="lab-group" aria-labelledby="group-${q(area)}"><div class="lab-group-heading"><h2 id="group-${q(area)}">${q(areaName(area))} <span>${group.length}</span></h2><p>${q(areaIntro(area))}</p></div><div class="lab-grid">${group.map((item, index) => `<a data-nav href="${q(projectURL(item))}" class="lab-card"><div class="lab-card-image image-${q(item.image.kind)}">${projectPicture(item, 'card')}</div><div class="lab-card-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div><h3>${q(item[language].title)}</h3><p>${q(item[language].summary)}</p><div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></a>`).join('')}</div></section>`;
+  }).join('');
 }
 
 function lab() {
   const x = t();
   const topics = [...new Set(catalogue.projects.flatMap(item => item.topics))];
   const types = [...new Set(catalogue.projects.map(item => item.type))];
-  return `${header()}<main id="main" class="wrap"><section class="page-intro"><p class="eyebrow">${q(x.labEyebrow)}</p><h1 class="display-title">${q(x.labPageTitle)}</h1><p>${q(x.labPageIntro)}</p></section><div class="lab-controls"><div class="control"><label class="control-label" for="project-search">${q(x.search)}</label><input id="project-search" type="search" value="${q(filter.search)}" placeholder="${q(x.searchPlaceholder)}" autocomplete="off"></div><div class="control"><label class="control-label" for="topic-select">${q(x.topic)}</label><select id="topic-select"><option value="">${q(x.allTopics)}</option>${topics.map(topic => `<option value="${q(topic)}" ${filter.topic === topic ? 'selected' : ''}>${q(topicName(topic))}</option>`).join('')}</select></div><div class="control"><label class="control-label" for="type-select">${q(x.type)}</label><select id="type-select"><option value="">${q(x.allTypes)}</option>${types.map(type => `<option value="${q(type)}" ${filter.type === type ? 'selected' : ''}>${q(typeName(type))}</option>`).join('')}</select></div></div><div class="results-bar"><span id="results-count" role="status" aria-live="polite">${filteredProjects().length} ${q(x.results)}</span><button data-reset class="reset-button">${q(x.clear)}</button></div><div id="lab-grid" class="lab-grid">${labCards()}</div></main>${footer()}`;
+  return `${header()}<main id="main" class="wrap"><section class="page-intro"><p class="eyebrow">${q(x.labEyebrow)}</p><h1 class="display-title">${q(x.labPageTitle)}</h1><p>${q(x.labPageIntro)}</p></section><div class="area-filters" role="group" aria-label="${q(language === 'he' ? '????? ?????????' : 'Project areas')}">${['', ...projectAreas].map(area => `<button type="button" data-area="${q(area)}" aria-pressed="${filter.area === area}">${q(area ? areaName(area) : p().allAreas)}</button>`).join('')}</div><div class="lab-controls"><div class="control"><label class="control-label" for="project-search">${q(x.search)}</label><input id="project-search" type="search" value="${q(filter.search)}" placeholder="${q(x.searchPlaceholder)}" autocomplete="off"></div><div class="control"><label class="control-label" for="topic-select">${q(x.topic)}</label><select id="topic-select"><option value="">${q(x.allTopics)}</option>${topics.map(topic => `<option value="${q(topic)}" ${filter.topic === topic ? 'selected' : ''}>${q(topicName(topic))}</option>`).join('')}</select></div><div class="control"><label class="control-label" for="type-select">${q(x.type)}</label><select id="type-select"><option value="">${q(x.allTypes)}</option>${types.map(type => `<option value="${q(type)}" ${filter.type === type ? 'selected' : ''}>${q(typeName(type))}</option>`).join('')}</select></div></div><div class="results-bar"><span id="results-count" role="status" aria-live="polite">${filteredProjects().length} ${q(x.results)}</span><button data-reset class="reset-button">${q(x.clear)}</button></div><div id="lab-grid" class="lab-groups">${labCards()}</div></main>${footer()}`;
 }
 
 function projectPicture(item, compact = false) {
@@ -254,6 +272,13 @@ function updateLabResults() {
 }
 
 document.addEventListener('click', event => {
+  const areaButton = event.target.closest('[data-area]');
+  if (areaButton) {
+    filter.area = areaButton.dataset.area;
+    renderRoute({preserveScroll: true});
+    document.querySelector(`[data-area="${filter.area}"]`)?.focus({preventScroll: true});
+    return;
+  }
   const toggle = event.target.closest('#language-toggle');
   if (toggle) {
     language = language === 'en' ? 'he' : 'en';
@@ -272,7 +297,7 @@ document.addEventListener('click', event => {
     return;
   }
   if (event.target.closest('[data-reset]')) {
-    Object.assign(filter, {search: '', topic: '', type: ''});
+    Object.assign(filter, {search: '', topic: '', type: '', area: ''});
     renderRoute({preserveScroll: true});
     return;
   }

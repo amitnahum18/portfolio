@@ -181,7 +181,7 @@ html[dir='rtl'] .portrait-block::before { inset: 0 0 3rem 1rem; }
 .lab-card-image.image-diagram img { padding: 0; }
 .lab-card-image.image-prediction img { object-fit: scale-down; }
 .lab-card-meta { display: flex; justify-content: space-between; gap: .5rem; margin-bottom: 1rem; font-family: var(--mono); color: var(--muted); font-size: .75rem; }
-.lab-card h2 { font-size: 1.1rem; line-height: 1.5; font-weight: 700; }
+.lab-card h2, .lab-card h3 { font-size: 1.1rem; line-height: 1.5; font-weight: 700; }
 .lab-card p { color: var(--muted); font-size: .9375rem; margin-top: .6rem; line-height: 1.7; }
 .lab-card .tag-list { margin-top: auto; padding-top: 1rem; }
 .empty-state { grid-column: 1/-1; padding: 4rem 1rem; text-align: center; background: var(--canvas); border: 1px solid var(--line); }
@@ -423,4 +423,24 @@ html[lang='he'] .contact-section .display-title { font-size: clamp(1.6rem, 3vw, 
   .case-context { font-size: .75rem; }
   .case-card .tag { font-size: .6875rem; }
   .experience-list > article { grid-template-columns: minmax(0, 1fr); gap: .4rem; }
+}
+
+/* Primary Data Science collection and complementary agent systems. */
+.area-jump { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1.75rem; }
+.area-jump a { display: inline-flex; align-items: center; min-height: 44px; padding: .5rem .9rem; border: 1px solid var(--line); border-radius: 7px; background: white; color: var(--muted); font-size: .75rem; font-weight: 600; }
+.area-jump a:first-child { color: var(--blue-strong); border-color: #b6c9eb; background: #f1f6ff; }
+.area-jump a:hover { border-color: var(--blue-strong); color: var(--blue-strong); }
+.agents-projects { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.agents-projects .collection-heading .eyebrow { color: #64748b; }
+.area-filters { display: flex; flex-wrap: wrap; gap: .65rem; margin-bottom: 1.3rem; }
+.area-filters button { min-height: 44px; padding: .55rem 1rem; border: 1px solid var(--line); border-radius: 7px; color: var(--muted); background: white; font-size: .875rem; }
+.area-filters button[aria-pressed='true'] { background: var(--ink); color: white; border-color: var(--ink); }
+.lab-group-heading { margin-bottom: 1.4rem; }
+.lab-group-heading h2 { font-size: 1.4rem; line-height: 1.5; }
+.lab-group-heading h2 span { display: inline-block; margin-inline-start: .4rem; font-family: var(--mono); font-size: .75rem; font-weight: 400; color: var(--muted); vertical-align: middle; }
+.lab-group-heading p { color: var(--muted); font-size: .875rem; max-width: 700px; margin-top: .4rem; }
+.lab-group .lab-grid { margin-bottom: 3rem; }
+@media (max-width: 760px) {
+ .agents-projects { margin-top: 2.5rem; padding-top: 1.5rem; }
+ .area-filters button { font-size: .75rem; padding-inline: .75rem; }
 }
