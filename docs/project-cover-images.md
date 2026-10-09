@@ -4,6 +4,12 @@ Generated with the built-in image generation tool on 2026-10-09. These are conce
 
 Delivery files use JPEG compression and proportional resizing only. Full illustrations: 1200 x 800; card illustrations: 640 x 427. Original PNGs are retained in the local workspace.
 
+## Verification
+
+The published homepage, both project pages, AI illustration captions, original technical diagrams and all four image file hashes were verified after deployment. The generated desktop and mobile screenshots were visually reviewed; the covers are visible on both layouts.
+
+The first Lighthouse run for commit `068f99b` recorded desktop performance 100 and mobile performance 83, with accessibility, best practices and SEO 100 on both. Both layouts had zero measured layout shift. Mobile LCP was the existing biography paragraph rather than a project image; the report also recorded 399.5 ms of total blocking time. A second unchanged-application measurement is being used to check run-to-run variability before attributing that result to the added covers. These are lab measurements rather than real-user field data.
+
 ## BridgePulse
 
 Assets: `site/dist/assets/projects/bridgepulse-cover-v1.jpg` and `bridgepulse-cover-v1-card.jpg`.
