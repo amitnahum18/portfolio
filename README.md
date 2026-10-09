@@ -3,9 +3,15 @@
 Personal portfolio with English and Hebrew content, 19 projects, visual previews,
 project stories, and filters by topic and project type.
 
-Selected work highlights BridgePulse, the license-plate pricing Kaggle result,
-and JEV decision experiments. The collection starts with ML pipelines, documented
-achievements and applied AI, followed by prototypes and learning projects.
+The home page pairs a compact professional profile with six project case studies,
+prioritizing Data Scientist / ML roles: BridgePulse, license-plate pricing, UFC
+prediction, car-price regression, JEV evaluation and semantic retrieval.
+Each card includes a result or deliverable with its evaluation context, tools,
+and direct links to the case study and code. Project pages summarize the data,
+method, result and evaluation before the full write-up.
+
+The profile-and-project-gallery structure takes inspiration from
+https://www.datascienceportfol.io/juliejlai and its project collection.
 
 Website: https://amitnahum18.github.io/portfolio/
 

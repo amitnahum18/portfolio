@@ -17,7 +17,7 @@ const filter = { search: '', topic: '', type: '' };
 let mobileMenuOpen = false;
 const text = {
   en: {
-    work: 'Selected work', lab: 'The lab', about: 'About', contact: 'Get in touch', menu: 'Menu',
+    work: 'Projects', lab: 'All projects', about: 'Experience', contact: 'Get in touch', menu: 'Menu',
     eyebrow: 'AMIT NAHUM / DATA SCIENCE & ANALYSIS', heroTitle: 'I turn questions<br>into <em>experiments.</em>',
     intro: "I'm Amit Nahum. I started with SQL and aviation safety data. Today, my work spans predictive models and offline AI systems. Now I'm beginning an M.Sc. at HIT and looking for my next role in data science and analysis.",
     explore: 'Explore the stories', portraitAlt: 'Portrait of Amit Nahum wearing a light suit', open: 'OPEN TO OPPORTUNITIES', role: 'Amit Nahum',
@@ -31,8 +31,8 @@ const text = {
     masters: 'M.Sc. in Computer Science', mastersSub: 'HIT · Beginning in 2026 · Expected completion 2028',
     engineer: 'AI Engineer · IDF Reserve Duty', engineerSub: 'Offline inference with vLLM, LLM evaluation and anomaly-detection workflows.',
     analyst: 'Junior Data Analyst · IDF', analystSub: 'SQL analysis and statistical sampling of aviation safety data.',
-    contactEyebrow: 'LET’S CONNECT', contactTitle: "Good questions<br>start a conversation.", footer: 'Amit Nahum · 2026', footerNote: 'Data Science · Analysis · AI',
-    labPageTitle: 'The lab & the work.', labPageIntro: 'Start with ML pipelines, documented results and applied AI, then explore prototypes and learning projects. Filter by topic or type to find the work that interests you.',
+    contactEyebrow: 'LET’S CONNECT', contactTitle: "Let’s talk about<br>your next data challenge.", footer: 'Amit Nahum · 2026', footerNote: 'Data Science · Analysis · AI',
+    labPageTitle: 'All projects.', labPageIntro: 'Start with ML pipelines, documented results and applied AI, then explore prototypes and learning projects. Filter by topic or type to find the work that interests you.',
     search: 'Search', searchPlaceholder: 'Try NLP, CatBoost, SQL…', topic: 'Topic', type: 'Type', allTopics: 'All topics', allTypes: 'All types',
     results: 'works', clear: 'Clear filters', noResults: 'No matching work', noResultsText: 'Try a different topic or a shorter search.',
     home: 'Home', goal: 'Question / goal', approach: 'Data & approach', observations: 'Evidence & observations', limitations: 'Scope & limitations', credits: 'Credits',
@@ -40,7 +40,7 @@ const text = {
     notFound: 'This page isn’t in the collection.', error: 'The portfolio could not load. Please refresh the page.', skip: 'Skip to content'
   },
   he: {
-    work: 'עבודות נבחרות', lab: 'המעבדה', about: 'אודות', contact: 'יצירת קשר', menu: 'תפריט',
+    work: 'פרויקטים', lab: 'כל הפרויקטים', about: 'ניסיון', contact: 'יצירת קשר', menu: 'תפריט',
     eyebrow: 'עמית נחום / מדע הנתונים וניתוח נתונים', heroTitle: 'הופך שאלות<br><em>לניסויים.</em>',
     intro: 'אני עמית נחום. התחלתי בניתוח נתוני בטיחות תעופה באמצעות SQL. היום אני עוסק במודלים לחיזוי ובמערכות AI שפועלות ללא חיבור לרשת. עכשיו אני מתחיל תואר שני ב־HIT ומחפש את התפקיד הבא שלי במדע הנתונים ובניתוח נתונים.',
     explore: 'לסיפורים שמאחורי העבודות', portraitAlt: 'דיוקן של עמית נחום בחליפה בהירה', open: 'מחפש הזדמנויות חדשות', role: 'עמית נחום',
@@ -54,8 +54,8 @@ const text = {
     masters: 'תואר שני במדעי המחשב', mastersSub: 'HIT · תחילת לימודים ב־2026 · סיום צפוי ב־2028',
     engineer: 'AI Engineer · שירות מילואים בצה״ל', engineerSub: 'הסקה מקומית באמצעות vLLM, הערכת מודלי שפה ותהליכי זיהוי חריגות.',
     analyst: 'Junior Data Analyst · צה״ל', analystSub: 'ניתוח ב־SQL ודגימה סטטיסטית של נתוני בטיחות תעופה.',
-    contactEyebrow: 'בואו נדבר', contactTitle: 'שאלות טובות<br>מתחילות בשיחה.', footer: 'עמית נחום · 2026', footerNote: 'מדע הנתונים · ניתוח · AI',
-    labPageTitle: 'המעבדה והעבודות.', labPageIntro: 'מתחילים בתהליכי ML, בתוצאות מתועדות וב־AI יישומי, וממשיכים לאבות־טיפוס ולפרויקטי למידה. אפשר לסנן לפי תחום או סוג עבודה.',
+    contactEyebrow: 'בואו נדבר', contactTitle: 'בואו נדבר על<br>אתגר הדאטה הבא.', footer: 'עמית נחום · 2026', footerNote: 'מדע הנתונים · ניתוח · AI',
+    labPageTitle: 'כל הפרויקטים.', labPageIntro: 'מתחילים בתהליכי ML, בתוצאות מתועדות וב־AI יישומי, וממשיכים לאבות־טיפוס ולפרויקטי למידה. אפשר לסנן לפי תחום או סוג עבודה.',
     search: 'חיפוש', searchPlaceholder: 'למשל NLP, CatBoost, SQL…', topic: 'תחום', type: 'סוג עבודה', allTopics: 'כל התחומים', allTypes: 'כל הסוגים',
     results: 'עבודות', clear: 'ניקוי סינון', noResults: 'לא נמצאו עבודות מתאימות', noResultsText: 'אפשר לנסות תחום אחר או חיפוש קצר יותר.',
     home: 'ראשי', goal: 'מטרת הניסוי או הפרויקט', approach: 'נתונים ושיטה', observations: 'ממצאים מתועדים', limitations: 'היקף ומגבלות', credits: 'קרדיט',
@@ -97,42 +97,89 @@ function footer() {
   return `<section id="contact" class="contact-section"><div class="wrap contact-layout"><div><p class="eyebrow">${q(x.contactEyebrow)}</p><h2 class="display-title">${x.contactTitle}</h2></div><div class="contact-info"><a class="contact-email" href="mailto:${q(catalogue.profile.email)}" dir="ltr">${q(catalogue.profile.email)}</a><div class="social-links">${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}</div></div></div></section><footer class="site-footer"><div class="wrap footer-inner"><span>${q(x.footer)}</span><span>${q(x.footerNote)}</span></div></footer>`;
 }
 
-const stories = [
-  {
-    slug: 'bridgepulse', visual: 'bridge', tags: ['Python', 'MFCC', 'Random Forest', 'Model evaluation'],
-    en: {name: 'BridgePulse', title: 'A bridge vibrates.<br>What does it reveal?', lead: 'Acceleration recordings carry clues about a bridge’s experimental condition.', body: 'I built a pipeline from 58 sensor channels to MFCC features and a Random Forest classifier, then packaged it for standalone prediction. State-grouped evaluation reports 81.97% mean balanced accuracy on a small, single-bridge dataset. The key question is how to evaluate beyond recordings the model has already seen.', next: 'Will these signal features generalize to new bridges and measurement conditions?', link: 'Explore the ML pipeline'},
-    he: {name: 'BridgePulse', title: 'הגשר רועד.<br>מה זה מגלה?', lead: 'הקלטות תאוצה נושאות רמזים על מצבו הניסויי של הגשר.', body: 'בניתי תהליך מ־58 ערוצי חיישנים למאפייני MFCC ולמסווג Random Forest, וארזתי אותו לחיזוי עצמאי. הערכה לפי קבוצות מצב מציגה דיוק מאוזן ממוצע של 81.97% בנתונים מצומצמים מגשר אחד. השאלה המרכזית היא כיצד להעריך מעבר להקלטות שהמודל כבר ראה.', next: 'האם מאפייני האות יכלילו לגשרים חדשים ולתנאי מדידה אחרים?', link: 'לתהליך למידת המכונה'}
+const presentation = {
+  en: {
+    role: 'Data Science & Machine Learning',
+    bio: 'I build predictive models and evaluate how well they generalize. My background combines SQL analysis of aviation safety data with Python, machine learning and applied AI.',
+    availability: 'Open to Data Scientist / ML roles',
+    education: 'Beginning an M.Sc. in Computer Science at HIT',
+    skills: 'Core skills', connect: 'Get in touch',
+    selected: 'SELECTED PROJECTS', title: 'Machine learning.<br>From data to evaluation.',
+    intro: 'Six projects covering signal processing, tabular prediction, model evaluation and semantic retrieval. Each case study explains the question, the data, the method and the evidence.',
+    read: 'View case study', result: 'RESULT / DELIVERABLE',
+    all: 'Explore all projects', allIntro: 'More applied AI, prototypes and learning experiments, with topic and type filters.',
+    experience: 'Experience & education', atGlance: 'At a glance',
+    data: 'Data', method: 'Method', evaluation: 'Evaluation',
+    featured: 'ML & DATA', code: 'Code', projects: 'Projects',
   },
-  {
-    slug: 'license-plate-pricing', visual: 'plates', tags: ['CatBoost', 'Feature engineering', 'SHAP', 'Kaggle · 2 / 694'],
-    en: {name: 'License Plate Pricing', title: 'Patterns in a plate.<br>Signals in a price.', lead: 'Nahum Team placed 2nd of 694 teams on the final private leaderboard.', body: 'The Kaggle community competition provides a concrete team achievement. My public notebook explores plate patterns, contextual features, CatBoost regression and SHAP interpretation. The notebook explains the method; it has not been matched to the exact ranked submission.', next: 'Which feature effects remain stable under leakage-safe validation?', link: 'See the project and result'},
-    he: {name: 'חיזוי מחירי לוחיות רישוי', title: 'דפוסים בלוחית.<br>סימנים במחיר.', lead: 'Nahum Team סיימה במקום השני מתוך 694 קבוצות בדירוג הסופי הפרטי.', body: 'התחרות הקהילתית ב־Kaggle מספקת הישג קבוצתי מתועד. המחברת הציבורית שלי בוחנת דפוסי לוחיות, משתני הקשר, רגרסיית CatBoost ופירוש באמצעות SHAP. המחברת ממחישה את השיטה; לא אומת שהיא זהה לקוד ההגשה המדורגת.', next: 'אילו השפעות של מאפיינים נשארות יציבות בהערכה שמונעת דליפת מידע?', link: 'לפרויקט ולתוצאה המתועדת'}
-  },
-  {
-    slug: 'jev-decision-experiments', visual: 'jev', tags: ['Python', 'OpenRouter', 'PyFlyt', 'Evaluation & replay'],
-    en: {name: 'JEV · Decision Experiments', title: 'Give AI a choice.<br>Measure what follows.', lead: 'A model chooses an action. A simulation makes the consequences visible.', body: 'I built experiments around structured JEV decisions in flight, driving, chess and reasoning. Matched comparisons, saved traces and flight replay make prompt changes inspectable. The v8 flight policy passed all eight frames on three previously tested seeds: a useful exploratory result with a clear scope.', next: 'How will the policy perform on unseen courses under the same evaluation protocol?', link: 'Inside the decision experiments'},
-    he: {name: 'JEV · ניסויי החלטות', title: 'נותנים ל־AI לבחור.<br>מודדים מה קורה.', lead: 'המודל בוחר פעולה. הסימולציה מראה את ההשלכות.', body: 'בניתי ניסויים סביב החלטות JEV מובנות בטיסה, נהיגה, שחמט וחשיבה. השוואות בתנאים תואמים, תיעוד החלטות ושחזור טיסות מאפשרים לבחון שינויי הנחיה. מדיניות הטיסה v8 עברה את כל שמונה המסגרות בשלושה seeds שכבר נבדקו — תוצאה ניסויית עם היקף מוגדר.', next: 'איך תפעל המדיניות במסלולים שלא נבדקו, תחת אותו פרוטוקול הערכה?', link: 'לניסויי קבלת ההחלטות'}
+  he: {
+    role: 'מדע הנתונים ולמידת מכונה',
+    bio: 'אני בונה מודלים לחיזוי ובוחן את יכולת ההכללה שלהם. הרקע שלי משלב ניתוח נתוני בטיחות תעופה ב־SQL עם Python, למידת מכונה ו־AI יישומי.',
+    availability: 'מחפש תפקידי Data Scientist / ML',
+    education: 'מתחיל תואר שני במדעי המחשב ב־HIT',
+    skills: 'כישורים מרכזיים', connect: 'יצירת קשר',
+    selected: 'פרויקטים נבחרים', title: 'למידת מכונה.<br>מנתונים להערכה.',
+    intro: 'שישה פרויקטים בעיבוד אותות, חיזוי על נתונים טבלאיים, הערכת מודלים וחיפוש סמנטי. בכל דף מוצגים השאלה, הנתונים, השיטה והראיות.',
+    read: 'לדף הפרויקט', result: 'תוצאה / תוצר',
+    all: 'לכל הפרויקטים', allIntro: 'עוד פרויקטי AI יישומיים, אבות־טיפוס וניסויים, עם סינון לפי תחום וסוג עבודה.',
+    experience: 'ניסיון והשכלה', atGlance: 'הפרויקט במבט אחד',
+    data: 'נתונים', method: 'שיטה', evaluation: 'הערכה',
+    featured: 'דאטה ו־ML', code: 'קוד', projects: 'פרויקטים',
   }
-];
+};
+const p = () => presentation[language];
 
-function storyChapter(config, index) {
-  const item = project(config.slug);
-  const copy = config[language];
-  return `<article class="story-chapter chapter-${config.visual}"><div class="story-copy"><div class="story-meta"><span class="story-number">${String(index + 1).padStart(2, '0')}</span><span>${q(copy.name)}</span><span class="story-type">${q(typeName(item.type))}</span></div><h3>${copy.title}</h3><p class="story-lead">${q(copy.lead)}</p><p class="story-body">${q(copy.body)}</p><div class="story-next"><span class="eyebrow">${q(t().nextQuestion)}</span><p>${q(copy.next)}</p></div>${navLink(`/work/${item.slug}`, q(copy.link), 'story-link')}<div class="story-tools">${config.tags.map(tag => `<span dir="auto">${q(tag)}</span>`).join('')}</div></div><figure class="story-visual story-image">${projectPicture(item, true)}<figcaption>${q(item.image[language].caption)}</figcaption></figure></article>`;
+function profilePanel() {
+  const x = p();
+  return `<aside class="profile-panel" aria-label="${q(language === 'he' ? 'על עמית נחום' : 'About Amit Nahum')}">
+    <div class="profile-photo"><img src="${q(siteURL('/assets/amit-portrait.jpeg'))}" alt="${q(t().portraitAlt)}" width="3413" height="5120" fetchpriority="high"></div>
+    <p class="availability"><span aria-hidden="true"></span>${q(x.availability)}</p>
+    <h1>${q(catalogue.profile.name[language])}</h1><p class="profile-role">${q(x.role)}</p>
+    <p class="profile-bio">${q(x.bio)}</p><p class="profile-education">${q(x.education)}</p>
+    <a class="profile-contact" href="mailto:${q(catalogue.profile.email)}">${q(x.connect)} <span aria-hidden="true">↗</span></a>
+    <div class="profile-links">${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}</div>
+    <div class="profile-skills"><h2>${q(x.skills)}</h2><div class="tag-list">${catalogue.profile.skills.map(skill => `<span class="tag" dir="auto">${q(skill)}</span>`).join('')}</div></div>
+  </aside>`;
 }
 
-function journey() {
+function caseCard(item, index) {
+  const copy = item.caseStudy[language];
+  const x = p();
+  const code = item.sources.find(link => link.label === 'GitHub');
+  return `<article class="case-card">
+    <a data-nav href="${q(projectURL(item))}" class="case-image image-${q(item.image.kind)}" aria-label="${q(copy.title)}">${projectPicture(item, 'card')}</a>
+    <div class="case-card-body"><div class="case-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div>
+    <h3>${navLink(`/work/${item.slug}`, q(copy.title))}</h3><p class="case-summary">${q(copy.summary)}</p>
+    <div class="case-outcome"><p class="eyebrow">${q(x.result)}</p><p class="case-result" dir="auto">${q(copy.result)}</p><p class="case-context">${q(copy.context)}</p></div>
+    <div class="tag-list">${item.caseStudy.tools.map(tool => `<span class="tag" dir="auto">${q(tool)}</span>`).join('')}</div>
+    <div class="case-actions">${navLink(`/work/${item.slug}`, `${q(x.read)} <span aria-hidden="true">↗</span>`)}${code ? externalLink(code.url, 'GitHub ↗') : ''}</div></div>
+  </article>`;
+}
+
+function experienceSection() {
   const x = t();
-  return `<div class="wrap hero-journey" aria-label="${q(x.journey)}"><div><span class="journey-date" dir="ltr">2020–2022</span><strong>${q(x.journeyAnalysis)}</strong></div><div><span class="journey-date" dir="ltr">2025–${language === 'he' ? 'היום' : 'Present'}</span><strong>${q(x.journeyAI)}</strong></div><div><span class="journey-date">${q(x.journeyNow)}</span><strong>${q(x.journeyMSc)}</strong></div></div>`;
+  return `<section id="about" class="profile-experience"><h2>${q(p().experience)}</h2><div class="experience-list">
+    <article><p class="experience-date" dir="ltr">2025–${language === 'he' ? 'היום' : 'Present'}</p><div><h3>${q(x.engineer)}</h3><p>${q(x.engineerSub)}</p></div></article>
+    <article><p class="experience-date" dir="ltr">2020–2022</p><div><h3>${q(x.analyst)}</h3><p>${q(x.analystSub)}</p></div></article>
+    <article><p class="experience-date" dir="ltr">2026–2028</p><div><h3>${q(x.masters)}</h3><p>${q(x.mastersSub)}</p></div></article>
+  </div></section>`;
 }
 
 function home() {
-  const x = t();
-  const teaser = catalogue.projects.slice(stories.length, stories.length + 3).map(item => item.slug);
-  return `${header()}<main id="main"><section class="hero"><div class="wrap hero-inner"><div class="hero-copy"><p class="eyebrow">${q(x.eyebrow)}</p><h1 class="hero-title">${x.heroTitle}</h1><p class="hero-description">${q(x.intro)}</p><div class="hero-buttons">${navLink('/#work', q(x.explore), 'button button-primary')}<a href="mailto:${q(catalogue.profile.email)}" class="button button-outline">${q(x.contact)}</a></div></div><div class="portrait-block"><div class="portrait"><img src="${q(siteURL('/assets/amit-portrait.jpeg'))}" alt="${q(x.portraitAlt)}" width="3413" height="5120" fetchpriority="high"></div><div class="portrait-caption"><span>${q(x.role)}</span><span>${q(x.open)}</span></div></div></div>${journey()}</section>
-    <section id="work" class="section stories-section wrap"><div class="section-heading"><div><p class="eyebrow">${q(x.selected)}</p><h2 class="display-title">${x.selectedTitle}</h2></div><p class="section-intro">${q(x.selectedIntro)}</p></div><div class="stories">${stories.map(storyChapter).join('')}</div><div class="all-work-link">${navLink('/lab', q(x.all), 'quiet-link')}<span>${catalogue.projects.length} ${q(x.results)}</span></div></section>
-    <section class="lab-teaser"><div class="wrap lab-teaser-inner"><div><p class="eyebrow">${q(x.labEyebrow)}</p><h2 class="display-title">${x.labTitle}</h2><p>${q(x.labIntro)}</p></div><div class="lab-preview">${teaser.map(slug => {const item = project(slug); return navLink(`/work/${slug}`, `<span>${q(item[language].title)}</span><span>${q(typeName(item.type))}</span>`);}).join('')}${navLink('/lab', q(x.labLink), 'quiet-link')}</div></div></section>
-    <section id="about" class="section wrap"><div class="about-layout"><div class="about-copy"><p class="eyebrow">${q(x.aboutEyebrow)}</p><h2 class="display-title">${x.aboutTitle}</h2><p>${q(x.aboutText)}</p><p>${q(x.aboutText2)}</p><div class="skill-list">${['Python', 'SQL', 'Pandas', 'CatBoost', 'Model evaluation', 'FastAPI', 'vLLM'].map(skill => `<span dir="auto">${q(skill)}</span>`).join('')}</div></div><div class="timeline"><article class="timeline-item"><div class="timeline-meta"><span>${language === 'he' ? 'לימודים' : 'EDUCATION'}</span><span dir="ltr">2026–2028</span></div><h3>${q(x.masters)}</h3><p>${q(x.mastersSub)}</p></article><article class="timeline-item"><div class="timeline-meta"><span>${language === 'he' ? 'ניסיון' : 'EXPERIENCE'}</span><span dir="ltr">2025–${language === 'he' ? 'היום' : 'Present'}</span></div><h3>${q(x.engineer)}</h3><p>${q(x.engineerSub)}</p></article><article class="timeline-item"><div class="timeline-meta"><span>${language === 'he' ? 'ניסיון' : 'EXPERIENCE'}</span><span dir="ltr">2020–2022</span></div><h3>${q(x.analyst)}</h3><p>${q(x.analystSub)}</p></article></div></div></section></main>${footer()}`;
+  const x = p();
+  const featured = catalogue.projects.filter(item => item.caseStudy).slice(0, 6);
+  return `${header()}<main id="main" class="wrap profile-layout">${profilePanel()}<div class="portfolio-main">
+    <section id="work" class="selected-projects"><div class="collection-heading"><p class="eyebrow">${q(x.selected)}</p><h2>${x.title}</h2><p>${q(x.intro)}</p></div>
+    <div class="case-grid">${featured.map(caseCard).join('')}</div>
+    <div class="collection-more"><div><h3>${q(x.all)}</h3><p>${q(x.allIntro)}</p></div>${navLink('/lab', `${catalogue.projects.length} ${q(x.projects)} <span aria-hidden="true">↗</span>`, 'collection-button')}</div></section>
+    ${experienceSection()}</div></main>${footer()}`;
+}
+
+function caseSnapshot(item) {
+  if (!item.caseStudy) return '';
+  const copy = item.caseStudy[language];
+  const x = p();
+  return `<section class="case-snapshot"><h2>${q(x.atGlance)}</h2><dl>${['data', 'method', 'result', 'evaluation'].map(field => `<div><dt>${q(x[field])}</dt><dd>${q(field === 'result' ? copy.result + '. ' + copy.context : copy[field])}</dd></div>`).join('')}</dl></section>`;
 }
 
 function filteredProjects() {
@@ -179,7 +226,7 @@ function detail(item) {
   const x = t();
   const section = (field, items, paragraphs = false) => !items.length ? '' : `<section class="detail-section"><h2>${q(x[field])}</h2>${paragraphs ? items.map(value => `<p>${q(value)}</p>`).join('') : `<ul>${items.map(value => `<li>${q(value)}</li>`).join('')}</ul>`}</section>`;
   const next = catalogue.projects[(catalogue.projects.indexOf(item) + 1) % catalogue.projects.length];
-  return `${header()}<main id="main"><section class="detail-header"><div class="wrap"><nav class="breadcrumb" aria-label="${language === 'he' ? 'מיקום באתר' : 'Breadcrumb'}">${navLink('/', q(x.home))}<span>/</span>${navLink('/lab', q(x.lab))}<span>/</span><span>${q(typeName(item.type))}</span></nav><p class="eyebrow">${q(typeName(item.type))} / ${q(item.topics.map(topicName).join(' · '))}</p><h1>${q(copy.title)}</h1><p class="detail-summary">${q(copy.summary)}</p></div></section><div class="wrap detail-layout"><article>${projectImage(item)}${section('goal', [copy.goal], true)}${section('approach', copy.approach)}${section('observations', copy.observations, true)}${section('limitations', copy.limitations)}${section('credits', copy.credits)}</article><aside><div class="source-panel"><p class="eyebrow">${q(x.sourceEyebrow)}</p><h2>${q(x.sources)}</h2>${item.sources.map(source => externalLink(source.url, source.label === 'Public app' ? (language === 'he' ? 'פתיחת האפליקציה' : 'Open the app') : source.label, 'source-link')).join('')}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></div></aside></div><div class="wrap detail-next"><div><p>${q(x.next)}</p>${navLink(`/work/${next.slug}`, q(next[language].title))}</div>${navLink('/lab', q(x.back), 'quiet-link')}</div></main>${footer()}`;
+  return `${header()}<main id="main"><section class="detail-header"><div class="wrap"><nav class="breadcrumb" aria-label="${language === 'he' ? 'מיקום באתר' : 'Breadcrumb'}">${navLink('/', q(x.home))}<span>/</span>${navLink('/lab', q(x.lab))}<span>/</span><span>${q(typeName(item.type))}</span></nav><p class="eyebrow">${q(typeName(item.type))} / ${q(item.topics.map(topicName).join(' · '))}</p><h1>${q(copy.title)}</h1><p class="detail-summary">${q(copy.summary)}</p></div></section><div class="wrap detail-layout"><article>${caseSnapshot(item)}${projectImage(item)}${section('goal', [copy.goal], true)}${section('approach', copy.approach)}${section('observations', copy.observations, true)}${section('limitations', copy.limitations)}${section('credits', copy.credits)}</article><aside><div class="source-panel"><p class="eyebrow">${q(x.sourceEyebrow)}</p><h2>${q(x.sources)}</h2>${item.sources.map(source => externalLink(source.url, source.label === 'Public app' ? (language === 'he' ? 'פתיחת האפליקציה' : 'Open the app') : source.label, 'source-link')).join('')}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></div></aside></div><div class="wrap detail-next"><div><p>${q(x.next)}</p>${navLink(`/work/${next.slug}`, q(next[language].title))}</div>${navLink('/lab', q(x.back), 'quiet-link')}</div></main>${footer()}`;
 }
 
 function renderRoute({ preserveScroll = false } = {}) {
@@ -188,7 +235,7 @@ function renderRoute({ preserveScroll = false } = {}) {
   document.documentElement.dir = language === 'he' ? 'rtl' : 'ltr';
   document.querySelector('.skip-link').textContent = t().skip;
   const path = currentPath();
-  if (path === '/') { app.innerHTML = home(); document.title = `${language === 'he' ? 'עמית נחום' : 'Amit Nahum'} — Data Science & AI`; }
+  if (path === '/') { app.innerHTML = home(); document.title = `${language === 'he' ? 'עמית נחום' : 'Amit Nahum'} — Data Science & ML`; }
   else if (path === '/lab') { app.innerHTML = lab(); document.title = `${t().lab} — Amit Nahum`; }
   else if (path.startsWith('/work/')) {
     const item = project(decodeURIComponent(path.slice(6)));

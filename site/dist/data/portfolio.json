@@ -9,7 +9,19 @@
       "github": "https://github.com/amitnahum18",
       "linkedin": "https://www.linkedin.com/in/amit-nahum-746312230/",
       "kaggle": "https://www.kaggle.com/amitnahum333"
-    }
+    },
+    "skills": [
+      "Python",
+      "SQL",
+      "Pandas",
+      "NumPy",
+      "Statistics",
+      "Feature Engineering",
+      "Model Evaluation",
+      "scikit-learn",
+      "CatBoost",
+      "Anomaly Detection"
+    ]
   },
   "projects": [
     {
@@ -109,6 +121,32 @@
           "en": "/assets/projects/bridgepulse-en-card.svg",
           "he": "/assets/projects/bridgepulse-he-card.svg"
         }
+      },
+      "caseStudy": {
+        "tools": [
+          "Python",
+          "MFCC",
+          "scikit-learn",
+          "MLflow"
+        ],
+        "en": {
+          "title": "BridgePulse",
+          "summary": "Classify experimental bridge damage from acceleration signals, with a packaged prediction pipeline.",
+          "data": "25 recordings · 8 states · 58 channels · one bridge",
+          "method": "1,392 MFCC features and a regularized Random Forest",
+          "result": "81.97% balanced accuracy",
+          "context": "Mean across state-grouped allocations; exploratory, no untouched final test.",
+          "evaluation": "State-grouped splits; standard deviation of 8.14 percentage points."
+        },
+        "he": {
+          "title": "BridgePulse",
+          "summary": "סיווג נזק ניסויי בגשר מתוך אותות תאוצה, עם תהליך חיזוי ארוז לשימוש עצמאי.",
+          "data": "25 הקלטות · 8 מצבים · 58 ערוצים · גשר אחד",
+          "method": "1,392 מאפייני MFCC ומסווג Random Forest עם הגבלת מורכבות",
+          "result": "81.97% דיוק מאוזן",
+          "context": "ממוצע בחלוקות לפי מצב; ניסוי ללא קבוצת מבחן סופית שלא נחשפה.",
+          "evaluation": "חלוקה לפי קבוצות מצב; סטיית תקן של 8.14 נקודות אחוז."
+        }
       }
     },
     {
@@ -178,6 +216,224 @@
         "he": {
           "caption": "גרף SHAP שמור מהמחברת הציבורית, להמחשת השיטה.",
           "alt": "גרף SHAP המציג את השפעת משתני לוחיות הרישוי על המודל."
+        }
+      },
+      "caseStudy": {
+        "tools": [
+          "Python",
+          "CatBoost",
+          "SHAP",
+          "Feature engineering"
+        ],
+        "en": {
+          "title": "License Plate Pricing",
+          "summary": "Explore plate patterns and contextual features for price prediction, then interpret their effects with SHAP.",
+          "data": "Plate patterns, dates, regions and observed prices",
+          "method": "Feature engineering, CatBoost regression and SHAP analysis",
+          "result": "Kaggle · 2nd / 694 teams",
+          "context": "Nahum Team, final private leaderboard. Public notebook not matched to the ranked submission.",
+          "evaluation": "Verified team ranking; public notebook needs train-only aggregate features to avoid leakage."
+        },
+        "he": {
+          "title": "חיזוי מחירי לוחיות רישוי",
+          "summary": "בחינת דפוסי לוחיות ומשתני הקשר לחיזוי מחיר, ופירוש השפעת המאפיינים בעזרת SHAP.",
+          "data": "דפוסי לוחיות, תאריכים, אזורים ומחירים שנמדדו",
+          "method": "הנדסת מאפיינים, רגרסיית CatBoost וניתוח SHAP",
+          "result": "Kaggle · מקום 2 / 694 קבוצות",
+          "context": "Nahum Team, דירוג סופי פרטי. המחברת לא אומתה כקוד ההגשה המדורגת.",
+          "evaluation": "דירוג קבוצתי מאומת; במחברת יש לחשב מאפיינים מצטברים מנתוני האימון בלבד כדי למנוע דליפה."
+        }
+      }
+    },
+    {
+      "slug": "ufc-prediction",
+      "repositoryName": "UFC_predict",
+      "type": "experiment",
+      "topics": [
+        "Tabular ML"
+      ],
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/amitnahum18/UFC_predict"
+        }
+      ],
+      "en": {
+        "title": "UFC Fight Outcome Prediction",
+        "summary": "A tabular machine learning experiment using historical fighter statistics and engineered features to predict fight outcomes.",
+        "goal": "Explore how fighter differences and recent fight history can be represented as predictive features.",
+        "approach": [
+          "Build features from fighter comparisons, the previous fight, the last three fights and career history.",
+          "Train a CatBoost classifier and inspect the saved evaluation outputs."
+        ],
+        "observations": [
+          "The notebook records 76.41% accuracy on a random, stratified 80/20 split. This is a saved internal result, rather than a newly reproduced evaluation."
+        ],
+        "limitations": [
+          "The evaluation subset is also used during model selection, so it is not an untouched final test.",
+          "A chronological evaluation is still needed to assess prediction of future fights."
+        ],
+        "credits": [
+          "The README identifies an external Greco1899 scraper as a data source."
+        ]
+      },
+      "he": {
+        "title": "חיזוי תוצאות קרבות UFC",
+        "summary": "ניסוי בלמידת מכונה על נתונים טבלאיים, המשתמש בנתוני לוחמים היסטוריים ובהנדסת פיצ'רים לחיזוי תוצאות קרבות.",
+        "goal": "לבחון כיצד לייצג הבדלים בין לוחמים והיסטוריית קרבות אחרונה כמשתנים לחיזוי.",
+        "approach": [
+          "בניית פיצ'רים מהשוואות בין לוחמים, הקרב הקודם, שלושת הקרבות האחרונים והיסטוריית הקריירה.",
+          "אימון מסווג CatBoost ובחינת פלטי ההערכה שנשמרו במחברת."
+        ],
+        "observations": [
+          "במחברת נשמר דיוק של 76.41% בחלוקה אקראית ומרובדת של 80/20. זהו פלט פנימי שמור, ולא תוצאת הערכה ששוחזרה כעת."
+        ],
+        "limitations": [
+          "קבוצת ההערכה משמשת גם לבחירת המודל, ולכן אינה קבוצת מבחן סופית שלא נחשפה בתהליך.",
+          "נדרשת הערכה לפי סדר זמנים כדי לבחון חיזוי קרבות עתידיים."
+        ],
+        "credits": [
+          "README מציין scraper חיצוני של Greco1899 כמקור נתונים."
+        ]
+      },
+      "image": {
+        "kind": "diagram",
+        "width": 1200,
+        "height": 400,
+        "mobileWidth": 640,
+        "mobileHeight": 610,
+        "en": {
+          "caption": "Process illustration: historical features and CatBoost classification.",
+          "alt": "From history to a prediction: Fighter history → Comparison features → CatBoost"
+        },
+        "he": {
+          "caption": "המחשת התהליך: פיצ׳רים היסטוריים וסיווג באמצעות CatBoost.",
+          "alt": "מהיסטוריה לחיזוי: היסטוריית לוחמים → משתני השוואה → CatBoost"
+        },
+        "sources": {
+          "en": "/assets/projects/ufc-prediction-en.svg",
+          "he": "/assets/projects/ufc-prediction-he.svg"
+        },
+        "mobileSources": {
+          "en": "/assets/projects/ufc-prediction-en-mobile.svg",
+          "he": "/assets/projects/ufc-prediction-he-mobile.svg"
+        },
+        "cardSources": {
+          "en": "/assets/projects/ufc-prediction-en-card.svg",
+          "he": "/assets/projects/ufc-prediction-he-card.svg"
+        }
+      },
+      "caseStudy": {
+        "tools": [
+          "Python",
+          "CatBoost",
+          "Feature engineering"
+        ],
+        "en": {
+          "title": "UFC Fight Prediction",
+          "summary": "Compare fighters using recent fights and career history to build a tabular classification model.",
+          "data": "Historical fighter statistics and fight outcomes",
+          "method": "Comparative features from the last fight, last three fights and career history; CatBoost",
+          "result": "Three windows of fighter history",
+          "context": "Documented feature engineering; chronological evaluation remains open.",
+          "evaluation": "Saved random 80/20 split also used for model selection; future-fight performance is unverified."
+        },
+        "he": {
+          "title": "חיזוי תוצאות קרבות UFC",
+          "summary": "השוואת לוחמים לפי קרבות אחרונים והיסטוריית קריירה לצורך בניית מודל סיווג טבלאי.",
+          "data": "נתוני לוחמים היסטוריים ותוצאות קרבות",
+          "method": "מאפייני השוואה מהקרב האחרון, משלושת הקרבות האחרונים ומהקריירה; CatBoost",
+          "result": "שלושה חלונות של היסטוריית קרבות",
+          "context": "הנדסת מאפיינים מתועדת; הערכה לפי סדר זמנים עדיין נדרשת.",
+          "evaluation": "חלוקת 80/20 אקראית ששימשה גם לבחירת המודל; ביצועים בקרבות עתידיים לא אומתו."
+        }
+      }
+    },
+    {
+      "slug": "car-price-prediction",
+      "repositoryName": "Car_price_prediction",
+      "type": "experiment",
+      "topics": [
+        "Tabular ML"
+      ],
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/amitnahum18/Car_price_prediction"
+        }
+      ],
+      "en": {
+        "title": "Car Price Prediction",
+        "summary": "A tabular regression experiment with feature engineering and a CatBoost price model.",
+        "goal": "Explore a supervised learning pipeline for predicting car prices from structured records.",
+        "approach": [
+          "Work with train and test CSV data and engineered features.",
+          "Train a CatBoost regressor and inspect a random 80/20 evaluation."
+        ],
+        "observations": [
+          "The repository includes the notebook and data files, with saved regression evaluation output."
+        ],
+        "limitations": [
+          "The target units and score context should be explicit before interpreting numerical errors.",
+          "README model descriptions differ from the central training path reviewed."
+        ],
+        "credits": []
+      },
+      "he": {
+        "title": "חיזוי מחירי מכוניות",
+        "summary": "ניסוי רגרסיה על נתונים טבלאיים, עם הנדסת פיצ'רים ומודל מחיר המבוסס על CatBoost.",
+        "goal": "לבחון תהליך למידה מונחית לחיזוי מחירי מכוניות מתוך רשומות מובנות.",
+        "approach": [
+          "עבודה עם קובצי CSV של אימון ומבחן והנדסת פיצ'רים.",
+          "אימון רגרסור CatBoost ובחינת הערכה בחלוקה אקראית של 80/20."
+        ],
+        "observations": [
+          "המאגר מכיל מחברת וקובצי נתונים, עם פלט שמור של הערכת רגרסיה."
+        ],
+        "limitations": [
+          "יש להגדיר את יחידות היעד ואת הקשר המדד לפני פירוש שגיאה מספרית.",
+          "תיאורי המודלים ב-README שונים ממסלול האימון המרכזי שנבדק."
+        ],
+        "credits": []
+      },
+      "image": {
+        "src": "/assets/projects/car-price-prediction.png",
+        "kind": "saved-data",
+        "width": 1600,
+        "height": 900,
+        "en": {
+          "caption": "Model-year distribution from the repository dataset.",
+          "alt": "Histogram of car model years in the repository dataset."
+        },
+        "he": {
+          "caption": "התפלגות שנות הרכב מתוך נתוני המאגר.",
+          "alt": "היסטוגרמה של שנות הרכב בנתוני המאגר."
+        }
+      },
+      "caseStudy": {
+        "tools": [
+          "Python",
+          "Pandas",
+          "CatBoost",
+          "EDA"
+        ],
+        "en": {
+          "title": "Car Price Prediction",
+          "summary": "Analyze vehicle attributes and distributions, engineer features and train a CatBoost price regressor.",
+          "data": "Tabular vehicle attributes and prices from the repository dataset",
+          "method": "Exploratory data analysis, feature engineering and CatBoost regression",
+          "result": "EDA → features → regression",
+          "context": "Documented modeling experiment with saved regression output.",
+          "evaluation": "Saved random 80/20 evaluation; target units and score context need clarification."
+        },
+        "he": {
+          "title": "חיזוי מחירי רכב",
+          "summary": "ניתוח מאפייני רכב והתפלגויות, הנדסת מאפיינים ואימון רגרסור CatBoost לחיזוי מחיר.",
+          "data": "מאפייני רכב ומחירים בטבלאות מתוך נתוני המאגר",
+          "method": "ניתוח נתונים חקרני, הנדסת מאפיינים ורגרסיית CatBoost",
+          "result": "מניתוח נתונים למאפיינים ולרגרסיה",
+          "context": "ניסוי מודלים מתועד עם פלט רגרסיה שמור.",
+          "evaluation": "הערכה שמורה בחלוקה אקראית של 80/20; יש להבהיר את יחידות היעד ואת הקשר המדד."
         }
       }
     },
@@ -278,6 +534,32 @@
           "en": "/assets/projects/jev-decision-experiments-en-card.svg",
           "he": "/assets/projects/jev-decision-experiments-he-card.svg"
         }
+      },
+      "caseStudy": {
+        "tools": [
+          "Python",
+          "OpenRouter",
+          "PyFlyt",
+          "Model evaluation"
+        ],
+        "en": {
+          "title": "JEV Decision Experiments",
+          "summary": "Evaluate constrained AI decisions in flight, driving, chess and reasoning using saved traces and replay.",
+          "data": "Simulated telemetry, chess positions and a custom 50-question exam",
+          "method": "Structured model choices, prompt comparisons, matched evaluations and flight replay",
+          "result": "8 / 8 flight frames completed",
+          "context": "v8 on three previously tested seeds; a small simulation sample.",
+          "evaluation": "Saved matched comparisons; reused seeds do not establish performance on unseen courses."
+        },
+        "he": {
+          "title": "ניסויי קבלת החלטות עם JEV",
+          "summary": "הערכת בחירות AI מתוך אפשרויות מוגדרות בטיסה, נהיגה, שחמט וחשיבה, עם תיעוד ושחזור.",
+          "data": "טלמטריה מדומה, מצבי שחמט ומבחן מותאם של 50 שאלות",
+          "method": "בחירות מודל מובנות, השוואת הנחיות, הערכות בתנאים תואמים ושחזור טיסה",
+          "result": "השלמת 8 / 8 מסגרות טיסה",
+          "context": "v8 בשלושה seeds שכבר נבדקו; מדגם קטן בסימולציה.",
+          "evaluation": "השוואות מתועדות בתנאים תואמים; seeds שנבדקו בעבר אינם מבססים ביצועים במסלולים חדשים."
+        }
       }
     },
     {
@@ -356,6 +638,32 @@
         "cardSources": {
           "en": "/assets/projects/document-indexing-and-retrieval-en-card.svg",
           "he": "/assets/projects/document-indexing-and-retrieval-he-card.svg"
+        }
+      },
+      "caseStudy": {
+        "tools": [
+          "Python",
+          "Gemini",
+          "PostgreSQL",
+          "pgvector"
+        ],
+        "en": {
+          "title": "Semantic Document Retrieval",
+          "summary": "Extract, chunk and embed PDF/DOCX documents for vector search in PostgreSQL.",
+          "data": "PDF and DOCX documents, text passages and query embeddings",
+          "method": "Three chunking strategies, Gemini embeddings and pgvector/HNSW indexing",
+          "result": "Three chunking strategies",
+          "context": "Retrieval infrastructure with test files; no measured retrieval-quality benchmark.",
+          "evaluation": "Unit and integration tests are included but were not run during the content review."
+        },
+        "he": {
+          "title": "חיפוש סמנטי במסמכים",
+          "summary": "חילוץ, חלוקה וייצוג וקטורי של מסמכי PDF ו־DOCX לחיפוש באמצעות PostgreSQL.",
+          "data": "מסמכי PDF ו־DOCX, מקטעי טקסט וייצוגי שאילתות",
+          "method": "שלוש שיטות חלוקה, Gemini embeddings ואינדוקס pgvector/HNSW",
+          "result": "שלוש שיטות חלוקה למקטעים",
+          "context": "תשתית אחזור עם קובצי בדיקות; ללא מדד איכות אחזור שנמדד.",
+          "evaluation": "קיימות בדיקות יחידה ואינטגרציה, אך הן לא הורצו במסגרת סקירת התוכן."
         }
       }
     },
@@ -499,147 +807,6 @@
         "cardSources": {
           "en": "/assets/projects/zapi-electronics-tutor-en-card.svg",
           "he": "/assets/projects/zapi-electronics-tutor-he-card.svg"
-        }
-      }
-    },
-    {
-      "slug": "ufc-prediction",
-      "repositoryName": "UFC_predict",
-      "type": "experiment",
-      "topics": [
-        "Tabular ML"
-      ],
-      "sources": [
-        {
-          "label": "GitHub",
-          "url": "https://github.com/amitnahum18/UFC_predict"
-        }
-      ],
-      "en": {
-        "title": "UFC Fight Outcome Prediction",
-        "summary": "A tabular machine learning experiment using historical fighter statistics and engineered features to predict fight outcomes.",
-        "goal": "Explore how fighter differences and recent fight history can be represented as predictive features.",
-        "approach": [
-          "Build features from fighter comparisons, the previous fight, the last three fights and career history.",
-          "Train a CatBoost classifier and inspect the saved evaluation outputs."
-        ],
-        "observations": [
-          "The notebook records 76.41% accuracy on a random, stratified 80/20 split. This is a saved internal result, rather than a newly reproduced evaluation."
-        ],
-        "limitations": [
-          "The evaluation subset is also used during model selection, so it is not an untouched final test.",
-          "A chronological evaluation is still needed to assess prediction of future fights."
-        ],
-        "credits": [
-          "The README identifies an external Greco1899 scraper as a data source."
-        ]
-      },
-      "he": {
-        "title": "חיזוי תוצאות קרבות UFC",
-        "summary": "ניסוי בלמידת מכונה על נתונים טבלאיים, המשתמש בנתוני לוחמים היסטוריים ובהנדסת פיצ'רים לחיזוי תוצאות קרבות.",
-        "goal": "לבחון כיצד לייצג הבדלים בין לוחמים והיסטוריית קרבות אחרונה כמשתנים לחיזוי.",
-        "approach": [
-          "בניית פיצ'רים מהשוואות בין לוחמים, הקרב הקודם, שלושת הקרבות האחרונים והיסטוריית הקריירה.",
-          "אימון מסווג CatBoost ובחינת פלטי ההערכה שנשמרו במחברת."
-        ],
-        "observations": [
-          "במחברת נשמר דיוק של 76.41% בחלוקה אקראית ומרובדת של 80/20. זהו פלט פנימי שמור, ולא תוצאת הערכה ששוחזרה כעת."
-        ],
-        "limitations": [
-          "קבוצת ההערכה משמשת גם לבחירת המודל, ולכן אינה קבוצת מבחן סופית שלא נחשפה בתהליך.",
-          "נדרשת הערכה לפי סדר זמנים כדי לבחון חיזוי קרבות עתידיים."
-        ],
-        "credits": [
-          "README מציין scraper חיצוני של Greco1899 כמקור נתונים."
-        ]
-      },
-      "image": {
-        "kind": "diagram",
-        "width": 1200,
-        "height": 400,
-        "mobileWidth": 640,
-        "mobileHeight": 610,
-        "en": {
-          "caption": "Process illustration: historical features and CatBoost classification.",
-          "alt": "From history to a prediction: Fighter history → Comparison features → CatBoost"
-        },
-        "he": {
-          "caption": "המחשת התהליך: פיצ׳רים היסטוריים וסיווג באמצעות CatBoost.",
-          "alt": "מהיסטוריה לחיזוי: היסטוריית לוחמים → משתני השוואה → CatBoost"
-        },
-        "sources": {
-          "en": "/assets/projects/ufc-prediction-en.svg",
-          "he": "/assets/projects/ufc-prediction-he.svg"
-        },
-        "mobileSources": {
-          "en": "/assets/projects/ufc-prediction-en-mobile.svg",
-          "he": "/assets/projects/ufc-prediction-he-mobile.svg"
-        },
-        "cardSources": {
-          "en": "/assets/projects/ufc-prediction-en-card.svg",
-          "he": "/assets/projects/ufc-prediction-he-card.svg"
-        }
-      }
-    },
-    {
-      "slug": "car-price-prediction",
-      "repositoryName": "Car_price_prediction",
-      "type": "experiment",
-      "topics": [
-        "Tabular ML"
-      ],
-      "sources": [
-        {
-          "label": "GitHub",
-          "url": "https://github.com/amitnahum18/Car_price_prediction"
-        }
-      ],
-      "en": {
-        "title": "Car Price Prediction",
-        "summary": "A tabular regression experiment with feature engineering and a CatBoost price model.",
-        "goal": "Explore a supervised learning pipeline for predicting car prices from structured records.",
-        "approach": [
-          "Work with train and test CSV data and engineered features.",
-          "Train a CatBoost regressor and inspect a random 80/20 evaluation."
-        ],
-        "observations": [
-          "The repository includes the notebook and data files, with saved regression evaluation output."
-        ],
-        "limitations": [
-          "The target units and score context should be explicit before interpreting numerical errors.",
-          "README model descriptions differ from the central training path reviewed."
-        ],
-        "credits": []
-      },
-      "he": {
-        "title": "חיזוי מחירי מכוניות",
-        "summary": "ניסוי רגרסיה על נתונים טבלאיים, עם הנדסת פיצ'רים ומודל מחיר המבוסס על CatBoost.",
-        "goal": "לבחון תהליך למידה מונחית לחיזוי מחירי מכוניות מתוך רשומות מובנות.",
-        "approach": [
-          "עבודה עם קובצי CSV של אימון ומבחן והנדסת פיצ'רים.",
-          "אימון רגרסור CatBoost ובחינת הערכה בחלוקה אקראית של 80/20."
-        ],
-        "observations": [
-          "המאגר מכיל מחברת וקובצי נתונים, עם פלט שמור של הערכת רגרסיה."
-        ],
-        "limitations": [
-          "יש להגדיר את יחידות היעד ואת הקשר המדד לפני פירוש שגיאה מספרית.",
-          "תיאורי המודלים ב-README שונים ממסלול האימון המרכזי שנבדק."
-        ],
-        "credits": []
-      },
-      "image": {
-        "src": "/assets/projects/car-price-prediction.png",
-        "kind": "saved-data",
-        "width": 1600,
-        "height": 900,
-        "en": {
-          "caption": "Model-year distribution from the repository dataset.",
-          "alt": "Histogram of car model years in the repository dataset."
-        },
-        "he": {
-          "caption": "התפלגות שנות הרכב מתוך נתוני המאגר.",
-          "alt": "היסטוגרמה של שנות הרכב בנתוני המאגר."
         }
       }
     },
