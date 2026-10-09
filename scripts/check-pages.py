@@ -75,13 +75,24 @@ assert ds.count('class="case-card"') == 3
 assert agents.count('class="case-card agent-card"') == 2
 assert 'car-price-prediction' not in homepage
 assert '81.97%' in homepage and 'state-grouped splits' in homepage
-assert 'Nahum Team placed 2nd / 694' in homepage
+assert '2nd / 694' in homepage and 'Nahum Team' in homepage
 assert 'case-context' not in homepage and 'MFCC' in homepage
 assert len(data['profile']['skills']) + len(data['profile']['agentSkills']) == 10
 assert 'Download CV' in homepage and 'View Projects' in homepage
 assert homepage.count('<dt>Problem</dt>') == homepage.count('<dt>Solution</dt>') == 5
 assert not re.search('[\u0590-\u05ff]', json.dumps(data, ensure_ascii=False))
 assert len(re.findall(r'class="lab-card"', pages[1].read_text(encoding='utf-8'))) == 19
+lab = pages[1].read_text(encoding='utf-8')
+advanced = re.search(r'(<details id="advanced-filters"[^>]*>)(.*?)</details>', lab, re.S)
+assert advanced and ' open' not in advanced[1]
+assert 'id="topic-select"' in advanced[2] and 'id="type-select"' in advanced[2]
+assert 'id="project-search"' not in advanced[2]
+assert 'Show all 19 projects' in lab
+assert 'Professional experience in AI engineering and aviation data analysis' in homepage
+assert homepage.count('>Measured Result</p>') == 2 and homepage.count('>Deliverable</p>') == 3
+assert 'Military Vehicle Object Detection Draft' not in lab
+assert 'AI vs Human Text Classification Demo' not in lab
+assert 'maturity-tag">Draft' in lab and 'maturity-tag">Demo' in lab
 sitemap = ET.parse(root / 'sitemap.xml')
 assert {node.text for node in sitemap.iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')} == canonicals
 print(f'PASS: {len(pages)} full HTML pages, links/assets, accessibility basics, project limitations, unique sharing metadata and sitemap.')

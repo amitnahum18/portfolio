@@ -49,6 +49,8 @@ jobs:
           sleep 2
           npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/mobile
           npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/ --quiet --preset=desktop --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/desktop
+          npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/lab/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/lab-mobile
+          npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/lab/ --quiet --preset=desktop --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/lab-desktop
       - name: Summarize audit measurements
         run: python3 scripts/summarize-audits.py
       - name: Upload website

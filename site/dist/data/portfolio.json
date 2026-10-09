@@ -74,6 +74,14 @@
       },
       "area": "data-science",
       "featured": true,
+      "outcome": {
+        "kind": "measured",
+        "en": {
+          "value": "81.97%",
+          "headline": "Mean balanced accuracy",
+          "detail": "Mean balanced accuracy across state-grouped splits"
+        }
+      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -126,7 +134,8 @@
           "cardResult": "81.97% mean balanced accuracy · state-grouped splits",
           "problem": "Distinguish baseline and damage states in bridge vibration recordings.",
           "solution": "Extract MFCC features and classify states with a regularized Random Forest."
-        }
+        },
+        "resultKind": "measured"
       }
     },
     {
@@ -167,6 +176,14 @@
       },
       "area": "data-science",
       "featured": true,
+      "outcome": {
+        "kind": "measured",
+        "en": {
+          "value": "2nd / 694",
+          "headline": "Kaggle team ranking",
+          "detail": "Kaggle: Nahum Team, final private leaderboard"
+        }
+      },
       "image": {
         "src": "/assets/projects/license-plate-pricing.png",
         "kind": "saved-plot",
@@ -209,7 +226,8 @@
           "cardResult": "Kaggle · Nahum Team placed 2nd / 694 teams",
           "problem": "Estimate prices from license plate patterns and context.",
           "solution": "Engineer pattern features, fit CatBoost regression and analyze effects with SHAP."
-        }
+        },
+        "resultKind": "measured"
       }
     },
     {
@@ -246,6 +264,14 @@
       },
       "area": "data-science",
       "featured": true,
+      "outcome": {
+        "kind": "deliverable",
+        "en": {
+          "value": "",
+          "headline": "CatBoost fight-outcome model",
+          "detail": "Features from the last fight, last 3 fights and career history"
+        }
+      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -297,7 +323,8 @@
           "cardResult": "Features from the last fight, last 3 fights and full career",
           "problem": "Model fight outcomes from historical fighter statistics.",
           "solution": "Compare recent fights and career history using engineered features and CatBoost."
-        }
+        },
+        "resultKind": "deliverable"
       }
     },
     {
@@ -332,6 +359,14 @@
       },
       "area": "data-science",
       "featured": false,
+      "outcome": {
+        "kind": "deliverable",
+        "en": {
+          "value": "",
+          "headline": "Car-price regression pipeline",
+          "detail": "Exploratory analysis, engineered features and CatBoost"
+        }
+      },
       "image": {
         "src": "/assets/projects/car-price-prediction.png",
         "kind": "saved-data",
@@ -371,7 +406,8 @@
           "result": "EDA → features → regression",
           "context": "Documented modeling experiment with saved regression output.",
           "evaluation": "Saved random 80/20 evaluation; target units and score context need clarification."
-        }
+        },
+        "resultKind": "deliverable"
       }
     },
     {
@@ -423,6 +459,14 @@
       },
       "area": "agents",
       "featured": true,
+      "outcome": {
+        "kind": "deliverable",
+        "en": {
+          "value": "",
+          "headline": "Replayable AI decision experiments",
+          "detail": "Matched simulation comparisons and saved decision traces"
+        }
+      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -475,7 +519,8 @@
           "cardResult": "Matched simulation experiments with replayable decisions",
           "problem": "Assess how AI models choose actions in simulated environments.",
           "solution": "Compare constrained decisions using matched experiments, saved traces and replay."
-        }
+        },
+        "resultKind": "measured"
       }
     },
     {
@@ -512,6 +557,14 @@
       },
       "area": "agents",
       "featured": true,
+      "outcome": {
+        "kind": "deliverable",
+        "en": {
+          "value": "",
+          "headline": "Semantic document retrieval",
+          "detail": "Three chunking strategies with pgvector / HNSW indexing"
+        }
+      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -564,7 +617,8 @@
           "cardResult": "Three chunking strategies · pgvector / HNSW retrieval",
           "problem": "Retrieve relevant passages from PDF and DOCX documents.",
           "solution": "Combine three chunking strategies, embeddings and pgvector/HNSW indexing."
-        }
+        },
+        "resultKind": "deliverable"
       }
     },
     {
@@ -776,6 +830,14 @@
       },
       "area": "agents",
       "featured": false,
+      "outcome": {
+        "kind": "deliverable",
+        "en": {
+          "value": "",
+          "headline": "Read-only SQL tool API",
+          "detail": "Database schema and query tools for an analyst-agent prototype"
+        }
+      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -825,7 +887,8 @@
           "result": "Read-only SQL tool API",
           "context": "Prototype; full chat/upload integration needs alignment.",
           "evaluation": "Reviewed source code; end-to-end workflow was not executed."
-        }
+        },
+        "resultKind": "deliverable"
       }
     },
     {
@@ -864,6 +927,14 @@
       },
       "area": "agents",
       "featured": false,
+      "outcome": {
+        "kind": "deliverable",
+        "en": {
+          "value": "",
+          "headline": "Support-agent routing workflow",
+          "detail": "Orchestration, analysis and response agents with SQL tools"
+        }
+      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -913,7 +984,8 @@
           "result": "Multi-agent routing + SQL tools",
           "context": "Take-home assignment with workflow and custom components.",
           "evaluation": "Test scenarios and test files are included; tests and end-to-end behavior were not verified."
-        }
+        },
+        "resultKind": "deliverable"
       }
     },
     {
@@ -930,7 +1002,7 @@
         }
       ],
       "en": {
-        "title": "Military Vehicle Object Detection Draft",
+        "title": "Military Vehicle Object Detection",
         "summary": "A transfer-learning experiment adapting YOLOv8n to four vehicle categories, including helicopters.",
         "goal": "Explore object detector fine-tuning and the effect of annotation quality on model evaluation.",
         "approach": [
@@ -950,6 +1022,7 @@
       },
       "area": "data-science",
       "featured": false,
+      "maturity": "Draft",
       "image": {
         "src": "/assets/projects/military-vehicle-object-detection.png",
         "kind": "saved-plot",
@@ -976,7 +1049,7 @@
         }
       ],
       "en": {
-        "title": "AI vs Human Text Classification Demo",
+        "title": "AI vs Human Text Classification",
         "summary": "An inference demo connecting text vectorization and a saved classifier to a Flask interface.",
         "goal": "Explore how a saved text model can be exposed through a small interactive prediction workflow.",
         "approach": [
@@ -994,6 +1067,7 @@
       },
       "area": "data-science",
       "featured": false,
+      "maturity": "Demo",
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1247,6 +1321,7 @@
       },
       "area": "other",
       "featured": false,
+      "maturity": "Prototype",
       "image": {
         "kind": "diagram",
         "width": 1200,

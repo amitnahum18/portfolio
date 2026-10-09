@@ -6,9 +6,9 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parents[1] / '_site/audits'
 root.mkdir(parents=True, exist_ok=True)
-summary = {'commit': os.environ.get('GITHUB_SHA'), 'scope': 'Lighthouse lab audit of the generated home page served locally on the GitHub Actions runner; simulated mobile and desktop. These are not real-user field measurements.', 'inp': {'status': 'not-measured', 'reason': 'A navigation Lighthouse audit does not measure representative real-user INP. No field data was retrieved.'}, 'reports': {}}
+summary = {'commit': os.environ.get('GITHUB_SHA'), 'scope': 'Lighthouse lab audit of the generated home and project collection pages served locally on the GitHub Actions runner; simulated mobile and desktop. These are not real-user field measurements.', 'inp': {'status': 'not-measured', 'reason': 'A navigation Lighthouse audit does not measure representative real-user INP. No field data was retrieved.'}, 'reports': {}}
 rows = []
-for device in ['mobile', 'desktop']:
+for device in ['mobile', 'desktop', 'lab-mobile', 'lab-desktop']:
     files = list(root.glob(device + '*.json'))
     if not files:
         summary['reports'][device] = {'status': 'unavailable', 'reason': 'The Lighthouse runner did not produce a report.'}

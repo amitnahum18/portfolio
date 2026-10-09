@@ -37,7 +37,7 @@ const text = {
     contactEyebrow: 'LET’S CONNECT', contactTitle: "Let’s talk about<br>your next data challenge.", footer: 'Amit Nahum · 2026', footerNote: 'Data Science · Analysis · AI',
     labPageTitle: 'All projects.', labPageIntro: 'Data Science and ML are my primary focus. AI agents and LLM systems form a separate collection. Explore either area, then narrow by topic or project type.',
     search: 'Search', searchPlaceholder: 'Try NLP, CatBoost, SQL…', topic: 'Topic', type: 'Type', allTopics: 'All topics', allTypes: 'All types',
-    results: 'works', clear: 'Clear filters', noResults: 'No matching work', noResultsText: 'Try a different topic or a shorter search.',
+    results: 'projects', clear: 'Show all 19 projects', noResults: 'No matching work', noResultsText: 'Try a different topic or a shorter search.',
     home: 'Home', goal: 'Question / goal', approach: 'Data & approach', observations: 'Evidence & observations', limitations: 'Scope & limitations', credits: 'Credits',
     sourceEyebrow: 'EXPLORE THE WORK', sources: 'Code & links', next: 'Next in the collection', back: 'Back to the lab',
     notFound: 'This page isn’t in the collection.', error: 'The portfolio could not load. Please refresh the page.', skip: 'Skip to content'
@@ -78,7 +78,8 @@ function footer() {
 const presentation = {
   en: {
     role: 'Data Scientist | Machine Learning & Applied AI',
-    bio: 'I build and evaluate machine learning models, combining hands-on experience in aviation data analysis with predictive modeling, signal processing and offline AI systems.',
+    experienceProof: 'Professional experience in AI engineering and aviation data analysis; hands-on machine learning.',
+    bio: 'I develop predictive models and signal-processing pipelines, with an emphasis on careful validation and documented results.',
     process: 'From data exploration and feature engineering to validation, model evaluation and deployment.',
     availability: 'Open to Data Scientist / ML roles',
     education: 'Beginning an M.Sc. in Computer Science at HIT',
@@ -106,7 +107,7 @@ function profilePanel() {
   return `<aside class="profile-panel" aria-label="${q('About Amit Nahum')}">
     <div class="profile-photo"><img src="${q(siteURL('/assets/amit-portrait-web.jpeg'))}" alt="${q(t().portraitAlt)}" width="480" height="720" decoding="async" fetchpriority="high"></div>
     <p class="availability"><span aria-hidden="true"></span>${q(x.availability)}</p>
-    <h1>${q(catalogue.profile.name[language])}</h1><p class="profile-role">${q(x.role)}</p>
+    <h1>${q(catalogue.profile.name[language])}</h1><p class="profile-role">${q(x.role)}</p><p class="profile-experience-proof">${q(x.experienceProof)}</p>
     <div class="profile-bio"><p>${q(x.bio)}</p><p>${q(x.process)}</p></div><p class="profile-education">${q(x.completedDegree)}<br>${q(x.education)}</p>
     <div class="profile-actions">${navLink('/#work', 'View Projects', 'profile-contact')}<a class="profile-cv" href="${q(siteURL('/assets/Amit-Nahum-CV.pdf?v=education-20261009'))}" download="Amit-Nahum-CV.pdf">Download CV <span aria-hidden="true">↓</span></a></div>
     <div class="profile-links"><a href="mailto:${q(catalogue.profile.email)}">Email</a>${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}</div>
@@ -121,9 +122,9 @@ function caseCard(item, index, compact = false) {
   const code = item.sources.find(link => link.label === 'GitHub');
   return `<article class="case-card${compact ? ' agent-card' : ''}">
     ${compact && !item.coverImage ? '' : `<a data-nav href="${q(projectURL(item))}" class="case-image image-${q(item.coverImage?.kind || item.image.kind)}" aria-label="${q(copy.title)}">${projectPicture(item, 'card')}</a>`}
-    <div class="case-card-body"><div class="case-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div>
+    <div class="case-card-body"><div class="case-meta"><span>${projectBadges(item)}</span><span>${String(index + 1).padStart(2, '0')}</span></div>
     <h3>${navLink(`/work/${item.slug}`, q(copy.title))}</h3><dl class="case-story"><div><dt>Problem</dt><dd>${q(copy.problem)}</dd></div><div><dt>Solution</dt><dd>${q(copy.solution)}</dd></div></dl>
-    <div class="case-outcome"><p class="eyebrow">Result / deliverable</p><p class="case-result" dir="auto">${q(copy.cardResult || copy.result)}</p></div>
+    ${projectOutcome(item)}
     <div class="case-actions">${navLink(`/work/${item.slug}`, `${q(x.read)} <span aria-hidden="true">↗</span>`)}${code ? externalLink(code.url, 'GitHub ↗') : ''}</div></div>
   </article>`;
 }
@@ -155,7 +156,18 @@ function caseSnapshot(item) {
   if (!item.caseStudy) return '';
   const copy = item.caseStudy[language];
   const x = p();
-  return `<section class="case-snapshot"><h2>${q(x.atGlance)}</h2><dl>${['data', 'method', 'result', 'evaluation'].map(field => `<div><dt>${q(x[field])}</dt><dd>${q(field === 'result' ? copy.result + '. ' + copy.context : copy[field])}</dd></div>`).join('')}</dl><div class="tag-list project-tools" aria-label="Project tools">${item.caseStudy.tools.map(tool => `<span class="tag">${q(tool)}</span>`).join('')}</div></section>`;
+  return `<section class="case-snapshot"><h2>${q(x.atGlance)}</h2><dl>${['data', 'method', 'result', 'evaluation'].map(field => `<div><dt>${q(field === 'result' ? (item.caseStudy.resultKind === 'measured' ? 'Measured Result' : 'Deliverable') : x[field])}</dt><dd>${q(field === 'result' ? copy.result + '. ' + copy.context : copy[field])}</dd></div>`).join('')}</dl><div class="tag-list project-tools" aria-label="Project tools">${item.caseStudy.tools.map(tool => `<span class="tag">${q(tool)}</span>`).join('')}</div></section>`;
+}
+
+function projectBadges(item) {
+  return `${q(typeName(item.type))}${item.maturity ? `<span class="maturity-tag">${q(item.maturity)}</span>` : ''}`;
+}
+
+function projectOutcome(item, compact = false) {
+  if (!item.outcome) return '';
+  const result = item.outcome.en;
+  const measured = item.outcome.kind === 'measured';
+  return `<div class="case-outcome${compact ? ' lab-outcome' : ''}"><p class="outcome-label">${measured ? 'Measured Result' : 'Deliverable'}</p><p class="case-result">${measured ? `<strong class="result-metric">${q(result.value)}</strong>` : q(result.headline)}</p><p class="outcome-detail">${q(result.detail)}</p></div>`;
 }
 
 function filteredProjects() {
@@ -164,7 +176,7 @@ function filteredProjects() {
     if (filter.area && item.area !== filter.area) return false;
     if (filter.topic && !item.topics.includes(filter.topic)) return false;
     if (filter.type && item.type !== filter.type) return false;
-    return !search || `${item.en.title} ${item.en.summary} ${item.topics.join(' ')} ${item.en.approach.join(' ')} ${item.repositoryName || ''}`.toLocaleLowerCase().includes(search);
+    return !search || `${item.en.title} ${item.en.summary} ${item.topics.join(' ')} ${item.en.approach.join(' ')} ${item.repositoryName || ''} ${item.maturity || ''}`.toLocaleLowerCase().includes(search);
   });
 }
 
@@ -174,7 +186,7 @@ function labCards() {
   return projectAreas.map(area => {
     const group = items.filter(item => item.area === area);
     if (!group.length) return '';
-    return `<section class="lab-group" aria-labelledby="group-${q(area)}"><div class="lab-group-heading"><h2 id="group-${q(area)}">${q(areaName(area))} <span>${group.length}</span></h2><p>${q(areaIntro(area))}</p></div><div class="lab-grid">${group.map((item, index) => `<a data-nav href="${q(projectURL(item))}" class="lab-card"><div class="lab-card-image image-${q(item.coverImage?.kind || item.image.kind)}">${projectPicture(item, 'card')}</div><div class="lab-card-meta"><span>${q(typeName(item.type))}</span><span>${String(index + 1).padStart(2, '0')}</span></div><h3>${q(item[language].title)}</h3><p>${q(item[language].summary)}</p><div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></a>`).join('')}</div></section>`;
+    return `<section class="lab-group" aria-labelledby="group-${q(area)}"><div class="lab-group-heading"><h2 id="group-${q(area)}">${q(areaName(area))} <span>${group.length}</span></h2><p>${q(areaIntro(area))}</p></div><div class="lab-grid">${group.map((item, index) => `<a data-nav href="${q(projectURL(item))}" class="lab-card"><div class="lab-card-image image-${q(item.coverImage?.kind || item.image.kind)}">${projectPicture(item, 'card')}</div><div class="lab-card-meta"><span>${projectBadges(item)}</span><span>${String(index + 1).padStart(2, '0')}</span></div><h3>${q(item[language].title)}</h3><p>${q(item[language].summary)}</p>${item.outcome?.kind === 'measured' ? projectOutcome(item, true) : ''}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></a>`).join('')}</div></section>`;
   }).join('');
 }
 
@@ -182,7 +194,8 @@ function lab() {
   const x = t();
   const topics = [...new Set(catalogue.projects.flatMap(item => item.topics))];
   const types = [...new Set(catalogue.projects.map(item => item.type))];
-  return `${header()}<main id="main" class="wrap"><section class="page-intro"><p class="eyebrow">${q(x.labEyebrow)}</p><h1 class="display-title">${q(x.labPageTitle)}</h1><p>${q(x.labPageIntro)}</p></section><div class="area-filters" role="group" aria-label="${q(p().allAreas)}">${['', ...projectAreas].map(area => `<button type="button" data-area="${q(area)}" aria-pressed="${filter.area === area}">${q(area ? areaName(area) : p().allAreas)}</button>`).join('')}</div><div class="lab-controls"><div class="control"><label class="control-label" for="project-search">${q(x.search)}</label><input id="project-search" type="search" enterkeyhint="search" value="${q(filter.search)}" placeholder="${q(x.searchPlaceholder)}" autocomplete="off"></div><div class="control"><label class="control-label" for="topic-select">${q(x.topic)}</label><select id="topic-select"><option value="">${q(x.allTopics)}</option>${topics.map(topic => `<option value="${q(topic)}" ${filter.topic === topic ? 'selected' : ''}>${q(topicName(topic))}</option>`).join('')}</select></div><div class="control"><label class="control-label" for="type-select">${q(x.type)}</label><select id="type-select"><option value="">${q(x.allTypes)}</option>${types.map(type => `<option value="${q(type)}" ${filter.type === type ? 'selected' : ''}>${q(typeName(type))}</option>`).join('')}</select></div></div><div class="results-bar"><span id="results-count" role="status" aria-live="polite">${filteredProjects().length} ${q(x.results)}</span><button data-reset class="reset-button">${q(x.clear)}</button></div><div id="lab-grid" class="lab-groups">${labCards()}</div></main>${footer()}`;
+  const active = [filter.topic, filter.type].filter(Boolean).length;
+  return `${header()}<main id="main" class="wrap"><section class="page-intro"><p class="eyebrow">${q(x.labEyebrow)}</p><h1 class="display-title">${q(x.labPageTitle)}</h1><p>Explore all 19 projects across Data Science & ML, AI agents and supporting experiments.</p></section><div class="area-filters" role="group" aria-label="${q(p().allAreas)}">${['', ...projectAreas].map(area => `<button type="button" data-area="${q(area)}" aria-pressed="${filter.area === area}">${q(area ? areaName(area) : p().allAreas)}</button>`).join('')}</div><div class="lab-controls"><div class="control"><label class="control-label" for="project-search">${q(x.search)}</label><input id="project-search" type="search" enterkeyhint="search" value="${q(filter.search)}" placeholder="${q(x.searchPlaceholder)}" autocomplete="off"></div><details id="advanced-filters" class="advanced-filters" ${active ? 'open' : ''}><summary>Advanced Filters<span id="advanced-filter-count">${active ? ` (${active} active)` : ''}</span></summary><div class="advanced-filter-fields"><div class="control"><label class="control-label" for="topic-select">${q(x.topic)}</label><select id="topic-select"><option value="">${q(x.allTopics)}</option>${topics.map(topic => `<option value="${q(topic)}" ${filter.topic === topic ? 'selected' : ''}>${q(topicName(topic))}</option>`).join('')}</select></div><div class="control"><label class="control-label" for="type-select">${q(x.type)}</label><select id="type-select"><option value="">${q(x.allTypes)}</option>${types.map(type => `<option value="${q(type)}" ${filter.type === type ? 'selected' : ''}>${q(typeName(type))}</option>`).join('')}</select></div></div></details></div><div class="results-bar"><span id="results-count" role="status" aria-live="polite">${filteredProjects().length} ${q(x.results)}</span><button data-reset class="reset-button">${q(x.clear)}</button></div><div id="lab-grid" class="lab-groups">${labCards()}</div></main>${footer()}`;
 }
 
 function projectPicture(item, compact = false) {
@@ -209,7 +222,7 @@ function detail(item) {
   const x = t();
   const section = (field, items, paragraphs = false) => !items.length ? '' : `<section class="detail-section"><h2>${q(x[field])}</h2>${paragraphs ? items.map(value => `<p>${q(value)}</p>`).join('') : `<ul>${items.map(value => `<li>${q(value)}</li>`).join('')}</ul>`}</section>`;
   const next = catalogue.projects[(catalogue.projects.indexOf(item) + 1) % catalogue.projects.length];
-  return `${header()}<main id="main"><section class="detail-header"><div class="wrap"><nav class="breadcrumb" aria-label="${'Breadcrumb'}">${navLink('/', q(x.home))}<span>/</span>${navLink('/lab', q(x.lab))}<span>/</span><span>${q(typeName(item.type))}</span></nav><p class="eyebrow">${q(typeName(item.type))} / ${q(item.topics.map(topicName).join(' · '))}</p><h1>${q(copy.title)}</h1><p class="detail-summary">${q(copy.summary)}</p></div></section><div class="wrap detail-layout"><article>${caseSnapshot(item)}${projectImage(item)}${section('goal', [copy.goal], true)}${section('approach', copy.approach)}${section('observations', copy.observations, true)}${section('limitations', copy.limitations)}${section('credits', copy.credits)}</article><aside><div class="source-panel"><p class="eyebrow">${q(x.sourceEyebrow)}</p><h2>${q(x.sources)}</h2>${item.sources.map(source => externalLink(source.url, source.label === 'Public app' ? ('Open the app') : source.label, 'source-link')).join('')}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></div></aside></div><div class="wrap detail-next"><div><p>${q(x.next)}</p>${navLink(`/work/${next.slug}`, q(next[language].title))}</div>${navLink('/lab', q(x.back), 'quiet-link')}</div></main>${footer()}`;
+  return `${header()}<main id="main"><section class="detail-header"><div class="wrap"><nav class="breadcrumb" aria-label="${'Breadcrumb'}">${navLink('/', q(x.home))}<span>/</span>${navLink('/lab', q(x.lab))}<span>/</span><span>${q(typeName(item.type))}</span></nav><p class="eyebrow">${projectBadges(item)} / ${q(item.topics.map(topicName).join(' · '))}</p><h1>${q(copy.title)}</h1><p class="detail-summary">${q(copy.summary)}</p></div></section><div class="wrap detail-layout"><article>${caseSnapshot(item)}${projectImage(item)}${section('goal', [copy.goal], true)}${section('approach', copy.approach)}${section('observations', copy.observations, true)}${section('limitations', copy.limitations)}${section('credits', copy.credits)}</article><aside><div class="source-panel"><p class="eyebrow">${q(x.sourceEyebrow)}</p><h2>${q(x.sources)}</h2>${item.sources.map(source => externalLink(source.url, source.label === 'Public app' ? ('Open the app') : source.label, 'source-link')).join('')}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></div></aside></div><div class="wrap detail-next"><div><p>${q(x.next)}</p>${navLink(`/work/${next.slug}`, q(next[language].title))}</div>${navLink('/lab', q(x.back), 'quiet-link')}</div></main>${footer()}`;
 }
 
 function pageMetadata(path = currentPath()) {
@@ -258,6 +271,7 @@ function renderRoute({ preserveScroll = false } = {}) {
 function updateLabResults() {
   document.querySelector('#lab-grid').innerHTML = labCards();
   document.querySelector('#results-count').textContent = `${filteredProjects().length} ${t().results}`;
+  document.querySelector('#advanced-filter-count').textContent = [filter.topic, filter.type].filter(Boolean).length ? ` (${[filter.topic, filter.type].filter(Boolean).length} active)` : '';
 }
 
 document.addEventListener('click', event => {
