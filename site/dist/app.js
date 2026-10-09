@@ -31,6 +31,7 @@ const text = {
     aboutText: "My work spans SQL and Python analysis, machine learning pipelines, model evaluation and AI system deployment. I'm interested in understanding the data as much as building the model.",
     aboutText2: 'My current interests include deep learning, model optimization and efficient inference. I am beginning an M.Sc. in Computer Science at Holon Institute of Technology.',
     masters: 'M.Sc. in Computer Science', mastersSub: 'HIT · Beginning in 2026 · Expected completion 2028',
+    bachelors: 'B.Sc. in Computer Science', bachelorsSub: 'HIT · Completed in 2026 · Coursework in statistics, SQL, operations research and information systems.',
     engineer: 'AI Engineer · IDF Reserve Duty', engineerSub: 'Offline inference with vLLM, LLM evaluation and anomaly-detection workflows.',
     analyst: 'Junior Data Analyst · IDF', analystSub: 'SQL analysis and statistical sampling of aviation safety data.',
     contactEyebrow: 'LET’S CONNECT', contactTitle: "Let’s talk about<br>your next data challenge.", footer: 'Amit Nahum · 2026', footerNote: 'Data Science · Analysis · AI',
@@ -71,7 +72,7 @@ function header() {
 
 function footer() {
   const x = t();
-  return `<section id="contact" class="contact-section"><div class="wrap contact-layout"><div><p class="eyebrow">${q(x.contactEyebrow)}</p><h2 class="display-title">${x.contactTitle}</h2></div><div class="contact-info"><a class="contact-email" href="mailto:${q(catalogue.profile.email)}" dir="ltr">${q(catalogue.profile.email)}</a><div class="social-links">${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}<a href="${q(siteURL('/assets/Amit-Nahum-CV.pdf'))}" download="Amit-Nahum-CV.pdf">Download CV</a></div></div></div></section><footer class="site-footer"><div class="wrap footer-inner"><span>${q(x.footer)}</span><span>${q(x.footerNote)}</span></div></footer>`;
+  return `<section id="contact" class="contact-section"><div class="wrap contact-layout"><div><p class="eyebrow">${q(x.contactEyebrow)}</p><h2 class="display-title">${x.contactTitle}</h2></div><div class="contact-info"><a class="contact-email" href="mailto:${q(catalogue.profile.email)}" dir="ltr">${q(catalogue.profile.email)}</a><div class="social-links">${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}<a href="${q(siteURL('/assets/Amit-Nahum-CV.pdf?v=education-20261009'))}" download="Amit-Nahum-CV.pdf">Download CV</a></div></div></div></section><footer class="site-footer"><div class="wrap footer-inner"><span>${q(x.footer)}</span><span>${q(x.footerNote)}</span></div></footer>`;
 }
 
 const presentation = {
@@ -81,6 +82,7 @@ const presentation = {
     process: 'From data exploration and feature engineering to validation, model evaluation and deployment.',
     availability: 'Open to Data Scientist / ML roles',
     education: 'Beginning an M.Sc. in Computer Science at HIT',
+    completedDegree: 'B.Sc. in Computer Science · HIT · Completed in 2026',
     skills: 'Core Data Science / ML skills', agentSkills: 'Applied AI', connect: 'Get in touch',
     selected: 'PRIMARY FOCUS', title: 'Data Science & ML',
     intro: 'Signal processing, predictive modeling and feature engineering, with explicit evaluation methods and documented results.',
@@ -105,8 +107,8 @@ function profilePanel() {
     <div class="profile-photo"><img src="${q(siteURL('/assets/amit-portrait-web.jpeg'))}" alt="${q(t().portraitAlt)}" width="480" height="720" decoding="async" fetchpriority="high"></div>
     <p class="availability"><span aria-hidden="true"></span>${q(x.availability)}</p>
     <h1>${q(catalogue.profile.name[language])}</h1><p class="profile-role">${q(x.role)}</p>
-    <div class="profile-bio"><p>${q(x.bio)}</p><p>${q(x.process)}</p></div><p class="profile-education">${q(x.education)}</p>
-    <div class="profile-actions">${navLink('/#work', 'View Projects', 'profile-contact')}<a class="profile-cv" href="${q(siteURL('/assets/Amit-Nahum-CV.pdf'))}" download="Amit-Nahum-CV.pdf">Download CV <span aria-hidden="true">↓</span></a></div>
+    <div class="profile-bio"><p>${q(x.bio)}</p><p>${q(x.process)}</p></div><p class="profile-education">${q(x.completedDegree)}<br>${q(x.education)}</p>
+    <div class="profile-actions">${navLink('/#work', 'View Projects', 'profile-contact')}<a class="profile-cv" href="${q(siteURL('/assets/Amit-Nahum-CV.pdf?v=education-20261009'))}" download="Amit-Nahum-CV.pdf">Download CV <span aria-hidden="true">↓</span></a></div>
     <div class="profile-links"><a href="mailto:${q(catalogue.profile.email)}">Email</a>${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}</div>
     <div class="profile-skills"><h2>${q(x.skills)}</h2><div class="tag-list">${catalogue.profile.skills.map(skill => `<span class="tag" dir="auto">${q(skill)}</span>`).join('')}</div></div>
     <div class="profile-skills"><h2>${q(x.agentSkills)}</h2><div class="tag-list">${catalogue.profile.agentSkills.map(skill => `<span class="tag" dir="auto">${q(skill)}</span>`).join('')}</div></div>
@@ -132,6 +134,7 @@ function experienceSection() {
     <article><p class="experience-date" dir="ltr">2025–${'Present'}</p><div><h3>${q(x.engineer)}</h3><p>${q(x.engineerSub)}</p></div></article>
     <article><p class="experience-date" dir="ltr">2020–2022</p><div><h3>${q(x.analyst)}</h3><p>${q(x.analystSub)}</p></div></article>
     <article><p class="experience-date" dir="ltr">2026–2028</p><div><h3>${q(x.masters)}</h3><p>${q(x.mastersSub)}</p></div></article>
+    <article><p class="experience-date" dir="ltr">2024–2026</p><div><h3>${q(x.bachelors)}</h3><p>${q(x.bachelorsSub)}</p></div></article>
   </div></section>`;
 }
 
