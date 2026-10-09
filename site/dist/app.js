@@ -71,7 +71,7 @@ function header() {
 
 function footer() {
   const x = t();
-  return `<section id="contact" class="contact-section"><div class="wrap contact-layout"><div><p class="eyebrow">${q(x.contactEyebrow)}</p><h2 class="display-title">${x.contactTitle}</h2></div><div class="contact-info"><a class="contact-email" href="mailto:${q(catalogue.profile.email)}" dir="ltr">${q(catalogue.profile.email)}</a><div class="social-links">${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}</div></div></div></section><footer class="site-footer"><div class="wrap footer-inner"><span>${q(x.footer)}</span><span>${q(x.footerNote)}</span></div></footer>`;
+  return `<section id="contact" class="contact-section"><div class="wrap contact-layout"><div><p class="eyebrow">${q(x.contactEyebrow)}</p><h2 class="display-title">${x.contactTitle}</h2></div><div class="contact-info"><a class="contact-email" href="mailto:${q(catalogue.profile.email)}" dir="ltr">${q(catalogue.profile.email)}</a><div class="social-links">${externalLink(catalogue.profile.links.linkedin, 'LinkedIn')}${externalLink(catalogue.profile.links.github, 'GitHub')}${externalLink(catalogue.profile.links.kaggle, 'Kaggle')}<a href="${q(siteURL('/assets/Amit-Nahum-CV.pdf'))}" download="Amit-Nahum-CV.pdf">Download CV</a></div></div></div></section><footer class="site-footer"><div class="wrap footer-inner"><span>${q(x.footer)}</span><span>${q(x.footerNote)}</span></div></footer>`;
 }
 
 const presentation = {
