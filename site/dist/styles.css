@@ -318,7 +318,7 @@ body { background: #fafbfc; }
 .profile-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 4rem; align-items: start; padding-block: 3.5rem 5rem; }
 .profile-panel { position: sticky; top: 2rem; min-width: 0; }
 .profile-photo { width: 108px; height: 108px; overflow: hidden; border-radius: 22px; background: #e3e9f2; margin-bottom: 1.3rem; }
-.profile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 5%; transform: scale(1.4); transform-origin: 50% 10%; }
+.profile-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
 .availability { display: flex; align-items: center; gap: .5rem; color: #47604e; font-size: .75rem; line-height: 1.6; margin-bottom: .6rem; }
 .availability span { width: 7px; height: 7px; flex: 0 0 7px; background: #3e8c60; border-radius: 50%; }
 .profile-panel h1 { font-size: 2rem; letter-spacing: -.04em; line-height: 1.3; font-weight: 800; }

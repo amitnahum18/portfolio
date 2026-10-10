@@ -22,7 +22,7 @@ const text = {
     work: 'Projects', lab: 'All projects', about: 'Experience', contact: 'Get in touch', menu: 'Menu',
     eyebrow: 'AMIT NAHUM / DATA SCIENCE & ANALYSIS', heroTitle: 'I turn questions<br>into <em>experiments.</em>',
     intro: "I'm Amit Nahum. I started with SQL and aviation safety data. Today, my work spans predictive models and offline AI systems. Now I'm beginning an M.Sc. at HIT and looking for my next role in data science and analysis.",
-    explore: 'Explore the stories', portraitAlt: 'Portrait of Amit Nahum wearing a light suit', open: 'OPEN TO OPPORTUNITIES', role: 'Amit Nahum',
+    explore: 'Explore the stories', portraitAlt: 'Portrait of Amit Nahum in a home office', open: 'OPEN TO OPPORTUNITIES', role: 'Amit Nahum',
     degree: 'Beginning M.Sc. · Computer Science · HIT', tools: 'Python & SQL', thinking: 'Analysis, models & applied AI',
     selected: '01 / SELECTED WORK', selectedTitle: 'It starts with<br><em>what if?</em>', selectedIntro: 'Bridge vibrations to classify. A Kaggle challenge to solve. AI decisions to evaluate. Three projects that show how I build and assess models.', all: 'View all work', nextQuestion: 'THE NEXT QUESTION',
     journey: 'My path', journeyAnalysis: 'SQL & data analysis', journeyAI: 'Offline AI systems', journeyMSc: 'M.Sc. at HIT', journeyNow: 'Beginning in 2026',
@@ -107,7 +107,7 @@ const areaIntro = area => area === 'data-science' ? p().intro : area === 'agents
 function profilePanel() {
   const x = p();
   return `<aside class="profile-panel" aria-label="${q('About Amit Nahum')}">
-    <div class="profile-photo"><img src="${q(siteURL('/assets/amit-portrait-web.jpeg'))}" alt="${q(t().portraitAlt)}" width="480" height="720" decoding="async" fetchpriority="high"></div>
+    <div class="profile-photo"><img src="${q(siteURL('/assets/amit-portrait-20261010.jpeg'))}" alt="${q(t().portraitAlt)}" width="480" height="600" decoding="async" fetchpriority="high"></div>
     <p class="availability"><span aria-hidden="true"></span>${q(x.availability)}</p>
     <h1>${q(catalogue.profile.name[language])}</h1><p class="profile-role">${q(x.role)}</p><p class="profile-experience-proof">${q(x.experienceProof)}</p>
     <div class="profile-bio"><p>${q(x.bio)}</p><p>${q(x.process)}</p></div><p class="profile-education">${q(x.completedDegree)}<br>${q(x.education)}</p>
@@ -239,7 +239,7 @@ function pageMetadata(path = currentPath()) {
   const title = item ? `${item[language].title} — Amit Nahum` : path === '/lab' ? `${t().lab} — Amit Nahum` : `${catalogue.profile.name[language]} — Data Scientist | ML & Applied AI`;
   const description = item ? item[language].summary : path === '/lab' ? t().labPageIntro : `${p().bio} ${p().availability}.`;
   const url = new URL(siteURL(path === '/' ? '/' : path + '/'), 'https://amitnahum18.github.io').href;
-  const image = new URL(siteURL(item?.coverImage?.src || '/assets/amit-portrait-web.jpeg'), 'https://amitnahum18.github.io').href;
+  const image = new URL(siteURL(item?.coverImage?.src || '/assets/amit-portrait-20261010.jpeg'), 'https://amitnahum18.github.io').href;
   const person = {'@type': 'Person', name: 'Amit Nahum', url: new URL(siteURL('/'), 'https://amitnahum18.github.io').href, jobTitle: 'Data Scientist', sameAs: Object.values(catalogue.profile.links)};
   const schema = item ? {'@context': 'https://schema.org', '@type': 'CreativeWork', name: item[language].title, description, url, author: person, keywords: item.topics.join(', '), isBasedOn: item.sources.map(source => source.url)} : path === '/lab' ? {'@context': 'https://schema.org', '@type': 'ItemList', name: title, url, itemListElement: catalogue.projects.map((entry, index) => ({'@type': 'ListItem', position: index + 1, name: entry[language].title, url: new URL(siteURL(`/work/${entry.slug}/`), 'https://amitnahum18.github.io').href}))} : {'@context': 'https://schema.org', ...person, description};
   return {title, description, url, image, schema};
