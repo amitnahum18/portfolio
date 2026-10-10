@@ -40,13 +40,17 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '24'
-      - name: Measure desktop and mobile with Lighthouse
-        continue-on-error: true
+      - name: Verify real Chromium interactions and responsive layouts
         run: |
           mkdir -p "$RUNNER_TEMP/portfolio-preview/portfolio" _site/audits
           cp -R _site/. "$RUNNER_TEMP/portfolio-preview/portfolio/"
           python3 -m http.server 8787 --bind 127.0.0.1 --directory "$RUNNER_TEMP/portfolio-preview" > "$RUNNER_TEMP/portfolio-preview.log" 2>&1 &
           sleep 2
+          npm install --no-save --package-lock=false playwright-core@1.64.0
+          node scripts/check-browser.mjs
+      - name: Measure desktop and mobile with Lighthouse
+        continue-on-error: true
+        run: |
           npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/mobile
           npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/ --quiet --preset=desktop --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/desktop
           npx --yes lighthouse@13.5.0 http://127.0.0.1:8787/portfolio/lab/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --output=json --output=html --output-path=_site/audits/lab-mobile

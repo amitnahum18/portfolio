@@ -28,7 +28,7 @@
     {
       "slug": "bridgepulse",
       "repositoryName": "BridgePulse",
-      "type": "experiment",
+      "type": "research-project",
       "topics": [
         "Signal Processing",
         "Tabular ML",
@@ -50,11 +50,11 @@
       ],
       "en": {
         "title": "BridgePulse: Bridge Damage Classification",
-        "summary": "A signal-processing and ML research pipeline that classifies experimental bridge damage from acceleration recordings, with state-grouped evaluation and a standalone prediction package.",
+        "summary": "Classify baseline and experimental damage states from bridge vibrations, with grouped evaluation and a standalone prediction package.",
         "goal": "Can vibration measurements distinguish baseline and experimentally damaged bridge states while keeping recordings from the same state out of both sides of a validation split?",
         "approach": [
           "Read H5 acceleration recordings from 29 sensors and 58 channels at 128 Hz, validating channel presence, signal length and finite values.",
-          "Use a fixed 89-second segment, overlapping 4-second windows and eight MFCCs per channel to extract 1,392 features using median, interquartile range and mean absolute change.",
+          "Summarize vibration frequency patterns using MFCCs (mel-frequency cepstral coefficients). Eight coefficients per channel, overlapping 4-second windows and a fixed 89-second segment produce 1,392 recording-level features.",
           "Evaluate a regularized Random Forest with experimental states kept together in every split; package feature extraction, a pretrained model, CLI prediction and JSON output.",
           "Include a model card, locked research dependencies, audit reports and scripts for optional local MLflow registration."
         ],
@@ -80,6 +80,15 @@
           "value": "81.97%",
           "headline": "Mean balanced accuracy",
           "detail": "Mean balanced accuracy across state-grouped splits"
+        }
+      },
+      "evidenceImage": {
+        "src": "/assets/projects/bridgepulse-evaluation.svg",
+        "width": 1200,
+        "height": 650,
+        "en": {
+          "alt": "Balanced accuracy for 20 state-grouped BridgePulse allocations, with a saved mean of 81.97 percent.",
+          "caption": "Rendered from the saved evaluation audit: 20 state-grouped allocations, mean 81.97%. Exploratory evaluation on one bridge; no untouched final test and no new model run."
         }
       },
       "image": {
@@ -133,7 +142,7 @@
           "evaluation": "State-grouped splits; standard deviation of 8.14 percentage points.",
           "cardResult": "81.97% mean balanced accuracy · state-grouped splits",
           "problem": "Distinguish baseline and damage states in bridge vibration recordings.",
-          "solution": "Extract MFCC features and classify states with a regularized Random Forest."
+          "solution": "Summarize vibration frequency patterns with MFCC features and classify them with a Random Forest."
         },
         "resultKind": "measured"
       }
@@ -141,7 +150,7 @@
     {
       "slug": "license-plate-pricing",
       "repositoryName": "car-plate-prediction",
-      "type": "experiment",
+      "type": "competition-project",
       "topics": [
         "Tabular ML"
       ],
@@ -182,6 +191,15 @@
           "value": "2nd / 694",
           "headline": "Kaggle team ranking",
           "detail": "Kaggle: Nahum Team, final private leaderboard"
+        }
+      },
+      "evidenceImage": {
+        "src": "/assets/projects/license-plate-leaderboard.png",
+        "width": 1440,
+        "height": 1100,
+        "en": {
+          "alt": "Kaggle final private leaderboard showing Nahum Team in second place.",
+          "caption": "Actual Kaggle final private leaderboard screenshot, captured 2026-10-09. Nahum Team placed second among 694 teams. The reviewed public notebook is not a verified copy of the final submission."
         }
       },
       "image": {
@@ -233,7 +251,7 @@
     {
       "slug": "ufc-prediction",
       "repositoryName": "UFC_predict",
-      "type": "experiment",
+      "type": "research-project",
       "topics": [
         "Tabular ML"
       ],
@@ -241,11 +259,15 @@
         {
           "label": "GitHub",
           "url": "https://github.com/amitnahum18/UFC_predict"
+        },
+        {
+          "label": "Evaluation notebook",
+          "url": "https://github.com/amitnahum18/UFC_predict/blob/main/upc_Train.ipynb"
         }
       ],
       "en": {
         "title": "UFC Fight Outcome Prediction",
-        "summary": "A tabular machine learning experiment using historical fighter statistics and engineered features to predict fight outcomes.",
+        "summary": "Predict fight outcomes with CatBoost using comparative features from recent fights and career history.",
         "goal": "Explore how fighter differences and recent fight history can be represented as predictive features.",
         "approach": [
           "Build features from fighter comparisons, the previous fight, the last three fights and career history.",
@@ -265,12 +287,21 @@
       "area": "data-science",
       "featured": true,
       "outcome": {
-        "kind": "deliverable",
+        "kind": "measured",
         "en": {
-          "value": "",
-          "headline": "CatBoost fight-outcome model",
-          "detail": "Features from the last fight, last 3 fights and career history"
+          "value": "76.41%",
+          "headline": "Internal evaluation accuracy",
+          "detail": "Saved random 80/20 split, also used for model selection. Chronological validation remains necessary."
         }
+      },
+      "evidence": {
+        "title": "Saved notebook evaluation",
+        "lines": [
+          "Train Accuracy: 0.7293",
+          "Test Accuracy: 0.7641"
+        ],
+        "caption": "Saved output from notebook cell 26. The same 20% subset was used for early stopping and model selection; this is not an untouched test or a chronological benchmark.",
+        "url": "https://github.com/amitnahum18/UFC_predict/blob/main/upc_Train.ipynb"
       },
       "image": {
         "kind": "diagram",
@@ -317,14 +348,14 @@
           "summary": "Turn fighter histories into comparative features for a CatBoost fight-outcome classifier.",
           "data": "Historical fighter statistics and fight outcomes",
           "method": "Comparative features from the last fight, last three fights and career history; CatBoost",
-          "result": "Three windows of fighter history",
-          "context": "Documented feature engineering; chronological evaluation remains open.",
+          "result": "76.41% internal evaluation accuracy",
+          "context": "Saved random, stratified 80/20 split also used for model selection; no untouched final test.",
           "evaluation": "Saved random 80/20 split also used for model selection; future-fight performance is unverified.",
-          "cardResult": "Features from the last fight, last 3 fights and full career",
+          "cardResult": "76.41% internal evaluation accuracy; chronological validation pending.",
           "problem": "Model fight outcomes from historical fighter statistics.",
           "solution": "Compare recent fights and career history using engineered features and CatBoost."
         },
-        "resultKind": "deliverable"
+        "resultKind": "measured"
       }
     },
     {
@@ -342,17 +373,18 @@
       ],
       "en": {
         "title": "Car Price Prediction",
-        "summary": "A tabular regression experiment with feature engineering and a CatBoost price model.",
+        "summary": "Analyze vehicle data, engineer predictive features and build a CatBoost price-regression pipeline.",
         "goal": "Explore a supervised learning pipeline for predicting car prices from structured records.",
         "approach": [
           "Work with train and test CSV data and engineered features.",
           "Train a CatBoost regressor and inspect a random 80/20 evaluation."
         ],
         "observations": [
-          "The repository includes the notebook and data files, with saved regression evaluation output."
+          "The repository includes the notebook and data files, with saved regression evaluation output.",
+          "Saved notebook output reports train MAE 1,730.83 and test MAE 1,951.27 on a random 80/20 split. Errors are in the dataset target units; currency and scale are not documented, so they are not used as headline performance claims."
         ],
         "limitations": [
-          "The target units and score context should be explicit before interpreting numerical errors.",
+          "Currency and target scale are not documented, which limits interpretation and comparison of the saved MAE.",
           "README model descriptions differ from the central training path reviewed."
         ],
         "credits": []
@@ -405,7 +437,7 @@
           "method": "Exploratory data analysis, feature engineering and CatBoost regression",
           "result": "EDA → features → regression",
           "context": "Documented modeling experiment with saved regression output.",
-          "evaluation": "Saved random 80/20 evaluation; target units and score context need clarification."
+          "evaluation": "Random 80/20 split with saved regression output; currency and target scale remain undocumented."
         },
         "resultKind": "deliverable"
       }
@@ -413,7 +445,7 @@
     {
       "slug": "jev-decision-experiments",
       "repositoryName": "JEV_try",
-      "type": "experiment",
+      "type": "research-project",
       "topics": [
         "LLM Systems",
         "Simulation",
@@ -435,7 +467,7 @@
       ],
       "en": {
         "title": "JEV: Structured AI Decision Experiments",
-        "summary": "A Python experimentation suite evaluating constrained model decisions in flight, driving, chess and a custom reasoning exam, with saved traces, comparisons and deterministic flight replay.",
+        "summary": "Compare AI decisions in simulated flight, driving and chess, with recorded outcomes and replayable experiments.",
         "goal": "How do structured telemetry, explicit action choices and prompt revisions affect model decisions across simulated environments and reasoning tasks?",
         "approach": [
           "Integrate typesafe/jev-1.13 through OpenRouter with structured state inputs and explicitly defined actions or answers.",
@@ -455,6 +487,11 @@
         ],
         "credits": [
           "Uses the existing JEV model and OpenRouter API, PyFlyt for flight simulation, and Maia/Stockfish as chess opponents."
+        ],
+        "lessons": [
+          "Adding more pitch choices alone did not fix missed flight gates. Earlier prompts completed only one to six of eight gates in the recorded trials.",
+          "The LEVEL action targets a +2-degree nose angle; it does not preserve an existing descent rate. Explicit numerical guidance in v8 helped the model choose actions suited to the gate geometry.",
+          "v8 completed eight of eight gates on three reused seeds. The next evaluation should use unseen seeds to check whether the improvement generalizes."
         ]
       },
       "area": "agents",
@@ -526,7 +563,7 @@
     {
       "slug": "document-indexing-and-retrieval",
       "repositoryName": "Task_2_For_Jeen",
-      "type": "take-home-assignment",
+      "type": "application",
       "topics": [
         "LLM Systems"
       ],
@@ -538,14 +575,16 @@
       ],
       "en": {
         "title": "Document Indexing and Semantic Retrieval",
-        "summary": "A take-home assignment implementing document extraction, chunking, embeddings and vector-based retrieval.",
-        "goal": "Explore how document-processing choices connect to a searchable vector index.",
+        "summary": "Turn PDF and DOCX files into a searchable passage index using embeddings and PostgreSQL vector search.",
+        "goal": "Make relevant passages discoverable by meaning, so a query can find useful text without matching the document wording exactly.",
         "approach": [
           "Extract text from PDF and DOCX files and support three chunking strategies.",
-          "Generate Gemini embeddings and store them with PostgreSQL/pgvector, using HNSW indexing and cosine distance."
+          "Generate Gemini embeddings and store them with PostgreSQL/pgvector, using HNSW indexing and cosine distance.",
+          "Index extracted document chunks first. Embed a query separately and use cosine-distance search to return matching passages from the vector index."
         ],
         "observations": [
-          "The repository separates extraction, embedding and database logic, and includes unit and integration test files."
+          "The repository separates extraction, embedding and database logic, and includes unit and integration test files.",
+          "The deliverable is document extraction and semantic retrieval infrastructure that can support a downstream application; it does not generate chat answers."
         ],
         "limitations": [
           "This work implements retrieval infrastructure; a complete question-answering chat system is outside the demonstrated scope.",
@@ -565,6 +604,7 @@
           "detail": "Three chunking strategies with pgvector / HNSW indexing"
         }
       },
+      "maturity": "Take-home assignment",
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -812,8 +852,8 @@
       ],
       "en": {
         "title": "RAFI: Data Analyst Agent",
-        "summary": "An analyst-agent prototype connecting natural-language workflows with SQL query and schema tools.",
-        "goal": "Explore an agent workflow that can inspect structured data and use database tools to answer analytical questions.",
+        "summary": "A read-only SQL and schema tool API, with chat and workflow scaffolding for an analyst-agent prototype.",
+        "goal": "Give an analyst agent database inspection tools for answering questions about structured data.",
         "approach": [
           "Expose query and schema endpoints with FastAPI and DuckDB.",
           "Include an HTML chat interface, workflow scaffolding intended for n8n and Docker Compose configuration."
@@ -826,7 +866,15 @@
           "End-to-end behavior was not tested during this content review.",
           "The workflow JSON files do not contain a standard n8n nodes/connections export, and the chat interface uses a placeholder webhook URL."
         ],
-        "credits": []
+        "credits": [],
+        "implemented": [
+          "FastAPI query and schema endpoints backed by read-only DuckDB access.",
+          "HTML chat interface, workflow scaffolding and Docker Compose configuration are included in the repository."
+        ],
+        "nextSteps": [
+          "Replace the placeholder chat webhook and supply reproducible n8n workflow exports.",
+          "Align the upload module with the documented interface and verify an end-to-end question-to-SQL workflow."
+        ]
       },
       "area": "agents",
       "featured": false,

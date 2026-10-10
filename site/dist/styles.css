@@ -183,7 +183,7 @@ html[dir='rtl'] .portrait-block::before { inset: 0 0 3rem 1rem; }
 .lab-card-image.image-diagram img { padding: 0; }
 .lab-card-image.image-prediction img { object-fit: scale-down; }
 .lab-card-meta { display: flex; justify-content: space-between; gap: .5rem; margin-bottom: 1rem; font-family: var(--mono); color: var(--muted); font-size: .75rem; }
-.lab-card h2, .lab-card h3 { font-size: 1.1rem; line-height: 1.5; font-weight: 700; }
+.lab-card h2, .lab-card h3, .lab-card h4 { font-size: 1.1rem; line-height: 1.5; font-weight: 700; }
 .lab-card p { color: var(--muted); font-size: .9375rem; margin-top: .6rem; line-height: 1.7; }
 .lab-card .tag-list { margin-top: auto; padding-top: 1rem; }
 .empty-state { grid-column: 1/-1; padding: 4rem 1rem; text-align: center; background: var(--canvas); border: 1px solid var(--line); }
@@ -430,6 +430,11 @@ body { background: #fafbfc; }
 .lab-group-heading h2 { font-size: 1.4rem; line-height: 1.5; }
 .lab-group-heading h2 span { display: inline-block; margin-inline-start: .4rem; font-family: var(--mono); font-size: .75rem; font-weight: 400; color: var(--muted); vertical-align: middle; }
 .lab-group-heading p { color: var(--muted); font-size: .875rem; max-width: 700px; margin-top: .4rem; }
+.collection-heading { font-size: .9rem; font-weight: 600; margin-bottom: 1rem; color: var(--muted); }
+.collection-heading span { font-weight: 400; margin-left: .35rem; }
+.saved-evidence pre { padding: 1rem; overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: #f8faff; font-size: .875rem; }
+.saved-evidence p { margin-block: .8rem; }
+.project-figure.figure-evidence img { display: block; height: auto; padding: 0; }
 .lab-group .lab-grid { margin-bottom: 3rem; }
 @media (max-width: 760px) {
  .agents-projects { margin-top: 2.5rem; padding-top: 1.5rem; }

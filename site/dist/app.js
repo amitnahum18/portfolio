@@ -40,10 +40,12 @@ const text = {
     results: 'projects', clear: 'Show all 19 projects', noResults: 'No matching work', noResultsText: 'Try a different topic or a shorter search.',
     home: 'Home', goal: 'Question / goal', approach: 'Data & approach', observations: 'Evidence & observations', limitations: 'Scope & limitations', credits: 'Credits',
     sourceEyebrow: 'EXPLORE THE WORK', sources: 'Code & links', next: 'Next in the collection', back: 'Back to the lab',
+    lessons: 'What I learned', implemented: 'Implemented in source', nextSteps: 'Next steps',
     notFound: 'This page isn’t in the collection.', error: 'The portfolio could not load. Please refresh the page.', skip: 'Skip to content'
   }
 };
 const typeLabels = {
+  'research-project': 'Research Project', 'competition-project': 'Competition Project', application: 'Application',
   experiment: 'Experiment', prototype: 'Prototype',
   'take-home-assignment': 'Take-home assignment', 'course-exercise': 'Course exercise', product: 'Product'
 };
@@ -186,7 +188,12 @@ function labCards() {
   return projectAreas.map(area => {
     const group = items.filter(item => item.area === area);
     if (!group.length) return '';
-    return `<section class="lab-group" aria-labelledby="group-${q(area)}"><div class="lab-group-heading"><h2 id="group-${q(area)}">${q(areaName(area))} <span>${group.length}</span></h2><p>${q(areaIntro(area))}</p></div><div class="lab-grid">${group.map((item, index) => `<a data-nav href="${q(projectURL(item))}" class="lab-card"><div class="lab-card-image image-${q(item.coverImage?.kind || item.image.kind)}">${projectPicture(item, 'card')}</div><div class="lab-card-meta"><span>${projectBadges(item)}</span><span>${String(index + 1).padStart(2, '0')}</span></div><h3>${q(item[language].title)}</h3><p>${q(item[language].summary)}</p>${item.outcome?.kind === 'measured' ? projectOutcome(item, true) : ''}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></a>`).join('')}</div></section>`;
+    const collections = [
+      {key: 'featured', title: 'Featured Projects', items: group.filter(item => item.featured)},
+      {key: 'more', title: 'More Projects & Learning Experiments', items: group.filter(item => !item.featured)}
+    ];
+    const grids = collections.filter(collection => collection.items.length).map(collection => `<section class="lab-collection" aria-labelledby="${area}-${collection.key}"><h3 id="${area}-${collection.key}" class="collection-heading">${q(collection.title)} <span>${collection.items.length}</span></h3><div class="lab-grid">${collection.items.map(item => `<a data-nav href="${q(projectURL(item))}" class="lab-card"><div class="lab-card-image image-${q(item.coverImage?.kind || item.image.kind)}">${projectPicture(item, 'card')}</div><div class="lab-card-meta"><span>${projectBadges(item)}</span><span>${String(group.indexOf(item) + 1).padStart(2, '0')}</span></div><h4>${q(item[language].title)}</h4><p>${q(item[language].summary)}</p>${item.outcome?.kind === 'measured' ? projectOutcome(item, true) : ''}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></a>`).join('')}</div></section>`).join('');
+    return `<section class="lab-group" aria-labelledby="group-${q(area)}"><div class="lab-group-heading"><h2 id="group-${q(area)}">${q(areaName(area))} <span>${group.length}</span></h2><p>${q(areaIntro(area))}</p></div>${grids}</section>`;
   }).join('');
 }
 
@@ -212,8 +219,8 @@ function projectPicture(item, compact = false) {
 
 function projectImage(item) {
   if (!item.image) return '';
-  const cover = item.coverImage;
-  const illustration = cover ? `<figure class="project-figure figure-illustration"><img src="${q(siteURL(cover.src))}" alt="${q(cover[language].alt)}" width="${cover.width}" height="${cover.height}" decoding="async" loading="lazy"><figcaption>${q(cover[language].caption)}</figcaption></figure>` : '';
+  const cover = item.evidenceImage || item.coverImage;
+  const illustration = cover ? `<figure class="project-figure ${item.evidenceImage ? 'figure-evidence' : 'figure-illustration'}"><img src="${q(siteURL(cover.src))}" alt="${q(cover[language].alt)}" width="${cover.width}" height="${cover.height}" decoding="async" loading="lazy"><figcaption>${q(cover[language].caption)}</figcaption></figure>` : '';
   return illustration + `<figure class="project-figure figure-${q(item.image.kind)}">${projectPicture(item)}<figcaption>${q(item.image[language].caption)}</figcaption></figure>`;
 }
 
@@ -221,8 +228,10 @@ function detail(item) {
   const copy = item[language];
   const x = t();
   const section = (field, items, paragraphs = false) => !items.length ? '' : `<section class="detail-section"><h2>${q(x[field])}</h2>${paragraphs ? items.map(value => `<p>${q(value)}</p>`).join('') : `<ul>${items.map(value => `<li>${q(value)}</li>`).join('')}</ul>`}</section>`;
-  const next = catalogue.projects[(catalogue.projects.indexOf(item) + 1) % catalogue.projects.length];
-  return `${header()}<main id="main"><section class="detail-header"><div class="wrap"><nav class="breadcrumb" aria-label="${'Breadcrumb'}">${navLink('/', q(x.home))}<span>/</span>${navLink('/lab', q(x.lab))}<span>/</span><span>${q(typeName(item.type))}</span></nav><p class="eyebrow">${projectBadges(item)} / ${q(item.topics.map(topicName).join(' · '))}</p><h1>${q(copy.title)}</h1><p class="detail-summary">${q(copy.summary)}</p></div></section><div class="wrap detail-layout"><article>${caseSnapshot(item)}${projectImage(item)}${section('goal', [copy.goal], true)}${section('approach', copy.approach)}${section('observations', copy.observations, true)}${section('limitations', copy.limitations)}${section('credits', copy.credits)}</article><aside><div class="source-panel"><p class="eyebrow">${q(x.sourceEyebrow)}</p><h2>${q(x.sources)}</h2>${item.sources.map(source => externalLink(source.url, source.label === 'Public app' ? ('Open the app') : source.label, 'source-link')).join('')}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></div></aside></div><div class="wrap detail-next"><div><p>${q(x.next)}</p>${navLink(`/work/${next.slug}`, q(next[language].title))}</div>${navLink('/lab', q(x.back), 'quiet-link')}</div></main>${footer()}`;
+  const peers = catalogue.projects.filter(entry => entry.area === item.area);
+  const next = peers.length > 1 ? peers[(peers.indexOf(item) + 1) % peers.length] : null;
+  const evidence = item.evidence ? `<section class="detail-section saved-evidence"><h2>${q(item.evidence.title)}</h2><pre><code>${q(item.evidence.lines.join('\n'))}</code></pre><p>${q(item.evidence.caption)}</p>${externalLink(item.evidence.url, 'View the source notebook', 'quiet-link')}</section>` : '';
+  return `${header()}<main id="main"><section class="detail-header"><div class="wrap"><nav class="breadcrumb" aria-label="${'Breadcrumb'}">${navLink('/', q(x.home))}<span>/</span>${navLink('/lab', q(x.lab))}<span>/</span><span>${q(typeName(item.type))}</span></nav><p class="eyebrow">${projectBadges(item)} / ${q(item.topics.map(topicName).join(' · '))}</p><h1>${q(copy.title)}</h1><p class="detail-summary">${q(copy.summary)}</p></div></section><div class="wrap detail-layout"><article>${caseSnapshot(item)}${evidence}${projectImage(item)}${section('goal', [copy.goal], true)}${section('approach', copy.approach)}${section('observations', copy.observations, true)}${section('lessons', copy.lessons || [], true)}${section('implemented', copy.implemented || [])}${section('nextSteps', copy.nextSteps || [])}${section('lessons', copy.lessons || [], true)}${section('implemented', copy.implemented || [])}${section('nextSteps', copy.nextSteps || [])}${section('limitations', copy.limitations)}${section('credits', copy.credits)}</article><aside><div class="source-panel"><p class="eyebrow">${q(x.sourceEyebrow)}</p><h2>${q(x.sources)}</h2>${item.sources.map(source => externalLink(source.url, source.label === 'Public app' ? ('Open the app') : source.label, 'source-link')).join('')}<div class="tag-list">${item.topics.map(topic => `<span class="tag">${q(topicName(topic))}</span>`).join('')}</div></div></aside></div><div class="wrap detail-next"><div>${next ? `<p>Next in ${q(areaName(item.area))}</p>${navLink(`/work/${next.slug}`, q(next[language].title))}` : `<p>${q(areaName(item.area))}</p>`}</div>${navLink('/lab', q(x.back), 'quiet-link')}</div></main>${footer()}`;
 }
 
 function pageMetadata(path = currentPath()) {
@@ -260,6 +269,7 @@ function renderRoute({ preserveScroll = false } = {}) {
     else app.innerHTML = `${header()}<main id="main" class="wrap error-surface"><h1>${q(t().notFound)}</h1>${navLink('/lab', q(t().back), 'quiet-link')}</main>${footer()}`;
   } else app.innerHTML = `${header()}<main id="main" class="wrap error-surface"><h1>${q(t().notFound)}</h1>${navLink('/', q(t().home), 'quiet-link')}</main>${footer()}`;
   updateMetadata();
+  document.documentElement.dataset.ready = 'true';
   if (preserveScroll) window.scrollTo({ top: scroll, behavior: 'instant' });
   else if (location.hash) requestAnimationFrame(() => {
     const target = document.getElementById(location.hash.slice(1));

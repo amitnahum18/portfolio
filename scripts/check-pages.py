@@ -89,7 +89,18 @@ assert 'id="topic-select"' in advanced[2] and 'id="type-select"' in advanced[2]
 assert 'id="project-search"' not in advanced[2]
 assert 'Show all 19 projects' in lab
 assert 'Professional experience in AI engineering and aviation data analysis' in homepage
-assert homepage.count('>Measured Result</p>') == 2 and homepage.count('>Deliverable</p>') == 3
+assert homepage.count('>Measured Result</p>') == 3 and homepage.count('>Deliverable</p>') == 2
+assert '76.41%' in homepage and 'Chronological validation remains necessary' in homepage
+assert 'Featured Projects' in lab and 'More Projects &amp; Learning Experiments' in lab
+assert 'Research Project' in lab and 'Competition Project' in lab
+for project in data['projects']:
+    document = (root / 'work' / project['slug'] / 'index.html').read_text(encoding='utf-8')
+    peers = [p for p in data['projects'] if p['area'] == project['area']]
+    if len(peers) > 1:
+        expected = peers[(peers.index(project) + 1) % len(peers)]
+        next_block = document.split('class="wrap detail-next"', 1)[1].split('</main>', 1)[0]
+        assert f'/work/{expected["slug"]}' in next_block
+    assert '<video' not in document
 assert 'Military Vehicle Object Detection Draft' not in lab
 assert 'AI vs Human Text Classification Demo' not in lab
 assert 'maturity-tag">Draft' in lab and 'maturity-tag">Demo' in lab
