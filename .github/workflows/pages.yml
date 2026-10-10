@@ -46,7 +46,7 @@ jobs:
           cp -R _site/. "$RUNNER_TEMP/portfolio-preview/portfolio/"
           python3 -m http.server 8787 --bind 127.0.0.1 --directory "$RUNNER_TEMP/portfolio-preview" > "$RUNNER_TEMP/portfolio-preview.log" 2>&1 &
           sleep 2
-          npm install --no-save --package-lock=false playwright-core@1.64.0
+          npm install --no-save --package-lock=false playwright-core@1.64.0 || { echo '::error title=Browser dependency::Could not install playwright-core'; exit 1; }
           node scripts/check-browser.mjs
       - name: Measure desktop and mobile with Lighthouse
         continue-on-error: true

@@ -6,9 +6,10 @@ import {chromium} from 'playwright-core';
 const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8787/portfolio/';
 const output = '_site/audits';
 await mkdir(output, {recursive: true});
-const browser = await chromium.launch({channel: 'chrome', headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage']});
+let browser;
 const results = [];
 try {
+  browser = await chromium.launch({channel: 'chrome', headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage']});
   for (const viewport of [{width: 1280, height: 900}, {width: 390, height: 844}]) {
     const device = viewport.width < 760 ? 'mobile' : 'desktop';
     const context = await browser.newContext({viewport, reducedMotion: 'reduce'});
@@ -78,6 +79,10 @@ try {
   }
   await writeFile(`${output}/browser-checks.json`, JSON.stringify({commit: process.env.GITHUB_SHA, browser: 'Chromium', results}, null, 2));
   console.log('PASS: real Chromium desktop/mobile interactions, layouts and saved evidence screenshots.');
+} catch (error) {
+  const message = String(error.stack || error).replaceAll('%', '%25').replaceAll('\r', '%0D').replaceAll('\n', '%0A');
+  console.error(`::error title=Browser validation failed::${message}`);
+  throw error;
 } finally {
-  await browser.close();
+  await browser?.close();
 }
