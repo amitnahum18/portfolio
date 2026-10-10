@@ -53,14 +53,14 @@ try {
     assert.equal(await page.locator('.lab-card').count(), 7);
     await page.locator('#project-search').fill('BridgePulse');
     assert.equal(await page.locator('.lab-card').count(), 0);
-    await page.locator('[data-reset]').click();
+    await page.locator('.results-bar [data-reset]').click();
     assert.equal(await page.locator('.lab-card').count(), 19);
     await page.locator('#advanced-filters summary').click();
     await page.locator('#topic-select').selectOption('Data & SQL');
     await page.locator('#type-select').selectOption('prototype');
     assert.equal(await page.locator('.lab-card').count(), 1);
     assert.ok((await page.locator('.lab-card').innerText()).includes('RAFI'));
-    await page.locator('[data-reset]').click();
+    await page.locator('.results-bar [data-reset]').click();
     await page.locator('#project-search').fill('UFC');
     await page.locator('.lab-card').click();
     await page.locator('.saved-evidence').waitFor();
