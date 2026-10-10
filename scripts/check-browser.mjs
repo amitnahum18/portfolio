@@ -105,7 +105,7 @@ try {
     const transition = await page.locator('#lab-grid').evaluate(grid => ({duration: getComputedStyle(grid).animationDuration,
       height: document.documentElement.scrollHeight, scroll: scrollY}));
     assert.equal(transition.duration, '0.2s');
-    assert.ok(Math.abs(transition.height - before.height) <= 2, `${device}: category page height changed`);
+    assert.ok(Math.abs(transition.height - before.height) <= 2, `${device}: category page height changed ${JSON.stringify({before, transition})}`);
     assert.ok(Math.abs(transition.scroll - before.scroll) <= 2, `${device}: category scroll changed`);
     await page.waitForFunction(() => !document.querySelector('.lab-results-enter'));
     const after = await page.evaluate(() => ({height: document.documentElement.scrollHeight, scroll: scrollY}));
