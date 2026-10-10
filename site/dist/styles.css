@@ -536,6 +536,13 @@ html[data-input='pointer'] :is(.menu-button, .profile-contact, .profile-cv, .are
 .advanced-filters summary:focus-visible { outline: 2px solid var(--blue-strong); outline-offset: 4px; border-radius: 3px; }
 .advanced-filter-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; padding-block: .4rem .8rem; }
 .advanced-filter-fields > .control:first-child { grid-column: auto; }
+.project-motion { display: block; position: relative; height: 100%; }
+.project-motion video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; }
+.image-illustration .project-motion video { object-fit: cover; }
+.project-motion video.is-playing { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+ .project-motion video { display: none; }
+}
 @media (max-width: 760px) {
  .advanced-filter-fields { grid-template-columns: minmax(0, 1fr); }
 }

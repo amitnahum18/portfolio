@@ -65,4 +65,26 @@ handlers.keydown({key: 'Escape'});
 assert.equal(node('#menu-toggle').attrs['aria-expanded'], 'false');
 assert.ok(node('#menu-toggle').focused);
 assert.equal(document.documentElement.dataset.input, 'keyboard');
-console.log('PASS: English-only routes despite saved Hebrew preferences and old links; all project limitations, metadata, combined search/area filters, reset and Escape menu focus.');
+await new vm.Script(`(async () => {
+  let reduced = true, plays = 0, pauses = 0;
+  window.matchMedia = () => ({matches: reduced});
+  const classes = new Set();
+  const video = {dataset: {previewSrc: '/portfolio/assets/projects/bridgepulse-loop-v1.mp4'},
+    classList: {add: value => classes.add(value), remove: value => classes.delete(value)},
+    getAttribute: () => video.src, play: () => {plays++; return Promise.resolve();}, pause: () => pauses++};
+  const link = {querySelector: () => video, contains: () => false};
+  startPreview(link);
+  assert.equal(plays, 0); assert.equal(video.src, undefined);
+  reduced = false;
+  startPreview(link); await Promise.resolve();
+  assert.equal(plays, 1); assert.equal(video.muted, true);
+  assert.equal(video.src, video.dataset.previewSrc); assert.equal(video.currentTime, 0);
+  assert.ok(classes.has('is-playing'));
+  startPreview(link); assert.equal(plays, 1);
+  stopPreview(); assert.equal(pauses, 1); assert.ok(!classes.has('is-playing'));
+  startPreview(link); await Promise.resolve();
+  renderRoute(); assert.equal(activePreview, null); assert.equal(pauses, 2);
+  assert.equal((lab().match(/data-preview-src=/g) || []).length, 19);
+  assert.ok(!lab().includes('<video src='));
+})()`).runInContext(context);
+console.log('PASS: English-only routes, filters, metadata, keyboard menu; 19 lazy video previews, reduced motion, pause and route cleanup.');
