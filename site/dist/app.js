@@ -256,6 +256,7 @@ function updateMetadata() {
 }
 
 function renderRoute({ preserveScroll = false } = {}) {
+  stopCardReveals();
   const scroll = window.scrollY;
   document.documentElement.lang = language;
   document.documentElement.dir = 'ltr';
@@ -276,12 +277,66 @@ function renderRoute({ preserveScroll = false } = {}) {
     if (target) { target.setAttribute('tabindex', '-1'); target.focus({preventScroll: true}); target.scrollIntoView(); }
   });
   else window.scrollTo({top: 0, behavior: 'instant'});
+  observeCardReveals();
 }
 
-function updateLabResults() {
-  document.querySelector('#lab-grid').innerHTML = labCards();
+let cardObserver;
+let motionPreference;
+let labReservedWidth;
+
+function stopCardReveals() {
+  cardObserver?.disconnect();
+  cardObserver = null;
+}
+
+function observeCardReveals() {
+  stopCardReveals();
+  // Progressive enhancement: no styles hide content before observation succeeds.
+  if (!window.matchMedia || typeof IntersectionObserver === 'undefined') return;
+  if (!motionPreference) {
+    motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    motionPreference.addEventListener('change', () => {
+      stopCardReveals();
+      document.querySelectorAll('.card-enter, .lab-results-enter').forEach(element => {
+        element.classList.remove('card-enter', 'lab-results-enter');
+      });
+      if (!motionPreference.matches) observeCardReveals();
+    });
+  }
+  if (motionPreference.matches) return;
+  cardObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      cardObserver.unobserve(entry.target);
+      if (!entry.target.matches(':focus-within')) entry.target.classList.add('card-enter');
+    }
+  }, {threshold: 0.01});
+  for (const card of document.querySelectorAll('.case-card, .lab-card')) {
+    // Initially visible content stays immediately readable; only later cards enter.
+    if (card.getBoundingClientRect().top >= window.innerHeight) cardObserver.observe(card);
+  }
+}
+
+function updateLabResults({ animate = false } = {}) {
+  const grid = document.querySelector('#lab-grid');
+  stopCardReveals();
+  // Retain the results footprint during filtering so the footer and scroll do not jump.
+  // The reservation belongs to this page visit and is released on responsive resize.
+  if (grid.getBoundingClientRect) {
+    const bounds = grid.getBoundingClientRect();
+    grid.style.minHeight = `${Math.ceil(bounds.height)}px`;
+    labReservedWidth = bounds.width;
+  }
+  grid.classList.remove('lab-results-enter');
+  grid.innerHTML = labCards();
   document.querySelector('#results-count').textContent = `${filteredProjects().length} ${t().results}`;
   document.querySelector('#advanced-filter-count').textContent = [filter.topic, filter.type].filter(Boolean).length ? ` (${[filter.topic, filter.type].filter(Boolean).length} active)` : '';
+  if (animate && window.matchMedia && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Restart on rapid category changes; search typing never starts this animation.
+    void grid.offsetWidth;
+    grid.classList.add('lab-results-enter');
+  }
+  observeCardReveals();
 }
 
 document.addEventListener('click', event => {
@@ -289,7 +344,7 @@ document.addEventListener('click', event => {
   if (areaButton) {
     filter.area = areaButton.dataset.area;
     document.querySelectorAll('[data-area]').forEach(button => button.setAttribute('aria-pressed', button.dataset.area === filter.area));
-    updateLabResults();
+    updateLabResults({animate: true});
     return;
   }
   if (event.target.closest('#menu-toggle')) {
@@ -302,7 +357,7 @@ document.addEventListener('click', event => {
     Object.assign(filter, {search: '', topic: '', type: '', area: ''});
     for (const selector of ['#project-search', '#topic-select', '#type-select']) document.querySelector(selector).value = '';
     document.querySelectorAll('[data-area]').forEach(button => button.setAttribute('aria-pressed', button.dataset.area === ''));
-    updateLabResults();
+    updateLabResults({animate: true});
     return;
   }
   const link = event.target.closest('a[data-nav]');
@@ -335,6 +390,15 @@ document.addEventListener('keydown', event => {
 window.addEventListener('popstate', () => {
   mobileMenuOpen = false;
   renderRoute();
+});
+window.addEventListener('resize', () => {
+  const grid = document.querySelector('#lab-grid');
+  // Mobile browser chrome changes viewport height while scrolling; keep its reservation.
+  if (grid?.style && grid.getBoundingClientRect().width !== labReservedWidth) grid.style.removeProperty('min-height');
+});
+document.addEventListener('animationend', event => {
+  if (event.animationName === 'project-card-enter') event.target.classList.remove('card-enter');
+  if (event.animationName === 'lab-results-enter') event.target.classList.remove('lab-results-enter');
 });
 
 try {

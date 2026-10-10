@@ -536,6 +536,20 @@ html[data-input='pointer'] :is(.menu-button, .profile-contact, .profile-cv, .are
 }
 
 /* Keep the collection's primary controls visible, with optional native disclosure. */
+.card-enter { animation: project-card-enter .3s cubic-bezier(.2, .65, .3, 1); }
+.lab-results-enter { animation: lab-results-enter .2s ease-out; }
+@keyframes project-card-enter {
+ from { opacity: .85; transform: translateY(8px); }
+ to { opacity: 1; transform: translateY(0); }
+}
+@keyframes lab-results-enter {
+ from { opacity: .9; }
+ to { opacity: 1; }
+}
+.card-enter:focus-within { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+ .card-enter, .lab-results-enter { animation: none; }
+}
 .lab-controls { grid-template-columns: minmax(0, 1fr); gap: .65rem; padding: 0; border: 0; background: transparent; }
 .advanced-filters summary { width: fit-content; min-height: 44px; padding-block: .6rem; cursor: pointer; color: var(--blue-strong); font-size: .875rem; font-weight: 600; }
 .advanced-filters summary:focus-visible { outline: 2px solid var(--blue-strong); outline-offset: 4px; border-radius: 3px; }
