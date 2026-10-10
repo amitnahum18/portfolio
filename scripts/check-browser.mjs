@@ -45,16 +45,16 @@ try {
     }
     await page.getByRole('link', {name: 'All projects', exact: true}).click();
     await page.locator('#project-search').waitFor();
-    assert.equal(await page.locator('.lab-card').count(), 19);
+    assert.equal(await page.locator('.lab-card').count(), 18);
     assert.equal(await page.locator('#advanced-filters').getAttribute('open'), null);
-    assert.equal(await page.locator('.lab-collection').count(), 5);
+    assert.equal(await page.locator('.lab-collection').count(), 4);
     await layoutAndScreenshot('lab');
     await page.locator('[data-area="agents"]').click();
     assert.equal(await page.locator('.lab-card').count(), 7);
     await page.locator('#project-search').fill('BridgePulse');
     assert.equal(await page.locator('.lab-card').count(), 0);
     await page.locator('.results-bar [data-reset]').click();
-    assert.equal(await page.locator('.lab-card').count(), 19);
+    assert.equal(await page.locator('.lab-card').count(), 18);
     await page.locator('#advanced-filters summary').click();
     await page.locator('#topic-select').selectOption('Data & SQL');
     await page.locator('#type-select').selectOption('prototype');
@@ -71,8 +71,10 @@ try {
     await page.goto(base + 'work/car-price-prediction/'); await ready();
     assert.ok((await page.locator('.detail-next').innerText()).includes('Data Science & ML'));
     assert.ok(!(await page.locator('.detail-next').innerText()).includes('JEV'));
-    await page.goto(base + 'work/wall-e-voice-ui-experiment/'); await ready();
-    assert.equal(await page.locator('.detail-next a').count(), 1);
+    await page.goto(base + 'lab/'); await ready();
+    assert.equal(await page.locator('[data-area=other]').count(), 0);
+    await page.locator('#project-search').fill('WALL_E');
+    assert.equal(await page.locator('.lab-card').count(), 0);
     assert.deepEqual(errors, [], `${device}: JavaScript runtime errors`);
     results.push({device, viewport, status: 'passed', checks: ['menu and Escape', 'search and category filter', 'advanced filters and reset', 'featured hierarchy', 'within-category navigation', 'saved evidence', 'no video', 'no horizontal overflow', 'no runtime errors']});
     await context.close();

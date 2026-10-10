@@ -17,6 +17,11 @@ if not re.fullmatch(r'/[A-Za-z0-9_/-]*', base):
 source = root / 'site/dist'
 output = root / '_site'
 data = json.loads((source / 'data/portfolio.json').read_text(encoding='utf-8'))
+public_slugs = {project['slug'] for project in data['projects']}
+for index in (output / 'work').glob('*/index.html'):
+    if index.parent.name not in public_slugs:
+        assert index.resolve().is_relative_to((output / 'work').resolve())
+        index.unlink()
 template = (source / 'index.html').read_text(encoding='utf-8').replace('<base href="/" />', f'<base href="{base}" />')
 shutil.copytree(source, output, dirs_exist_ok=True)
 (output / '.nojekyll').write_text('', encoding='utf-8')

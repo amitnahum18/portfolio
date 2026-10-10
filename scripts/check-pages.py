@@ -81,13 +81,13 @@ assert len(data['profile']['skills']) + len(data['profile']['agentSkills']) == 1
 assert 'Download CV' in homepage and 'View Projects' in homepage
 assert homepage.count('<dt>Problem</dt>') == homepage.count('<dt>Solution</dt>') == 5
 assert not re.search('[\u0590-\u05ff]', json.dumps(data, ensure_ascii=False))
-assert len(re.findall(r'class="lab-card"', pages[1].read_text(encoding='utf-8'))) == 19
+assert len(re.findall(r'class="lab-card"', pages[1].read_text(encoding='utf-8'))) == 18
 lab = pages[1].read_text(encoding='utf-8')
 advanced = re.search(r'(<details id="advanced-filters"[^>]*>)(.*?)</details>', lab, re.S)
 assert advanced and ' open' not in advanced[1]
 assert 'id="topic-select"' in advanced[2] and 'id="type-select"' in advanced[2]
 assert 'id="project-search"' not in advanced[2]
-assert 'Show all 19 projects' in lab
+assert 'Show all 18 projects' in lab
 assert 'Professional experience in AI engineering and aviation data analysis' in homepage
 assert homepage.count('>Measured Result</p>') == 3 and homepage.count('>Deliverable</p>') == 2
 assert '76.41%' in homepage and 'Chronological validation remains necessary' in homepage

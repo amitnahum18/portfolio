@@ -1336,62 +1336,6 @@
       }
     },
     {
-      "slug": "wall-e-voice-ui-experiment",
-      "repositoryName": "WALL_E",
-      "type": "experiment",
-      "topics": [
-        "Web",
-        "Audio"
-      ],
-      "sources": [
-        {
-          "label": "GitHub",
-          "url": "https://github.com/amitnahum18/WALL_E"
-        }
-      ],
-      "en": {
-        "title": "WALL_E: Voice and Screen Context Experiment",
-        "summary": "A browser phone-interface simulator with building blocks for wake-word detection, speech transcription and screen-context capture.",
-        "goal": "Explore how voice input and screen context can accompany a simulated phone interface.",
-        "approach": [
-          "Build phone-like screens with HTML, CSS and JavaScript, using localStorage.",
-          "Include Web Speech API transcription and Picovoice Porcupine wake-word components using WebAssembly and AudioWorklet.",
-          "Capture screen frames and derive grayscale frame-change signatures."
-        ],
-        "observations": [
-          "The repository separates interface screens and voice components, and includes a build script and a bundled simulator HTML file."
-        ],
-        "limitations": [
-          "A complete LLM agent and performance benchmarks were not observed.",
-          "Voice and capture paths depend on browser capabilities; the Porcupine wake-word path requires an appropriate model and key."
-        ],
-        "credits": []
-      },
-      "area": "other",
-      "featured": false,
-      "maturity": "Prototype",
-      "image": {
-        "kind": "diagram",
-        "width": 1200,
-        "height": 400,
-        "mobileWidth": 640,
-        "mobileHeight": 610,
-        "en": {
-          "caption": "Process illustration of wake detection and speech transcription.",
-          "alt": "From a wake word to a transcript: Wake detection → Speech to text → Transcript"
-        },
-        "sources": {
-          "en": "/assets/projects/wall-e-voice-ui-experiment-en.svg"
-        },
-        "mobileSources": {
-          "en": "/assets/projects/wall-e-voice-ui-experiment-en-mobile.svg"
-        },
-        "cardSources": {
-          "en": "/assets/projects/wall-e-voice-ui-experiment-en-card.svg"
-        }
-      }
-    },
-    {
       "slug": "travel-services-prompt-design",
       "repositoryName": "Task_1_For_Jeen",
       "type": "take-home-assignment",
