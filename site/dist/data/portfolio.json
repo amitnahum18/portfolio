@@ -82,12 +82,6 @@
           "detail": "Mean balanced accuracy across state-grouped splits"
         }
       },
-      "video": {
-        "src": "/assets/projects/bridgepulse-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -190,12 +184,6 @@
           "detail": "Kaggle: Nahum Team, final private leaderboard"
         }
       },
-      "video": {
-        "src": "/assets/projects/license-plate-pricing-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "src": "/assets/projects/license-plate-pricing.png",
         "kind": "saved-plot",
@@ -283,12 +271,6 @@
           "headline": "CatBoost fight-outcome model",
           "detail": "Features from the last fight, last 3 fights and career history"
         }
-      },
-      "video": {
-        "src": "/assets/projects/ufc-prediction-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
       },
       "image": {
         "kind": "diagram",
@@ -384,12 +366,6 @@
           "headline": "Car-price regression pipeline",
           "detail": "Exploratory analysis, engineered features and CatBoost"
         }
-      },
-      "video": {
-        "src": "/assets/projects/car-price-prediction-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
       },
       "image": {
         "src": "/assets/projects/car-price-prediction.png",
@@ -491,12 +467,6 @@
           "detail": "Matched simulation comparisons and saved decision traces"
         }
       },
-      "video": {
-        "src": "/assets/projects/jev-decision-experiments-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -595,12 +565,6 @@
           "detail": "Three chunking strategies with pgvector / HNSW indexing"
         }
       },
-      "video": {
-        "src": "/assets/projects/document-indexing-and-retrieval-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -694,12 +658,6 @@
       },
       "area": "agents",
       "featured": false,
-      "video": {
-        "src": "/assets/projects/lyftcode-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "src": "/assets/projects/lyftcode.png",
         "kind": "screenshot",
@@ -744,12 +702,6 @@
       },
       "area": "agents",
       "featured": false,
-      "video": {
-        "src": "/assets/projects/zapi-electronics-tutor-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -819,12 +771,6 @@
       },
       "area": "data-science",
       "featured": false,
-      "video": {
-        "src": "/assets/projects/simulated-irrigation-monitoring-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "src": "/assets/projects/simulated-irrigation-monitoring.png",
         "kind": "saved-data",
@@ -891,12 +837,6 @@
           "headline": "Read-only SQL tool API",
           "detail": "Database schema and query tools for an analyst-agent prototype"
         }
-      },
-      "video": {
-        "src": "/assets/projects/rafi-data-analyst-agent-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
       },
       "image": {
         "kind": "diagram",
@@ -995,12 +935,6 @@
           "detail": "Orchestration, analysis and response agents with SQL tools"
         }
       },
-      "video": {
-        "src": "/assets/projects/customer-support-agent-workflow-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1089,12 +1023,6 @@
       "area": "data-science",
       "featured": false,
       "maturity": "Draft",
-      "video": {
-        "src": "/assets/projects/military-vehicle-object-detection-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "src": "/assets/projects/military-vehicle-object-detection.png",
         "kind": "saved-plot",
@@ -1140,12 +1068,6 @@
       "area": "data-science",
       "featured": false,
       "maturity": "Demo",
-      "video": {
-        "src": "/assets/projects/ai-human-text-classification-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1215,12 +1137,6 @@
       },
       "area": "data-science",
       "featured": false,
-      "video": {
-        "src": "/assets/projects/semantic-genre-matching-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1291,12 +1207,6 @@
       },
       "area": "data-science",
       "featured": false,
-      "video": {
-        "src": "/assets/projects/speech-emotion-recognition-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1366,12 +1276,6 @@
       },
       "area": "data-science",
       "featured": false,
-      "video": {
-        "src": "/assets/projects/xray-object-detection-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "src": "/assets/projects/xray-object-detection.png",
         "kind": "prediction",
@@ -1418,12 +1322,6 @@
       "area": "other",
       "featured": false,
       "maturity": "Prototype",
-      "video": {
-        "src": "/assets/projects/wall-e-voice-ui-experiment-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,
@@ -1479,12 +1377,6 @@
       },
       "area": "agents",
       "featured": false,
-      "video": {
-        "src": "/assets/projects/travel-services-prompt-design-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "src": "/assets/projects/travel-services-prompt-design.png",
         "kind": "screenshot",
@@ -1530,12 +1422,6 @@
       },
       "area": "data-science",
       "featured": false,
-      "video": {
-        "src": "/assets/projects/vehicle-detection-distance-estimation-loop-v1.mp4",
-        "width": 640,
-        "height": 426,
-        "durationSeconds": 2
-      },
       "image": {
         "kind": "diagram",
         "width": 1200,

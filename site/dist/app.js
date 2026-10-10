@@ -207,30 +207,7 @@ function projectPicture(item, compact = false) {
   const width = isCard ? 640 : visual.width;
   const height = isCard ? (visual.cardHeight || 280) : visual.height;
   const mobile = !compact && visual.mobileSources?.[language] ? siteURL(visual.mobileSources[language]) : null;
-  const picture = `<picture>${mobile ? `<source media="(max-width: 760px)" srcset="${q(mobile)}" width="${visual.mobileWidth}" height="${visual.mobileHeight}">` : ''}<img src="${q(src)}" alt="${q(copy.alt)}" width="${width}" height="${height}" decoding="async" loading="lazy"></picture>`;
-  if (compact !== 'card' || !item.video) return picture;
-  return `<span class="project-motion">${picture}<video data-preview-src="${q(siteURL(item.video.src))}" width="${item.video.width}" height="${item.video.height}" preload="none" muted loop playsinline aria-hidden="true" tabindex="-1"></video></span>`;
-}
-
-let activePreview = null;
-function stopPreview() {
-  if (!activePreview) return;
-  activePreview.pause();
-  activePreview.classList.remove('is-playing');
-  activePreview = null;
-}
-function startPreview(link) {
-  const video = link?.querySelector('video[data-preview-src]');
-  if (!video || video === activePreview || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
-  stopPreview();
-  activePreview = video;
-  video.muted = true;
-  if (!video.getAttribute('src')) video.src = video.dataset.previewSrc;
-  video.currentTime = 0;
-  video.play().then(() => {
-    if (activePreview === video) video.classList.add('is-playing');
-    else video.pause();
-  }).catch(() => { if (activePreview === video) stopPreview(); });
+  return `<picture>${mobile ? `<source media="(max-width: 760px)" srcset="${q(mobile)}" width="${visual.mobileWidth}" height="${visual.mobileHeight}">` : ''}<img src="${q(src)}" alt="${q(copy.alt)}" width="${width}" height="${height}" decoding="async" loading="lazy"></picture>`;
 }
 
 function projectImage(item) {
@@ -270,7 +247,6 @@ function updateMetadata() {
 }
 
 function renderRoute({ preserveScroll = false } = {}) {
-  stopPreview();
   const scroll = window.scrollY;
   document.documentElement.lang = language;
   document.documentElement.dir = 'ltr';
@@ -293,7 +269,6 @@ function renderRoute({ preserveScroll = false } = {}) {
 }
 
 function updateLabResults() {
-  stopPreview();
   document.querySelector('#lab-grid').innerHTML = labCards();
   document.querySelector('#results-count').textContent = `${filteredProjects().length} ${t().results}`;
   document.querySelector('#advanced-filter-count').textContent = [filter.topic, filter.type].filter(Boolean).length ? ` (${[filter.topic, filter.type].filter(Boolean).length} active)` : '';
@@ -338,24 +313,8 @@ document.addEventListener('change', event => {
 document.addEventListener('pointerdown', () => {
   document.documentElement.dataset.input = 'pointer';
 }, {capture: true});
-
-document.addEventListener('pointerover', event => {
-  if (event.pointerType === 'touch') return;
-  const link = event.target.closest('a[data-nav]');
-  if (link && !link.contains(event.relatedTarget)) startPreview(link);
-});
-document.addEventListener('pointerout', event => {
-  const link = event.target.closest('a[data-nav]');
-  if (link && !link.contains(event.relatedTarget)) stopPreview();
-});
-document.addEventListener('focusin', event => startPreview(event.target.closest('a[data-nav]')));
-document.addEventListener('focusout', stopPreview);
-document.addEventListener('visibilitychange', () => { if (document.hidden) stopPreview(); });
-window.addEventListener('blur', stopPreview);
-window.matchMedia?.('(prefers-reduced-motion: reduce)').addEventListener('change', event => { if (event.matches) stopPreview(); });
 document.addEventListener('keydown', event => {
   document.documentElement.dataset.input = 'keyboard';
-  if (event.key === 'Escape') stopPreview();
   if (event.key === 'Escape' && mobileMenuOpen) {
     mobileMenuOpen = false;
     document.querySelector('#site-nav').classList.remove('open');

@@ -29,11 +29,6 @@ class Page(HTMLParser):
             assert a.get('alt'), 'Image without descriptive alt'
             assert a.get('width') and a.get('height'), 'Image without dimensions'
             self.images.append(a['src'])
-        if tag == 'video':
-            assert 'muted' in a and 'playsinline' in a and a.get('preload') == 'none'
-            assert a.get('aria-hidden') == 'true' and a.get('tabindex') == '-1'
-            assert 'src' not in a, 'Video must load only after interaction'
-            self.images.append(a['data-preview-src'])
         if tag == 'label': self.labels.append(a.get('for'))
         if tag in ('input', 'select'): self.inputs.append(a.get('id'))
         if tag == 'meta': self.metas[a.get('name') or a.get('property')] = a.get('content')
