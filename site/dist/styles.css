@@ -483,7 +483,7 @@ button { user-select: none; -webkit-user-select: none; }
 .agent-card .case-result { font-size: .8125rem; font-weight: 500; }
 .agent-card .case-outcome { padding-block: .75rem; }
 .profile-experience-proof { margin-top: .85rem; color: var(--ink); font-size: .875rem; font-weight: 600; line-height: 1.65; }
-.maturity-tag { display: inline-block; margin-inline-start: .5rem; padding: .15rem .4rem; border: 1px solid #d2d9e4; border-radius: 4px; color: #526072; font-size: .6875rem; }
+.maturity-tag, .case-meta span.maturity-tag, .lab-card-meta span.maturity-tag { display: inline-block; margin-inline-start: .5rem; padding: .15rem .4rem; border: 1px solid #d2d9e4; border-radius: 4px; color: #526072; font-size: .6875rem; }
 .case-outcome .outcome-label { margin: 0; color: #526072; font-size: .6875rem; font-weight: 600; line-height: 1.5; }
 .case-outcome .outcome-detail { margin-top: .35rem; color: var(--muted); font-size: .8125rem; line-height: 1.6; }
 .result-metric { display: block; color: var(--ink); font-size: 1.35rem; font-weight: 750; line-height: 1.3; }
