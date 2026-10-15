@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+<title id="title">CatanZero: learning offline, choosing legal actions in the browser</title>
+<desc id="desc">Teacher-labelled games train a LightGBM ranker; game returns train an ExtraTrees correction. Frozen Model 402 scores 264-feature legal-action candidates in a browser worker.</desc>
+<rect width="1200" height="520" rx="16" fill="#f6f8fc"/>
+<g font-family="Arial, sans-serif" fill="#172e58">
+<text x="48" y="56" font-size="26" font-weight="700">Learn offline. Choose legal moves in the browser.</text>
+<text x="48" y="91" font-size="17" fill="#526072">A hybrid of teacher ranking and Monte Carlo return learning</text>
+<rect x="48" y="124" width="522" height="188" rx="12" fill="white" stroke="#cbd5e1"/>
+<text x="72" y="158" font-size="16" fill="#315cf1">OFFLINE LEARNING</text>
+<text x="72" y="193" font-size="19">500 labelled training-game trajectories</text>
+<text x="72" y="222" font-size="17">LightGBM LambdaRank: 114 ranking trees</text>
+<text x="72" y="260" font-size="19">200 reward-collection games</text>
+<text x="72" y="289" font-size="17">ExtraTrees: 64 Monte Carlo value trees</text>
+<rect x="606" y="124" width="546" height="188" rx="12" fill="white" stroke="#cbd5e1"/>
+<text x="630" y="158" font-size="16" fill="#315cf1">FROZEN POLICY / BROWSER WORKER</text>
+<text x="630" y="193" font-size="19">Own hand + public state + legal candidates</text>
+<text x="630" y="227" font-size="17">264 raw features per candidate action</text>
+<text x="630" y="260" font-size="19">Rank score + 0.2 × return correction</text>
+<text x="630" y="289" font-size="17">Choose the highest-scoring legal action</text>
+<path d="M574 218H598m-7-7 7 7-7 7" fill="none" stroke="#315cf1" stroke-width="3"/>
+<rect x="48" y="350" width="1104" height="120" rx="12" fill="#eaf0ff"/>
+<text x="72" y="386" font-size="19" font-weight="700">Evaluate the frozen policy on new boards, with balanced seats.</text>
+<text x="72" y="419" font-size="17">No forward search or online weight updates during deployed inference.</text>
+<text x="72" y="448" font-size="17">Separate training, validation and test boards; report each opponent and player count.</text>
+</g></svg>

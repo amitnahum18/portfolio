@@ -33,7 +33,7 @@ try {
       await page.screenshot({path: `${output}/browser-${device}-${name}.png`, fullPage: true});
     }
     await page.goto(base); await ready();
-    assert.equal(await page.locator('.case-card').count(), 5);
+    assert.equal(await page.locator('.case-card').count(), 6);
     assert.ok((await page.locator('main').innerText()).includes('76.41%'));
     await layoutAndScreenshot('home');
     if (device === 'mobile') {
@@ -45,7 +45,7 @@ try {
     }
     await page.getByRole('link', {name: 'All projects', exact: true}).click();
     await page.locator('#project-search').waitFor();
-    assert.equal(await page.locator('.lab-card').count(), 18);
+    assert.equal(await page.locator('.lab-card').count(), 19);
     assert.equal(await page.locator('#advanced-filters').getAttribute('open'), null);
     assert.equal(await page.locator('.lab-collection').count(), 4);
     await layoutAndScreenshot('lab');
@@ -54,7 +54,7 @@ try {
     await page.locator('#project-search').fill('BridgePulse');
     assert.equal(await page.locator('.lab-card').count(), 0);
     await page.locator('.results-bar [data-reset]').click();
-    assert.equal(await page.locator('.lab-card').count(), 18);
+    assert.equal(await page.locator('.lab-card').count(), 19);
     await page.locator('#advanced-filters summary').click();
     await page.locator('#topic-select').selectOption('Data & SQL');
     await page.locator('#type-select').selectOption('prototype');
@@ -68,10 +68,21 @@ try {
     await page.goto(base + 'work/bridgepulse/'); await ready();
     await page.locator('.figure-evidence').waitFor();
     await layoutAndScreenshot('bridgepulse');
+    await page.goto(base + 'work/catanzero/'); await ready();
+    assert.ok((await page.locator('main h1').innerText()).includes('CatanZero'));
+    assert.ok((await page.locator('.case-snapshot').innerText()).includes('57.0%'));
+    assert.ok((await page.locator('main').innerText()).includes('53.8647%'));
+    assert.equal(await page.locator('a[href="https://amitnahum18.github.io/CatanZero-/"]').count(), 1);
+    assert.equal(await page.locator('a[href="https://github.com/amitnahum18/CatanZero-"]').count(), 1);
+    await layoutAndScreenshot('catanzero');
     await page.goto(base + 'work/car-price-prediction/'); await ready();
     assert.ok((await page.locator('.detail-next').innerText()).includes('Data Science & ML'));
     assert.ok(!(await page.locator('.detail-next').innerText()).includes('JEV'));
     await page.goto(base + 'lab/'); await ready();
+    await page.locator('#project-search').fill('Reinforcement Learning');
+    assert.equal(await page.locator('.lab-card').count(), 1);
+    assert.ok((await page.locator('.lab-card').innerText()).includes('CatanZero'));
+    await page.locator('.results-bar [data-reset]').click();
     assert.equal(await page.locator('[data-area=other]').count(), 0);
     await page.locator('#project-search').fill('WALL_E');
     assert.equal(await page.locator('.lab-card').count(), 0);
@@ -114,7 +125,7 @@ try {
     await page.locator('[data-area="data-science"]').click();
     await page.locator('[data-area="agents"]').click();
     await page.locator('.results-bar [data-reset]').click();
-    assert.equal(await page.locator('.lab-card').count(), 18);
+    assert.equal(await page.locator('.lab-card').count(), 19);
     await page.waitForFunction(() => !document.querySelector('.lab-results-enter'));
     await page.locator('#project-search').fill('UFC');
     assert.equal(await page.locator('.lab-results-enter').count(), 0);
@@ -124,10 +135,10 @@ try {
     const staticContext = await browser.newContext({viewport, javaScriptEnabled: false});
     const staticPage = await staticContext.newPage();
     await staticPage.goto(base);
-    assert.equal(await staticPage.locator('.case-card').count(), 5);
+    assert.equal(await staticPage.locator('.case-card').count(), 6);
     assert.ok(await staticPage.getByRole('link', {name: 'All projects', exact: true}).isVisible());
     await staticPage.getByRole('link', {name: 'All projects', exact: true}).click();
-    assert.equal(await staticPage.locator('.lab-card').count(), 18);
+    assert.equal(await staticPage.locator('.lab-card').count(), 19);
     assert.equal(await staticPage.locator('#project-search').isVisible(), false);
     await staticPage.locator('.lab-card').first().click();
     assert.ok(await staticPage.locator('main h1').isVisible());

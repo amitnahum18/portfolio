@@ -71,7 +71,7 @@ for path in pages:
 
 homepage = pages[0].read_text(encoding='utf-8')
 ds, agents = homepage.split('id="work"', 1)[1].split('id="agents"', 1)
-assert ds.count('class="case-card"') == 3
+assert ds.count('class="case-card"') == 4
 assert agents.count('class="case-card agent-card"') == 2
 assert 'car-price-prediction' not in homepage
 assert '81.97%' in homepage and 'state-grouped splits' in homepage
@@ -79,17 +79,17 @@ assert '2nd / 694' in homepage and 'Nahum Team' in homepage
 assert 'case-context' not in homepage and 'MFCC' in homepage
 assert len(data['profile']['skills']) + len(data['profile']['agentSkills']) == 10
 assert 'Download CV' in homepage and 'View Projects' in homepage
-assert homepage.count('<dt>Problem</dt>') == homepage.count('<dt>Solution</dt>') == 5
+assert homepage.count('<dt>Problem</dt>') == homepage.count('<dt>Solution</dt>') == 6
 assert not re.search('[\u0590-\u05ff]', json.dumps(data, ensure_ascii=False))
-assert len(re.findall(r'class="lab-card"', pages[1].read_text(encoding='utf-8'))) == 18
+assert len(re.findall(r'class="lab-card"', pages[1].read_text(encoding='utf-8'))) == 19
 lab = pages[1].read_text(encoding='utf-8')
 advanced = re.search(r'(<details id="advanced-filters"[^>]*>)(.*?)</details>', lab, re.S)
 assert advanced and ' open' not in advanced[1]
 assert 'id="topic-select"' in advanced[2] and 'id="type-select"' in advanced[2]
 assert 'id="project-search"' not in advanced[2]
-assert 'Show all 18 projects' in lab
+assert 'Show all 19 projects' in lab
 assert 'Professional experience in AI engineering and aviation data analysis' in homepage
-assert homepage.count('>Measured Result</p>') == 3 and homepage.count('>Deliverable</p>') == 2
+assert homepage.count('>Measured Result</p>') == 4 and homepage.count('>Deliverable</p>') == 2
 assert '76.41%' in homepage and 'Chronological validation remains necessary' in homepage
 assert 'Featured Projects' in lab and 'More Projects &amp; Learning Experiments' in lab
 assert 'Research Project' in lab and 'Competition Project' in lab

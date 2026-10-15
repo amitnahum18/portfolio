@@ -249,6 +249,133 @@
       }
     },
     {
+      "slug": "catanzero",
+      "repositoryName": "CatanZero-",
+      "type": "research-project",
+      "topics": [
+        "Reinforcement Learning",
+        "Learning to Rank",
+        "Model Evaluation",
+        "ML Engineering"
+      ],
+      "sources": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/amitnahum18/CatanZero-"
+        },
+        {
+          "label": "Play live demo",
+          "url": "https://amitnahum18.github.io/CatanZero-/"
+        },
+        {
+          "label": "Independent confirmation report",
+          "url": "https://github.com/amitnahum18/CatanZero-/blob/main/docs/402-confirmation-f-1000-20261015.md"
+        },
+        {
+          "label": "Training and evaluation",
+          "url": "https://github.com/amitnahum18/CatanZero-/blob/main/docs/tree-policy-depth10-native-f.md"
+        },
+        {
+          "label": "Frozen model and browser export",
+          "url": "https://github.com/amitnahum18/CatanZero-/tree/main/models/champion402"
+        }
+      ],
+      "en": {
+        "title": "CatanZero: Reinforcement Learning for Game Decisions",
+        "summary": "Learn to rank legal Catan moves with a tree-based policy and a Monte Carlo reward correction, then deploy the frozen bot in a playable browser game.",
+        "goal": "Can a classical machine-learning policy learn from game outcomes, outperform a fixed Catan opponent on unseen boards, and run entirely in the browser?",
+        "approach": [
+          "Build simulation, trajectory and legal-action datasets on Catanatron. Encode 264 numeric predecision features describing the acting player's hand, public opponents, board position, resources, construction capacity and candidate move.",
+          "Train a LightGBM LambdaRank policy on 500 teacher-labelled game trajectories: 29,362 decision groups and 241,779 legal candidate rows. Teacher annotation is an offline training step; the deployed policy does not search forward.",
+          "Fit a 64-tree ExtraTrees Monte Carlo correction from 200 reward-collection games and 21,661 transitions. Use terminal rewards of +1 for a win and -1 for a loss, with potential-based shaping and gamma = 1.",
+          "Select the hybrid on separate validation boards. Model 402 combines 114 LightGBM ranking trees with the return correction, both with maximum depth 10, and chooses the highest-scoring legal action.",
+          "Export the frozen trees to portable numeric inference, preserving native float precision semantics. Run the shared Python rules and feature encoder through Pyodide/WebAssembly in a Web Worker, with browser-local saves and no application backend."
+        ],
+        "observations": [
+          "The published independent confirmation report records 570 wins in 1,000 new two-player games against exactly one native F bot: 57.0%. Seats were balanced, all games completed, and weights remained frozen.",
+          "The exact two-sided 95% binomial confidence interval is 53.8647%–60.0940%. The observed 57% did not meet the predeclared requirement that the lower confidence bound exceed 55%.",
+          "A separate four-player evaluation reported 158 wins in 500 games against three native F bots (31.6%). This is a different benchmark and is not pooled with the two-player result.",
+          "The repository reports portable/native parity on 1,573 candidate actions, identical selected actions and maximum score error below 2.67e-15. Its WebAssembly checks exercised 225 actions across two-, three- and four-player games.",
+          "Subsequent Monte Carlo and counterfactual preference-learning candidates did not demonstrate a sufficient held-out improvement to replace Model 402."
+        ],
+        "limitations": [
+          "This is a hybrid of learned teacher ranking and real-outcome value learning, not pure from-scratch RL, a neural network or AlphaZero-style search. Action scores are preferences, not calibrated win probabilities.",
+          "The 57.0% result applies to the documented Catanatron two-player base-simulator protocol against one native F opponent. It does not establish human-level play, general opponent strength or a true win rate above 55% at the stated confidence level.",
+          "Evaluation figures are quoted from the public research documentation. Detailed run artifacts referenced by the reports remain local-only, and the portfolio review did not rerun training, simulation or the complete research audit.",
+          "No forward simulation or online weight update occurs during browser inference. The browser game uses the same frozen policy for every bot and does not implement direct player-to-player trading.",
+          "The first visit downloads roughly 16 MB of runtime/game files before HTTP compression. Saves are device-local; the game requires WebAssembly, module workers and IndexedDB. Physical-phone visual testing is not established by the research reports."
+        ],
+        "lessons": [
+          "Validation gains can disappear on held-out boards. Keeping the incumbent after an unsuccessful continuation is a useful model-selection result.",
+          "Game-level splits, balanced seats, hidden-information whitelists and confidence intervals matter as much as the learning algorithm.",
+          "Portable inference must preserve feature order and float conversion semantics, not just copy tree thresholds."
+        ],
+        "credits": [
+          "Built on Catanatron. Original project code is MIT-licensed; the combined game distribution includes GPL-3.0-or-later components. Pyodide provides the browser Python runtime.",
+          "Unofficial fan project, not affiliated with CATAN GmbH, Catan Universe or Colonist."
+        ]
+      },
+      "area": "data-science",
+      "featured": true,
+      "outcome": {
+        "kind": "measured",
+        "en": {
+          "value": "57.0% win rate",
+          "headline": "Frozen-policy confirmation",
+          "detail": "570 / 1,000 new two-player games against one native F bot"
+        }
+      },
+      "maturity": "Research prototype",
+      "image": {
+        "kind": "diagram",
+        "src": "/assets/projects/catanzero-policy-en.svg",
+        "width": 1200,
+        "height": 520,
+        "en": {
+          "alt": "CatanZero architecture: offline ranking and Monte Carlo return learning feed a frozen legal-action policy in the browser.",
+          "caption": "Implementation overview: learning happens offline; the browser scores legal actions with the frozen Model 402. No forward search or online learning occurs during play."
+        }
+      },
+      "coverImage": {
+        "kind": "illustration",
+        "src": "/assets/projects/catanzero-ai-policy-cover-v1.jpg",
+        "width": 1200,
+        "height": 675,
+        "cardSources": {
+          "en": "/assets/projects/catanzero-ai-policy-cover-v1-card.webp"
+        },
+        "cardHeight": 360,
+        "en": {
+          "alt": "AI-generated concept illustration of a blue policy chip and branching decision tree over a hexagonal strategy board.",
+          "caption": "AI-generated concept illustration of learned game decisions; not a game screenshot or evaluation evidence."
+        }
+      },
+      "caseStudy": {
+        "tools": [
+          "Python",
+          "LightGBM",
+          "scikit-learn",
+          "Monte Carlo RL",
+          "MLflow",
+          "Pyodide",
+          "Web Workers"
+        ],
+        "resultKind": "measured",
+        "en": {
+          "title": "CatanZero: Reinforcement Learning",
+          "summary": "A reward-informed tree policy for legal game decisions, deployed as a browser-playable Catan bot.",
+          "data": "500 teacher-labelled trajectories; 200 reward-collection games; 264 state–action features",
+          "method": "LightGBM action ranking + ExtraTrees Monte Carlo value correction",
+          "result": "57.0% win rate against one native F bot",
+          "context": "570 / 1,000 new two-player games; frozen weights and balanced seats.",
+          "evaluation": "Reported exact 95% interval: 53.8647%–60.0940%; the lower-bound >55% acceptance target was not met.",
+          "cardResult": "57.0% win rate · 1,000 games vs one native F bot",
+          "problem": "Choose strong legal moves under uncertainty in a resource strategy game.",
+          "solution": "Learn action rankings and a Monte Carlo reward correction; deploy the frozen policy in the browser."
+        }
+      }
+    },
+    {
       "slug": "ufc-prediction",
       "repositoryName": "UFC_predict",
       "type": "research-project",
